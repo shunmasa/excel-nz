@@ -1,0 +1,40 @@
+{
+  "name": "projectx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index",
+    "build": "npm clean && tsc",
+    "start": "tsc --watch & nodemon dist/index.js",
+    "pre-commit": "npm build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bluebird": "^3.5.31",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.6",
+    "@types/graphql-upload": "^8.0.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/lodash": "^4.14.151",
+    "@types/mongoose": "^5.7.20",
+    "apollo-server": "^2.13.1",
+    "apollo-server-express": "^2.13.1",
+    "bluebird": "^3.7.2",
+    "cloudinary": "^1.21.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "graphql-upload": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.14",
+    "mongoose-delete": "^0.5.2",
+    "nodemon": "^2.0.4",
+    "shortid": "^2.2.15",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {}
+}

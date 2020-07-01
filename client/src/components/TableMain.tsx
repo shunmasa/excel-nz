@@ -1,0 +1,180 @@
+import React,{useState,useEffect} from 'react';
+import Link from 'next/link';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Title from './Title';
+import { Button, IconButton, Typography } from '@material-ui/core';
+// import Edit from "@material-ui/icons/Edit";
+// import DialogEdit from './DialogEdit'
+import DialogForm from '../../pages/dashboard/[dashboard]'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { withApollo } from '../../lib/withApolloData'
+import moment from "moment";
+import {useRouter} from 'next/router';
+import Router from 'next/router';
+// import { toast } from 'react-toastify';
+// import Router from 'next/router';
+
+import DELETE_POST from '../../src/graphql/mutation/deletePost';
+import GET_SOMEPOSTS from '../../src/graphql/query/somePosts';
+import { useMutation,useQuery} from '@apollo/react-hooks';
+import Edit from "@material-ui/icons/Edit";
+
+
+function preventDefault(event) {
+  event.preventDefault();
+}
+
+const useStyles = makeStyles((theme) => ({
+  seeMore: {
+    marginTop: theme.spacing(3),
+  },
+}));
+
+
+
+
+
+const TableMain = () => {
+  const [deletePost] = useMutation(DELETE_POST)
+  const [open, setOpen] = React.useState(false);
+  const [route,setRoute] = useState(false);
+
+  const { data, error,loading,fetchMore } = useQuery(
+    GET_SOMEPOSTS,{
+      variables:{after:null}
+    }
+  );
+  let message = 'Notices';
+  if (loading) message = 'Loading...';
+  if (error) message = `Error! ${error}`;
+  // if (data && data.somePosts.length <= 0) message = 'No Posts';
+ 
+  useEffect(() => {
+    if(route){
+      Router.reload();
+    }
+   
+  });
+
+  console.log('data',data)
+
+
+  const handleClickOpen = () => {
+
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const ReadLimit = ({ children, maxCharacter = 60 }) => {
+    const text = children;
+    const resultString = text.slice(0, maxCharacter);
+
+    return (
+      <TableCell align="center">
+        {resultString}
+        {/* <Button onClick={e => toggleIsShrinked(e)}>
+        {isShrinked ? "Read More" : "Read Less"} 
+        </Button> */}
+        </TableCell>
+    );
+  };
+
+
+const router = useRouter();
+console.log('router',router.query.postUrl)
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+
+      <Title>みんなの留学体験談</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>投稿日</TableCell>
+            <TableCell>名前</TableCell>
+            <TableCell>投稿タイトル</TableCell>
+            <TableCell　align="center">内容</TableCell>
+            <TableCell>更新</TableCell>
+            <TableCell>削除</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+    
+            {data &&
+              data.somePosts &&
+              data.somePosts.edges.map(({ node: somePost },i) => ( 
+            <TableRow key={i}>
+              <TableCell>{moment(somePost.createdAt).format("YYYY/MM/DD")}</TableCell>
+              <TableCell>{somePost.username}</TableCell>
+              <TableCell>{somePost.postTitle}</TableCell>
+              <TableCell><ReadLimit>{somePost.description}</ReadLimit></TableCell>
+                <TableCell>
+                
+                {/* <DialogEdit open={open} somePost={somePost} handleClickOpen={handleClickOpen} handleClose={handleClose}/>
+           */}
+                <Link href={`/dashboard/[dashboard]?dashboard=${somePost._id}`} as={`/dashboard/${somePost._id}`}>
+             {/* <IconButton color="primary" onClick={handleClickOpen}> */}
+             <IconButton color="primary" onClick={handleClickOpen}>
+           <Edit fontSize="small" />
+         </IconButton>
+           </Link>
+     
+            </TableCell>
+             <TableCell>   
+            <IconButton onClick={()=>{deletePost({variables:{_id:somePost._id}}),setRoute(!route)}}>  
+            <DeleteForeverIcon />
+          
+          </IconButton>
+        </TableCell>
+            </TableRow>
+             ))}
+          
+        </TableBody>
+      </Table>
+
+      
+      <div className={classes.seeMore}>
+      <button onClick={()=>{
+       const {endCursor} = data.somePosts.pageInfo;
+       fetchMore({
+         variables:{after:endCursor},
+         updateQuery:(previousResult,{fetchMoreResult})=>{
+// console.log(prevResult);// console.log(fetchMoreResult)
+const newEdges = fetchMoreResult.somePosts.edges;
+const pageInfo = fetchMoreResult.somePosts.pageInfo;
+//!! conert false to true /null undefined --> true or false
+// return newEdges.length
+ return pageInfo.hasNextPage
+  ? {
+      // Put the new comments at the end of the list and update `pageInfo`
+      // so we have the new `endCursor` and `hasNextPage` values
+      somePosts: {
+        __typename: previousResult.somePosts.__typename,
+        edges: [...previousResult.somePosts.edges, ...newEdges],
+        pageInfo
+      }
+    }
+  : previousResult;
+//    fetchMoreResult.somePosts.edges =[
+          //      ...prevResult.somePosts.edges,
+          //      ...fetchMoreResult.somePosts.edges
+          //    ]
+          //  return fetchMoreResult;
+
+         }//merge old result and fetchmore result 
+       })
+     }}>More</button>
+      </div>
+    </React.Fragment>
+  );
+}
+
+
+export default withApollo({ ssr: true })(TableMain)
