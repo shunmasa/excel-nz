@@ -63,7 +63,8 @@ const PostQueries = {
       throw err;
     }
   },
-  somePosts:async (parent:any,{first,after}:{after: string, first: number }, context) => {
+  somePosts:async (parent:any,{after,first}:{after: string, first: number }, context) => {
+    console.log('after',after)
     try {
       if (first < 0) {
         throw new Error('First must be positive');
@@ -78,20 +79,25 @@ const PostQueries = {
 
       let postArray = []
       let start = 0;
+       console.log('after',after)
       if (after !== undefined) {
-        // const buff = new Buffer(after, 'base64');
-        // // console.log('buff',buff)
-        // const id = buff.toString('ascii');
-        // console.log('after',after)
-        const index = posts.findIndex((post) => post.id === after);
+        const buff = new Buffer(after, 'base64');
+         console.log('buff',buff)
+        const id = buff.toString('ascii');
+      console.log('id',id)
+        const index = posts.findIndex((post) => post._id === id);
+        
         if (index === -1) {
           throw new Error('After does not exist');
         }
         start = index + 1;
       }
+      console.log('start:',start)
+     
       postArray = first === undefined ?
       posts :
       posts.slice(start, start + first);
+      console.log('first',first)
     let endCursor: string;
 
     const edges = postArray.map((post) => {

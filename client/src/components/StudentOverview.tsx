@@ -61,37 +61,17 @@ const useStyles = makeStyles((theme: Theme) =>
 const StudentOverview = ({data,dataId,dialog}) => {
   const classes = useStyles()
   console.log('pppdata',data)
-  const PostData = data.filter(value =>{
-    return (value._id === dataId)
-  }).map(data =>{
-   return (
-   <>
-   <div>
-    <img src={data.file} className={classes.item}/>
 
-</div>
-
-<div style={{ display: 'flex' }}>
-  <Typography
-    variant="body2"
-    className={classes.description}
-    align="left"
-  >
-   {data.description}
-         
-        
-  </Typography>
-</div>
-</>
-   )
    
-  })
+
 
   return (
     
     <div className={classes.root}>
       <Paper component={Box} className={classes.papper}elevation={2}>
-      <div>
+       
+        
+          <div >
     <img src={data.file} className={classes.item}/>
 
 </div>
@@ -107,6 +87,9 @@ const StudentOverview = ({data,dataId,dialog}) => {
         
   </Typography>
 </div>
+
+     
+
       </Paper>
     </div>
   )

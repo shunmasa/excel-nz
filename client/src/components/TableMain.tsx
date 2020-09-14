@@ -18,11 +18,12 @@ import {useRouter} from 'next/router';
 import Router from 'next/router';
 // import { toast } from 'react-toastify';
 // import Router from 'next/router';
-
+import Loader from '../components/Loading'
 import DELETE_POST from '../../src/graphql/mutation/deletePost';
 import GET_SOMEPOSTS from '../../src/graphql/query/somePosts';
 import { useMutation,useQuery} from '@apollo/react-hooks';
 import Edit from "@material-ui/icons/Edit";
+import { divide } from 'lodash';
 
 
 function preventDefault(event) {
@@ -45,9 +46,7 @@ const TableMain = () => {
   const [route,setRoute] = useState(false);
 
   const { data, error,loading,fetchMore } = useQuery(
-    GET_SOMEPOSTS,{
-      variables:{after:null}
-    }
+    GET_SOMEPOSTS
   );
   let message = 'Notices';
   if (loading) message = 'Loading...';
@@ -64,6 +63,42 @@ const TableMain = () => {
   console.log('data',data)
 
 
+
+const fetchMoreData = () =>{
+const {endCursor} = data.somePosts.pageInfo;
+ console.log("end",endCursor)
+fetchMore({
+variables:{after:endCursor},
+updateQuery:(previousResult,{fetchMoreResult})=>{
+// console.log(prevResult);// console.log(fetchMoreResult)
+const newEdges = fetchMoreResult.somePosts.edges;
+const pageInfo = fetchMoreResult.somePosts.pageInfo;
+const totalCount = fetchMoreResult.somePosts.totalCount;
+
+// return newEdges.length
+// return pageInfo.hasNextPage
+return newEdges.length
+? {
+   // Put the new comments at the end of the list and update `pageInfo`
+   // so we have the new `endCursor` and `hasNextPage` values
+   somePosts: {
+     __typename: previousResult.somePosts.__typename,
+     edges: [...previousResult.somePosts.edges, ...newEdges],
+     pageInfo,
+     totalCount
+   }
+ }
+: previousResult;
+
+
+      }
+    })
+  }
+
+
+
+
+
   const handleClickOpen = () => {
 
     setOpen(true);
@@ -71,17 +106,17 @@ const TableMain = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const ReadLimit = ({ children, maxCharacter = 60 }) => {
+  const ReadLimit = ({ children, maxCharacter = 25 }) => {
     const text = children;
     const resultString = text.slice(0, maxCharacter);
 
     return (
-      <TableCell align="center">
+    <div>
         {resultString}
         {/* <Button onClick={e => toggleIsShrinked(e)}>
         {isShrinked ? "Read More" : "Read Less"} 
         </Button> */}
-        </TableCell>
+   </div>
     );
   };
 
@@ -107,7 +142,11 @@ console.log('router',router.query.postUrl)
 
         <TableBody>
     
-            {data &&
+        {loading ? (
+         <Loader/>
+         
+      ) : (
+            data &&
               data.somePosts &&
               data.somePosts.edges.map(({ node: somePost },i) => ( 
             <TableRow key={i}>
@@ -122,56 +161,30 @@ console.log('router',router.query.postUrl)
                 <Link href={`/dashboard/[dashboard]?dashboard=${somePost._id}`} as={`/dashboard/${somePost._id}`}>
              {/* <IconButton color="primary" onClick={handleClickOpen}> */}
              <IconButton color="primary" onClick={handleClickOpen}>
-           <Edit fontSize="small" />
+           <Edit fontSize="small"style={{color:"#427bf5",height:"2rem",width:"1.8rem",marginLeft:"-.5em"}} />
          </IconButton>
            </Link>
      
             </TableCell>
              <TableCell>   
             <IconButton onClick={()=>{deletePost({variables:{_id:somePost._id}}),setRoute(!route)}}>  
-            <DeleteForeverIcon />
+            <DeleteForeverIcon style={{color:"red",height:"2rem",width:"1.8rem",marginLeft:"-.5em"}}/>
           
           </IconButton>
         </TableCell>
             </TableRow>
-             ))}
-          
+             ))
+          )}
         </TableBody>
       </Table>
 
-      
+      {data && data.somePosts.pageInfo.hasNextPage ?
       <div className={classes.seeMore}>
-      <button onClick={()=>{
-       const {endCursor} = data.somePosts.pageInfo;
-       fetchMore({
-         variables:{after:endCursor},
-         updateQuery:(previousResult,{fetchMoreResult})=>{
-// console.log(prevResult);// console.log(fetchMoreResult)
-const newEdges = fetchMoreResult.somePosts.edges;
-const pageInfo = fetchMoreResult.somePosts.pageInfo;
-//!! conert false to true /null undefined --> true or false
-// return newEdges.length
- return pageInfo.hasNextPage
-  ? {
-      // Put the new comments at the end of the list and update `pageInfo`
-      // so we have the new `endCursor` and `hasNextPage` values
-      somePosts: {
-        __typename: previousResult.somePosts.__typename,
-        edges: [...previousResult.somePosts.edges, ...newEdges],
-        pageInfo
-      }
-    }
-  : previousResult;
-//    fetchMoreResult.somePosts.edges =[
-          //      ...prevResult.somePosts.edges,
-          //      ...fetchMoreResult.somePosts.edges
-          //    ]
-          //  return fetchMoreResult;
-
-         }//merge old result and fetchmore result 
-       })
-     }}>More</button>
+      <button onClick={fetchMoreData}>More</button>
+      </div>:<div className={classes.seeMore}>
+      <button>No More Data</button>
       </div>
+}
     </React.Fragment>
   );
 }

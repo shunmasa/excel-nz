@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 import { withApollo } from '../../lib/withApolloData'
-
+import Typography from '@material-ui/core/Typography';
 import CREATE_NOTICE from '../../src/graphql/mutation/createNotice'
 
 import { Field,Formik,Form } from "formik";
@@ -15,16 +15,16 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
    formContainer:{
-    width:"60%",
+    width:"90%",
     marginTop:"2rem",
-    marginRight:'20%',
-    marginLeft:'20%',
-    height:"400px"
+    marginRight:'5%',
+    marginLeft:'5%',
+    
    },
 
    bodyField:{
-     marginTop:"3rem",
-     marginBottom:"4rem",
+     marginTop:"2rem",
+     marginBottom:"1rem",
      width:"100%"
    },
  
@@ -81,17 +81,17 @@ const NoticeForm = () => {
       {({ submitForm, isSubmitting }) => (
         <Form className={classes.formContainer}>
     
-     
+     <Typography style={{color:"#fff",fontSize:"23px"}}>お知らせの作成</Typography>
           <Field
             className={classes.bodyField}
             component={TextField}
             type="text"
-            label="Body"
+            label="お知らせ内容"
             name="body"
             variant="outlined"
             margin="normal"
             multiline={true}
-            rows={6}
+            rows={10}
             required
             fullWidth
           />

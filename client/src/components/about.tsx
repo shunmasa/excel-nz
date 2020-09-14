@@ -18,25 +18,14 @@ const useStyles = makeStyles(theme => ({
       padding:0
      }
   },
-  rowContainer: {
-    marginTop:"1em",
-    paddingLeft: "8.2em",
-    paddingRight: "8.2em",
 
-    [theme.breakpoints.down("sm")]: {
-     margin:0,
-     padding:0
-    }
-  },
-  rowInnerContainer:{
-    height:"30em"
-  },
+
 boxContainer:{
   backgroundColor:"#fff",
   padding:"2em",
   marginRight:"1em",
-  boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
- 
+  // boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
+  boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
   [theme.breakpoints.down("xs")]: {
   margin:0,
   padding:0,
@@ -46,8 +35,8 @@ boxContainer:{
 boxContainer2:{
   backgroundColor:"#fff",
   padding:"2em",
-  boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
-
+  // boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
+boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
    
   [theme.breakpoints.down("xs")]: {
     margin:0,
@@ -62,37 +51,55 @@ boxContainer2:{
       height:"35em" 
       },
     [theme.breakpoints.down("xs")]: {
-    height:"45em" 
+    height:"45em",
+    marginTop:"34em",
     }
   },
   galleryContainer:{
-    width:"85%",
-    marginRight:"9%",
-    marginLeft:"7%",
-    marginTop:"2.5rem",
-    boxShadow: `-8px 5px 25px 1px rgba(50, 50, 50, 0.75)`,
+    width:"78%",
+    marginRight:"12%",
+    marginLeft:"10%",
+    marginBottom:"1em",
+    // marginTop:"2.5rem",
+    boxShadow: `0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
 
     [theme.breakpoints.down("xs")]: {
     margin:0,
     width:"100%",
+    maxWidth: "31rem",
     boxShadow:"none"
     }
   },
   infoContainer:{
     backgroundColor:"#fff",
-    boxShadow: `-8px 3px 25px 1px rgba(50, 50, 50, 0.75)`,
-    marginTop:"15em",
-    minWidth: "25em",
-    marginRight:"6em",
-    marginLeft:"10em",
-    paddinBottom: "2em",
+    height:"100%",
+    minHeight:"25em",
+    boxShadow: `0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
+    marginTop:"8em",
+    minWidth: "16em",
+    marginRight:"10em",
+    marginLeft:"14em",
+    // marginBottom: "8em",
+    // '&::before':{
+    //   content: "",
+    //   position: "absolute",
+    //   width: "85%",
+    //   height: "94%",
+    //   top: 0,
+    //   left: 0,
+    //   zIndex:2,
+    //   transform:`translate(-9px, -6px)`,
+    //   background: "#3F51B5",
+    //   opacity:0.7,
+    // },
     [theme.breakpoints.down("xs")]: {
       margin:0,
       padding:0,
-      maxWidth: "40rem",
+      maxWidth: "31rem",
       width:"100%",
       boxShadow:"none"
-    }
+    },
+   
   },
  
 
@@ -107,7 +114,7 @@ export default function About() {
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   return (
 
- <Grid container className={classes.mainContainer}direction="column">
+ <Grid container className={classes.mainContainer} direction="column">
 
 
 
@@ -119,25 +126,35 @@ alignItems="flex-start" direction="column">
 
 
 <Grid sm item className={classes.infoContainer}>
-
-<Typography variant="h3" align="center" style={{marginTop:"1rem",marginRight:matchesXS ? 0:"1rem"
+<Typography align="center" style={{color:"black",marginTop:"2rem",
+marginRight:matchesXS ? 0:"1rem"
+,marginLeft:matchesXS ? 0:"1rem",fontFamily: `Playfair Display, serif`,
+fontSize: "1.35rem" }}>
+ エクセルニュージーランドは
+</Typography>
+<Typography align="center" style={{marginTop:".5rem",
+marginRight:matchesXS ? 0:"1rem"
 ,marginLeft:matchesXS ? 0:"1rem"}}>
-     <img src="/assets/alert.svg" style={{width:"45px",height:"45px",marginRight:"10px"}}></img>なぜ当社を選ぶのか？
+  <span style={{backgroundColor:"#e33509", color:"#fff",fontFamily: `Playfair Display, serif`,
+      fontSize: "2.2rem",marginLeft:"0.5rem"}}>キミのホンキを本気で応援します！</span> 
     </Typography>
       
-<Typography variant="h6" align="center">
+{/* <Typography variant="h6" align="center">
 留学を成功に導く経験豊富なサポートと、自立と自信を育てる親身な関わりで、
 留学生のホンキを本気で応援します！
-    </Typography>
+    </Typography> */}
     
-<Typography variant="h6" align="center"style={{marginTop:'30px',marginBottom:'3em',marginLeft:".5em",marginRight:".5em"}}>
+<Typography variant="h6"style={{marginTop:'40px',marginBottom:'4em'
+,marginLeft:"2em",marginRight:"2em"}}>
 自然豊かな美しい国ニュージーランドの中でも、特にのどかで且つ近代的な街クライストチャーチで
-留学を成功に導く経験豊富なサポートと、自立と自信を育てる親身な関わりで、
+留学を成功に導く経験豊富なサポートと自立と自信を育てる親身な関わりで、
 留学生のホンキを本気で応援します！
 
-自然豊かな美しい国ニュージーランドの中でも、特にのどかで且つ近代的な街クライストチャーチで
-留学を成功に導く経験豊富なサポートと、自立と自信を育てる親身な関わりで、
-留学生のホンキを本気で応援します！
+ニュージーランド、クライストチャーチでの、中学、高校、大学、語学学校、専門学校留学を、成功に導く
+経験豊富な留学サポート、そして
+入学手続きから、渡航準備、到着後のオリエンテーション、学校生活、ホームステイの留学全般
+最初から最後まで安心にサポートいたします。
+ご気軽にご相談ください。
     </Typography>
     
  </Grid>

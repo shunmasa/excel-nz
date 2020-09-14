@@ -5,6 +5,11 @@ const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const index_1 = tslib_1.__importDefault(require("./config/index"));
 const express_1 = tslib_1.__importDefault(require("./config/express"));
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
+const sendEmail = require('./server/sendEmail');
+const express = require("express");
+const app = express();
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -34,6 +39,11 @@ mongoose_1.default.connection.on('error', () => {
 /**
  * Initialize Express
  */
+sendEmail();
+app.post('/send', function (req, res) {
+    const name = req.body.name;
+    console.log(name);
+});
 const ExpressServer = new express_1.default();
 ExpressServer.init();
 /**

@@ -2,17 +2,21 @@ import React,{useState,useEffect,useRef,useCallback} from "react";
 import { Button, LinearProgress, Grid } from "@material-ui/core";
 import { TextField } from 'formik-material-ui';
 import { toast } from 'react-toastify';
-import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 import { withApollo } from '../lib/withApolloData'
 import DropZone from '../src/components/DropZone'
 import Paper from '@material-ui/core/Paper';
 import CREATE_POST from '../src/graphql/mutation/createPost'
-
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { Field,Formik,Form } from "formik";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-
-
+import Router, { useRouter } from 'next/router';
+import Dialog from '@material-ui/core/Dialog';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root:{
@@ -28,35 +32,50 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     rootin:{
       position: 'absolute',
-      margin:'4rem', 
-      width: '70%',
-      marginRight:'15%',
-      marginLeft:'15%',
-      height:"100vh",
+      marginTop:'8rem', 
+      width: '80%',
+      marginRight:'10%',
+      marginLeft:'10%',
+      marginBottom:'8rem', 
+      height:"620px",
       backgroundColor:"#fff",
-      boxShadow: `-7px 6px 39px 0px rgba(0,0,0,0.75)`
+      border: `1px solid black`
+      // boxShadow: `-7px 6px 39px 0px rgba(0,0,0,0.75)`
     },
     formContainer:{
-    width:"60%",
+    width:"100%",
     marginTop:"2rem",
-    marginRight:'20%',
-    marginLeft:'20%',
-    height:"400px"
+    // marginRight:'17.5%',
+    marginLeft:'2rem',
+    marginRight:'2rem',
+    marginBottom:"2rem"
    },
     userFieled:{
-     marginTop:"2rem",
-     width:"100%"
+     marginTop:"1rem",
+     width:"90%",
+     marginRight:"1rem"
    },
    descriptionField:{
-     marginTop:"2rem",
-     marginBottom:"2rem",
-     width:"100%"
+     marginTop:"1rem",
+     marginBottom:"1rem",
+     width:"90%"
    },
-   dropZone:{
-    marginTop:"1.5rem",
-    width:"100%",
-    height:"200px"
-   }
+   btn:{
+    width:"30%",
+    marginRight:"37%",
+    marginLeft:"33%",
+    marginTop:"2rem",
+    height:"40px"
+
+  },
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+    color:"#fff"
+  }
   }),
 );
 
@@ -73,7 +92,13 @@ const PostForm = () => {
   //   }
    
   // });
-  
+
+  const handleDrawerClose = () => {
+    Router.push('/dashboard')
+  };
+
+
+
   interface Values {
     username:string
     description:string
@@ -88,6 +113,11 @@ const PostForm = () => {
 
 
   return (
+
+
+
+
+
     <Formik
       initialValues={{
         username: '',
@@ -124,12 +154,37 @@ const PostForm = () => {
       }}
     >
       {({ submitForm, isSubmitting }) => (
+
+<>
+<AppBar className={classes.appBar}>
+<Toolbar>
+  {/* <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close"> */}
+  <IconButton edge="start" color="inherit"aria-label="close">
+    <CloseIcon  onClick={handleDrawerClose}/>
+  </IconButton>
+  <Typography variant="h6" className={classes.title}>
+ ポストの作成
+  </Typography>
+  
+</Toolbar>
+</AppBar>
+
+
+
            <Grid className={classes.root}>
         <Paper className={classes.rootin}>
+          
         <Form className={classes.formContainer}>
-       
+         
+        <Grid item xs={12} container direction="column">
+         
+         <Grid item xs container direction="row">
+         <Grid item xs={6}>
+
+
+          <Grid item xs container direction="row" className={classes.userFieled}>
           <Field
-            className={classes.userFieled}
+          
             component={TextField}
             name="username"
             type="text"
@@ -141,7 +196,7 @@ const PostForm = () => {
           />
           <br />
           <Field
-            className={classes.userFieled}
+          
             component={TextField}
             name="postTitle"
             type="text"
@@ -151,8 +206,26 @@ const PostForm = () => {
             required
             fullWidth
           />
-          <Field
-            className={classes.descriptionField}
+
+           <Field
+            component={DropZone}
+            name="file"
+            type="file"
+            label="Imgae file"
+            variant="outlined"
+            margin="small"
+            required
+
+          />
+        </Grid>
+   </Grid>
+
+
+   <Grid item xs={6}>
+
+           
+  <Grid item xs container direction="column" className={classes.descriptionField}>
+          <Field  
             component={TextField}
             type="text"
             label="Description"
@@ -160,24 +233,19 @@ const PostForm = () => {
             variant="outlined"
             margin="normal"
             multiline={true}
-            rows={6}
+            rows={16}
             required
             fullWidth
           />
-          <Field
-            className={classes.dropZone}
-            component={DropZone}
-            name="file"
-            type="file"
-            label="Imgae file"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-          />
+         
+
+
+          </Grid>
+          </Grid>
           {isSubmitting && <LinearProgress />}
           <br />
           <Button
+            className={classes.btn}
             variant="contained"
             color="primary"
             disabled={isSubmitting}
@@ -185,10 +253,17 @@ const PostForm = () => {
           >
             Submit
           </Button>
-        
+
+
+
+        </Grid>
+        </Grid>
+
+
         </Form>
      </Paper>
         </Grid>
+        </>
       )}
     </Formik>
   );

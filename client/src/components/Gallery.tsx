@@ -1,28 +1,94 @@
-// import React from "react";
-// import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from 'react';
 
-// const imgWithClick = { cursor: "pointer" };
+import {
+  useViewportScroll,
+  motion,
+  useTransform,
+  useMotionValue,
+  AnimateSharedLayout
+} from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-// const Gallery = ({ index, onClick, photo, margin, direction, top, left,position }) => {
-//   const imgStyle = { margin: margin,position:position,left:left,top:top };
-//   if (direction === "column") {
-//     imgStyle.position = "absolute";
-//     imgStyle.left = left;
-//     imgStyle.top = top;
-//   }
 
-//   const handleClick = event => {
-//     onClick(event, { photo, index });
-//   };
 
-//   return (
-//     <img
-//       style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
-//       {...photo}
-//       onClick={onClick ? handleClick : null}
-//       alt="img"
-//     />
-//   );
-// };
 
-// export default Gallery;
+function Gallery() {
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, [0, 300], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 300], [0, -100]);
+
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0.5,
+    triggerOnce: false
+  });
+
+  console.log(entry);
+
+  // const [isInViewport, setIsInViewport] = useState(false);
+
+  //console.log(window.innerHeight);
+  //let coso = useRef(null);
+
+  // useEffect(() => {
+  //   console.log(coso.current.offsetTop);
+  //   if (
+  //     coso.current.offsetTop > scrollY &&
+  //     coso.current.offsetTop < window.innerHeight
+  //   ) {
+  //     setIsInViewport(true);
+  //   } else {
+  //     setIsInViewport(false);
+  //   }
+  // }, [coso]);
+  // useEffect(() => {
+  //   scrollY.onChange(v => console.log(v));
+  // }, [scrollY]);
+
+  const variants = {
+    visible: { opacity: 1, scale: 1, y: 0 },
+    hidden: {
+      opacity: 0,
+      scale: 0.65,
+      y: 50
+    }
+  };
+
+  const variant1 = {
+    visible: { opacity: 1, scale: 1, y: 0 },
+    hidden: {
+      opacity: 0,
+      scale: 0.1,
+      y: -50
+    }
+  };
+
+  return (
+    <>
+      <motion.div className="box" style={{ y: y1, x: -50 }} />
+      <motion.div
+        className="box"
+        style={{ y: y2, x: 50, background: 'salmon' }}
+      />
+      <div style={{ height: 100 }} />
+   
+      <motion.div
+        animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 2, ease: 'easeIn' }}
+        ref={ref}
+        className="magic"
+      />
+     <div style={{ height: 20 }} />
+<motion.div
+        animate={inView ? 'visible' : 'hidden'}
+        variants={variant1}
+        transition={{ duration: 2, ease: 'easeOut' }}
+        ref={ref}
+        className="magic"
+      />
+    </>
+  );
+}
+
+export default Gallery

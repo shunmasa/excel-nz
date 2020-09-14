@@ -8,9 +8,11 @@ import {DropzoneArea} from 'material-ui-dropzone'
   ...props
 }) => {
   return (
+
     <DropzoneArea
+   
     acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
-      dropzoneText={"Drag and drop an image here or click"}
+      dropzoneText={"イメージをここに貼り付けて"}
       onDrop={([file]) => {
         setFieldValue(name, file);
       }}
@@ -18,6 +20,7 @@ import {DropzoneArea} from 'material-ui-dropzone'
     >
      
     </DropzoneArea>
+
   );
 };
 export default DropZone

@@ -27,21 +27,20 @@ export default createMuiTheme({
   typography: {
     h1: {
       fontFamily: "Raleway",
-      fontWeight: 700,
-      fontSize: "2.5rem",
+      fontWeight: 500,
+      fontSize: "3rem",
       color: Blue,
       lineHeight: 1.5
     },
     h3: {
-      fontFamily: "Pacifico",
-      fontSize: "2.5rem",
+      fontFamily: `Playfair Display, serif`,
+      fontSize: "2.2rem",
       color: Blue
     },
     h4: {
-      fontFamily: "Raleway",
-      fontSize: "1.75rem",
-      color: Blue,
-      fontWeight: 700
+      fontFamily: `Playfair Display, serif`,
+      fontSize: "2.2rem",
+      color:"black"
     },
     h6: {
       fontWeight: 500,

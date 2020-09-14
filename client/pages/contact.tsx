@@ -91,7 +91,6 @@ export default function Contact(props) {
   });
 
 
-
   const onChange = event => {
     let valid;
 
@@ -218,7 +217,7 @@ export default function Contact(props) {
               <Typography
                 align={matchesMD ? "center" : undefined}
                 variant="h1"
-                style={{ lineHeight: 1 }}
+                style={{ lineHeight: 1,paddingTop:"1em"}}
               >
                 お問い合わせ
               </Typography>
@@ -320,6 +319,7 @@ export default function Contact(props) {
               />
             </Grid>
             <Grid item container justify="center" style={{ marginTop: "2em" }}>
+            <button >送信</button>
               <Button
                 disabled={
                   name.length === 0 ||
@@ -369,7 +369,7 @@ export default function Contact(props) {
        <DialogContent>
           <Grid container direction="column">
             <Grid item >
-              <Typography align="center" variant="h4" gutterBottom>
+              <Typography style={{paddingTop:"1em"}}align="center" variant="h4" gutterBottom>
                お問い合わせの確認
               </Typography>
             </Grid>
@@ -430,7 +430,7 @@ export default function Contact(props) {
                 color="primary"
                 onClick={() => setOpen(false)}
               >
-                お取り消し
+                取り消し
               </Button>
             </Grid>
             <Grid item>
@@ -481,7 +481,7 @@ export default function Contact(props) {
        
           <Grid container direction="column">
             <Grid item>
-              <Typography align={matchesMD ? "center" : undefined} variant="h1">
+              <Typography align={matchesMD ? "center" : undefined} variant="h2">
               　Excel NZ
                 <br />
                 <span style={{ fontSize: "1.8rem"}}>クライストチャーチでの留学お考えの方<br/>
@@ -492,7 +492,7 @@ export default function Contact(props) {
                 variant="subtitle2"
                 style={{ fontSize: "1.5rem" }}
               >
-               私たちがおなたの留学のお手伝いたします。
+               私たちがあなたの留学のお手伝いたします。
               </Typography>
               <Grid container justify={matchesMD ? "center" : undefined} item>
                <Link href="/home">

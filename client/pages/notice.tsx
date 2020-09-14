@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-     backgroundImage: `linear-gradient(to right top, #5766cd, #4756c5, #3745bd, #2434b4, #0722aa)`
+     background:"#347deb"
   },
 
   fixedHeight: {

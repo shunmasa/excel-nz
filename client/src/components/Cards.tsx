@@ -1,4 +1,5 @@
 import React,{useState,useEffect}from 'react'
+import { useRouter } from "next/router";
 import {
   Paper,
   Grid,
@@ -13,32 +14,35 @@ import {
   TablePagination,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-// import Spinner from './Spinner';
+
 import ScrollAnimation from 'react-animate-on-scroll';
-import StudentDialog from './StudentDialog'
+import StudentDialog from '../../pages/card/[studentDialog]'
 // import { withApollo } from '../../lib/withApolloData'
 // import GET_POSTS from '../graphql/query/posts';
 // import { useMutation,useQuery} from '@apollo/react-hooks';
 import moment from 'moment'
+import Link from 'next/link';
+import Loading from '../../src/components/Loading'
  
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
   papper:{
     height:"100%",
-    maxWidth: '90%',
-    margin:"15em 8em 20em 8em",
+    maxWidth: '80%',
+    margin:"8em 13em 15em 13em",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "90%",
+      maxWidth: "80%",
       marginTop:"3rem",
-      marginRight:"5%",
-      marginLeft:"5%",
+      marginRight:"10%",
+      marginLeft:"10%",
       marginBottom:"3rem"
     }
   },  
   card:{
-  margin:"3em 1em 3em 1em",
+  margin:"3em 2em 3em 2em",
+ 
   height:"100%",
-  minHeight:"100%",
+  maxHeight:"600px",
   transition: "0.3s",
   boxShadow: "0 8px 40px -12px rgba(0,  0, 0, 0.3)",
   border: "2px solid #f5f2eb",
@@ -47,8 +51,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }
   },
   file: {
-    maxWidth: '500px',
-    width:"100%",
+    marginRight:"2.5%",
+    marginLeft:"2.5%",
+    width:"95%",
     height:160,
   }, 
   switch:{
@@ -58,18 +63,11 @@ const useStyles = makeStyles((theme: Theme) =>
     width:"100%",
     marginBottom:"3em",
   },
-  typography:{
-    backgroundImage: "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 0.2em",
-    backgroundPosition: "0 84%",
-    transition: "background-size 0.60s ease-in",
-    '&:hover':{
-      backgroundSize: "100% 88%"
-    }
-  },
+
   description:{
-    marginTop:"1rem"
+    marginTop:"2rem",
+    height:"100%",
+  maxHeight:"400px",
   },
   box:{
 marginTop:"2rem"
@@ -103,7 +101,7 @@ function SwitchLabels(props:Props) {
   return (
     <FormGroup row>
       <FormControlLabel
-        control={<Switch onClick={props.toggleSortDate}checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+        control={<Switch onClick={props.toggleSortDate} checked={state.checkedA} onChange={handleChange} name="checkedA" />}
         label="Secondary"
       />
       <FormControlLabel
@@ -138,24 +136,20 @@ interface Data {
 function Cards({data,error,loading}) {
   const { file } = useStyles()
   const classes = useStyles();
+  const router = useRouter();
 
-  // const { data, error,loading,fetchMore } = useQuery(
-  //   GET_POSTS 
-  // );
-//   let message = 'Posts';
-//   if (loading) message = 'Loading...';
-//   if (error) message = `Error! ${error}`;
-//   if (data && data.posts.length <= 0) message = 'みんなの体験談は今のところありません';
-//  console.log('pdataa',data)
-  // console.log('datapost',data)
- 
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
   const [postList,setPostList] = useState<Data[]>([])
   const [isOldestFirst,setisOldestFirst] = useState(true)
-  const [dialog,setDialog] = useState(null)
+  
   const [open, setOpen] = React.useState(false);
+
+
+
+
+  const { postId } = router.query;
   // const [loading,setLoading] = useState(false)
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
@@ -167,14 +161,15 @@ function Cards({data,error,loading}) {
 
   }
 
-  const handleClickOpen = id => e => {
-    setOpen(true);
-    setDialog(id);
-    console.log('dialog;',dialog)
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  
+
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
 
   const sortByDate = () => {
     let newPostList = postList
@@ -197,9 +192,11 @@ function Cards({data,error,loading}) {
 }
 
 useEffect(()=>{
-  const postList = data.posts
-  setisOldestFirst(true)
-  setPostList(postList)
+  if(!loading){
+    const postList = data.posts
+    setisOldestFirst(true)
+    setPostList(postList)
+  }
   // setLoading(!loading)
   
 },[postList])
@@ -226,7 +223,7 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
    <Grid item className={classes.switch}>
     <Grid item container direction="row"  justify="center" lg>
     <ScrollAnimation animateIn='fadeIn'>
-    <Typography className={classes.typography} variant="h1"  >
+    <Typography variant="h1">
             みんなの留学体験談
       </Typography> 
 </ScrollAnimation>
@@ -238,14 +235,14 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
       </Grid> 
 
       {loading ?
-           <Typography>体験談を読み込中です</Typography>  : (
+        <Loading/>  : (
   <Grid container spacing={3} alignItems="center" justify="space-around" >
     
   {(rowsPerPage > 0
    ? postList && postList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
   : postList )
       .map((d)=>( 
-    <Grid key={d._id} item className={classes.card} container direction="column" md={5}>
+    <Grid key={d._id} item className={classes.card} container direction="column" md={4}>
        <ScrollAnimation animateIn='fadeIn' delay={300}>
     <Grid item >
       <img src={d.file} className={file} alt="" />
@@ -264,11 +261,16 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
       </Grid>
       <Grid  className={classes.box}item container direction="row" justify="space-between">
         <Box display="inline-block" >
-          <StudentDialog data={d} dataId={d._id} dialog={dialog} open={open} handleClose={handleClose} handleClickOpen={handleClickOpen}/>
+          <Link href={`/card/[studentDialog]?studentDialog=${d._id}`} as={`/card/${d._id}`}>
+        <Button fullWidth color="primary" variant="contained"
+        >
+           もっと読む
+          </Button>
+          </Link>
         </Box>
-        <Typography variant="h6" gutterBottom >
-        {moment(d.createdAt).format("YYYY/MM/DD")}
-          </Typography>
+        {/* <Typography variant="h6" gutterBottom>
+        <time>{d.createdAt}</time>
+          </Typography> */}
       </Grid>
       </ScrollAnimation>
     </Grid>

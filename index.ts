@@ -2,7 +2,13 @@ import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import config from './config/index';
 import Express from './config/express';
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 
+
+const sendEmail = require('./server/sendEmail')
+const express = require("express");
+const app = express();
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -35,6 +41,12 @@ mongoose.connection.on('error', () => {
 /**
  * Initialize Express
  */
+sendEmail();
+app.post('/send', function (req, res) {
+  const name = req.body.name
+  console.log(name)
+})
+
 const ExpressServer = new Express();
 ExpressServer.init();
 

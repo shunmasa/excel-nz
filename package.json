@@ -32,6 +32,7 @@
     "lodash": "^4.17.15",
     "mongoose": "^5.9.14",
     "mongoose-delete": "^0.5.2",
+    "nodemailer": "^6.4.10",
     "nodemon": "^2.0.4",
     "shortid": "^2.2.15",
     "streamifier": "^0.1.1"

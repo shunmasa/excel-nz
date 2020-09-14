@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
+import { useViewportScroll, useTransform  } from "framer-motion";
 function useSticky() {
   const [isSticky, setSticky] = useState(false)
   const element = useRef(null)
@@ -12,7 +13,9 @@ function useSticky() {
    }
   }
 
-  const debounce = (func, wait = 20, immediate = true) => {
+
+
+  const debounce = (func, wait = 80, immediate = true) => {
     let timeOut
     return () => {
       let context = this,

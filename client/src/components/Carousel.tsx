@@ -9,7 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
   background: {
-    backgroundImage: `url("/assets/nature.jpg")`,
+    backgroundImage: `url("/assets/gallery1.jpg")`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
@@ -22,24 +22,61 @@ const useStyles = makeStyles(theme => ({
     }
   },
    contactButton: {
-    fontFamily: "Pacifico",
-    fontSize: "1.5rem",
+    marginTop:"1em",
+    marginLeft:"3em",
+    border: "2px solid #2930c2",
+    borderWidth: 3,
     textTransform: "none",
-    color: "white",
     borderRadius: 50,
+    fontFamily: "Roboto",
+    fontWeight: "bold",
+    fontSize: "1.5rem",
     height: 80,
-    width: 205,
-    backgroundColor: "#ff8c21",
+    padding: 8,
     marginRight: "8em",
-    marginLeft: "2em",
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.light
-    },
+
+    textDecoration: "none",
+    // border: 'none',
+    width: 250,
+  // borderRadius: 6,
+  // boxShadow: '0 3px 5px 2px #2594f5',
+  cursor: 'pointer',
+  color: '#2930c2',
+  backgroundSize: '200%',
+  backgroundColor:"#fff",
+  transition: 'all 0.3s ease-out',
+  '&:hover': {
+    backgroundPosition: 'right',
+    background: "#2930c2",
+    color: '#fff',
+  },
+    
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
       marginRight: 0
     }
-  }
+
+    // fontFamily: "Pacifico",
+    // fontSize: "1.5rem",
+    // textTransform: "none",
+    // color: "white",
+    // borderRadius: 50,
+    // height: 80,
+    // width: 205,
+    // backgroundColor: "#ff8c21",
+    // marginRight: "8em",
+    // marginLeft: "2em",
+    // "&:hover": {
+    //   backgroundColor: theme.palette.secondary.light
+    // },
+    // [theme.breakpoints.down("sm")]: {
+    //   marginLeft: 0,
+    //   marginRight: 0
+    // }
+  },
+  btn: {
+   background:"transparent"
+   }
 }));
 
 export default function CallToAction() {
@@ -55,25 +92,28 @@ export default function CallToAction() {
       className={classes.background}
       direction={matchesSM ? "column" : "row"}
     >
+  
       <Grid
         item
         style={{
-          marginLeft: matchesSM ? 0 : "10em",
+          marginLeft: matchesSM ? 0 : "14em",
           textAlign: matchesSM ? "center" : "inherit"
         }}
       >
         <Grid container direction="column">
           <Grid item>
+   
+    
           <ScrollAnimation animateIn='bounceInLeft'
   animateOut='bounceOutRight'>
             <Typography
               variant="h1"
               gutterBottom      
             >
-             
+            
               {matchesSM && <br />}
               留学のことなら<br/>
-              <span style={{color:"#fff"}}>ニュージーランド教育センター</span>
+              <span style={{color:"#fff"}}>エクセルニュージーランド</span>
               <br />
               にお任せください
 
@@ -101,7 +141,7 @@ export default function CallToAction() {
         <Button
    
           variant="contained"
-          className={classes.contactButton}
+          className={`${classes.btn} ${classes.contactButton}`}
        
         >
          お問い合わせ

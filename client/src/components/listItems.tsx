@@ -19,7 +19,9 @@ const MainListItems = ({handleLogout}) =>{
 <List>
     <ListItem button>
       <ListItemIcon>
+      <Link href="dashboard">
         <DashboardIcon />
+        </Link>
       </ListItemIcon>
       <Link href="dashboard">
       <ListItemText primary="ダッシュボード" />
@@ -28,7 +30,9 @@ const MainListItems = ({handleLogout}) =>{
     
     <ListItem button>
       <ListItemIcon>
+      <Link href="/form">
         <AssignmentIcon />
+        </Link>
       </ListItemIcon>
       <Link href="/form">
       <ListItemText primary="ポストの作成" />
@@ -37,7 +41,9 @@ const MainListItems = ({handleLogout}) =>{
 
     <ListItem button>
       <ListItemIcon>
+      <Link href="/notice">
         <NotificationsNoneIcon />
+        </Link>
       </ListItemIcon>
       <Link href="/notice">
       <ListItemText primary="お知らせの作成" />
@@ -45,7 +51,9 @@ const MainListItems = ({handleLogout}) =>{
     </ListItem>
     <ListItem button>
       <ListItemIcon>
+      <Link href="/home">
         <HomeIcon />
+        </Link>
       </ListItemIcon>
       <Link href="/home">
       <ListItemText primary="ホームページ" />
@@ -53,7 +61,7 @@ const MainListItems = ({handleLogout}) =>{
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ExitToAppIcon />
+        <ExitToAppIcon onClick={handleLogout}/>
       </ListItemIcon>
       <ListItemText primary="ログアウト" onClick={handleLogout}/>
     </ListItem>

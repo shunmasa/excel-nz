@@ -1,12 +1,15 @@
 import gql from 'graphql-tag';
 
 const GET_POST = gql`
-  query getPost($postId:ID){
-      _id
+query post($postId:ID!){
+  post(postId:$postId){
+       _id
       username
       description
       file
       postTitle
+  }
+  
   }
 `;
 

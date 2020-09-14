@@ -88,7 +88,7 @@ const TableNotice = () => {
             <TableCell>投稿日</TableCell>
 
             <TableCell　align="center">内容</TableCell>
-            <TableCell>更新</TableCell>
+            <TableCell></TableCell>
             <TableCell>削除</TableCell>
           </TableRow>
         </TableHead>
@@ -102,13 +102,13 @@ const TableNotice = () => {
         data.notices.map((n) => (
           <TableRow key={n._id} data-id={n._id}>
             <TableCell> {moment(n.createdAt).format("YYYY/MM/DD")}</TableCell>
-            <TableCell><ReadLimit>{n.body}</ReadLimit></TableCell>
+            <TableCell>{n.body}</TableCell>
               <TableCell>
               {/* <DialogEdit open={open} handleClickOpen={handleClickOpen} handleClose={handleClose}/> */}
           </TableCell>
            <TableCell>   
           <IconButton onClick={()=>{deleteNotice({variables:{_id:n._id}}),setRoute(!route)}}>  
-          <DeleteForeverIcon/>
+          <DeleteForeverIcon style={{color:"red",height:"2.5rem",width:"2.5rem",marginLeft:"-.5em"}}/>
         </IconButton>
       </TableCell>
           </TableRow>
@@ -120,11 +120,11 @@ const TableNotice = () => {
           
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
+      {/* <div className={classes.seeMore}>
         <Link color="primary" href="#" >
           See more orders
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

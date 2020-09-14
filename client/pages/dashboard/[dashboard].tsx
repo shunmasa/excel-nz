@@ -8,9 +8,8 @@ import { withApollo } from '../../lib/withApolloData'
 import { useMutation,useQuery} from '@apollo/react-hooks';
 import UPDATE_POST from '../../src/graphql/mutation/updatePost'
 import { toast } from 'react-toastify';
-
+import GET_POST from "../../src/graphql/query/post";
 import Router, { useRouter } from 'next/router';
-import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,7 +20,7 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import Edit from "@material-ui/icons/Edit";
 import Link from 'next/link';
 import { Paper, Box,Grid } from '@material-ui/core';
-
+import Loader from '../../src/components/Loading'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root:{  
@@ -38,13 +37,14 @@ const useStyles = makeStyles((theme: Theme) =>
   },
   rootin:{
     position: 'absolute',
-    margin:'4rem', 
-    width: '70%',
-    marginRight:'15%',
-    marginLeft:'15%',
-    height:"100vh",
+    marginTop:"8rem",
+    marginBottom:"10rem", 
+    width: '80%',
+    marginRight:'10%',
+    marginLeft:'10%',
+    height:"600px",
     backgroundColor:"#fff",
-    boxShadow: `-7px 6px 39px 0px rgba(0,0,0,0.75)`
+    // boxShadow: `-7px 6px 39px 0px rgba(0,0,0,0.75)`
   },
     appBar: {
       position: 'relative',
@@ -52,11 +52,12 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       marginLeft: theme.spacing(2),
       flex: 1,
+      color:"#fff"
     },
     papper:{
       height:"100%",
-      maxWidth: '60%',
-      margin:"5em 20% 5em 20%",
+      maxWidth: '100%',
+      margin:"10em 10% 10em 10%",
       [theme.breakpoints.down("md")]: {
         maxWidth:"100%",
         margin:"3rem 1rem 5rem 1rem"
@@ -69,75 +70,34 @@ const useStyles = makeStyles((theme: Theme) =>
     }, 
     formContainer:{
       width:"100%",
-      height:"100vh",
+      height:"600px",
      
      },
       userFieled:{
+        marginLeft:"1rem",
+        marginRight:"1rem",
        marginTop:"2rem",
-       width:"80%"
+       width:"90%"
      },
      descriptionField:{
        marginTop:"2rem",
+       fontSize:"14px",
        marginBottom:"2rem",
-       width:"80%"
+       marginRight:"1rem",
+       width:"90%"
      },
-     dropZone:{
+     btn:{
+      width:"30%",
+      marginRight:"37%",
+      marginLeft:"33%",
       marginTop:"2rem",
-      width:"80%",
-      height:"100px",
-     } 
+      height:"40px"
+  
+    }
   }),
 );
 
 
-// const Transition = React.forwardRef(function Transition(
-//   props: TransitionProps & { children?: React.ReactElement },
-//   ref: React.Ref<unknown>,
-// ) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
-
-// export const DialogEdit = (props) => {
-//   const classes = useStyles();
-
-// console.log('valuep',props.somePost)
-// // const router = useRouter();
-// // console.log('router',router.query.postUrl)
-//   return (
-//     <div>
-//       <Link href={`/dashboard/[dashboard]?dashboard=${props.somePost._id}`} as={`/dashboard/${props.somePost._id}`}>
-//   <IconButton color="primary" onClick={props.handleClickOpen}>
-//   <Edit fontSize="small" />
-//   </IconButton>
-//   </Link>
-
-//       <Dialog fullScreen open={props.open} onClose={props.handleClose} TransitionComponent={Transition}>
-//         <AppBar className={classes.appBar}>
-//           <Toolbar>
-//             <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close">
-//               <CloseIcon />
-//             </IconButton>
-//             <Typography variant="h6" className={classes.title}>
-//              留学体験談アップデート
-//             </Typography>
-//             <Button autoFocus color="inherit" onClick={props.handleClose}>
-//               save
-//             </Button>
-//           </Toolbar>
-//         </AppBar>
-      
-
-//   <div className={classes.root}>
-//       <Paper component={Box} className={classes.papper}elevation={3}>
-//     <DialogForm />
-//     </Paper>
- 
-//         </div>
-
-//       </Dialog>
-//     </div>
-//   );
-// }
 
 
 
@@ -160,17 +120,35 @@ const DialogForm = ({props}) => {
   // console.log('props',postId)
   const classes = useStyles();
   const router = useRouter()
-  const [updatePost,{data}]= useMutation(UPDATE_POST)
+  const { dashboard} = router.query;
+console.log('dashboard',dashboard)
+  const [updatePost]= useMutation(UPDATE_POST)
+
+  const {data,error,loading} = useQuery(GET_POST,{
+    variables: {postId:dashboard},
+  })
+console.log('datap',data)
+  let message = 'Post';
+  if (loading) message = 'Loading...';
+  if (error) message = `Error! ${error}`;
+  if (data && data.post.length <= 0) message = 'No Post';
+
+  const handleDrawerClose = () => {
+    Router.push('/dashboard')
+  };
 
 
   return (
-  
-
+  <>
+     {loading? (
+          <Loader/>
+    
+      ) : (
     <Formik
       initialValues={{
-        username: '',
-        postTitle:'',
-        description: '',
+        username: data.post.username,
+        postTitle:data.post.postTitle,
+        description: data.post.description,
         file:null
       }}
       validate={values => {
@@ -195,7 +173,7 @@ const DialogForm = ({props}) => {
         setSubmitting(false)
       }}
     >
-      {({ submitForm, isSubmitting }) => (
+      {({ submitForm, isSubmitting,values }) => (
         
 
         <Form className={classes.formContainer}>
@@ -203,7 +181,7 @@ const DialogForm = ({props}) => {
           <Toolbar>
             {/* <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close"> */}
             <IconButton edge="start" color="inherit"aria-label="close">
-              <CloseIcon />
+              <CloseIcon  onClick={handleDrawerClose}/>
             </IconButton>
             <Typography variant="h6" className={classes.title}>
              留学体験談アップデート
@@ -214,11 +192,18 @@ const DialogForm = ({props}) => {
 
           <Grid item className={classes.root}>
             <Grid item className={classes.rootin}>
+            <Grid item xs={12} container direction="column">
+         
+         <Grid item xs container direction="row">
+         <Grid item xs={6}>
+
+
+          <Grid item xs container direction="row" className={classes.userFieled}>
           <Field
-            className={classes.userFieled}
+      
             component={TextField}
             name="username"
-            type="username"
+            type="text"
             label="Username"
             variant="outlined"
             margin="normal"
@@ -227,7 +212,7 @@ const DialogForm = ({props}) => {
           />
           <br />
           <Field
-            className={classes.userFieled}
+          
             component={TextField}
             name="postTitle"
             type="text"
@@ -237,33 +222,46 @@ const DialogForm = ({props}) => {
             required
             fullWidth
           />
-          <Field
-            className={classes.descriptionField}
-            component={TextField}
-            type="description"
-            label="Description"
-            name="description"
-            variant="outlined"
-            multiline={true}
-            rows={6}
-            margin="normal"
-            required
-            fullWidth
-          />
+
            <Field
-            className={classes.dropZone}
             component={DropZone}
             name="file"
             type="file"
             label="Imgae file"
             variant="outlined"
+            margin="small"
+            required
+
+          />
+        </Grid>
+   </Grid>
+
+
+   <Grid item xs={6}>
+
+           
+  <Grid item xs container direction="column" className={classes.descriptionField}>
+          <Field  
+            component={TextField}
+            type="text"
+            label="Description"
+            name="description"
+            variant="outlined"
             margin="normal"
+            multiline={true}
+            rows={16}
             required
             fullWidth
           />
+         
+
+
+          </Grid>
+          </Grid>
           {isSubmitting && <LinearProgress />}
           <br />
           <Button
+            className={classes.btn}
             variant="contained"
             color="primary"
             disabled={isSubmitting}
@@ -271,11 +269,23 @@ const DialogForm = ({props}) => {
           >
             Submit
           </Button>
-          </Grid>
-          </Grid>
+
+
+
+        </Grid>
+        </Grid>
+         </Grid>
+         </Grid>
         </Form>
+      
       )}
+
     </Formik>
+    
+    )}
+   
+
+    </>
   );
 }
 

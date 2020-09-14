@@ -52,7 +52,8 @@ const PostQueries = {
             throw err;
         }
     }),
-    somePosts: (parent, { first, after }, context) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+    somePosts: (parent, { after, first }, context) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+        console.log('after', after);
         try {
             if (first < 0) {
                 throw new Error('First must be positive');
@@ -64,20 +65,23 @@ const PostQueries = {
             const totalCount = posts.length;
             let postArray = [];
             let start = 0;
+            console.log('after', after);
             if (after !== undefined) {
-                // const buff = new Buffer(after, 'base64');
-                // // console.log('buff',buff)
-                // const id = buff.toString('ascii');
-                // console.log('after',after)
-                const index = posts.findIndex((post) => post.id === after);
+                const buff = new Buffer(after, 'base64');
+                console.log('buff', buff);
+                const id = buff.toString('ascii');
+                console.log('id', id);
+                const index = posts.findIndex((post) => post._id === id);
                 if (index === -1) {
                     throw new Error('After does not exist');
                 }
                 start = index + 1;
             }
+            console.log('start:', start);
             postArray = first === undefined ?
                 posts :
                 posts.slice(start, start + first);
+            console.log('first', first);
             let endCursor;
             const edges = postArray.map((post) => {
                 const buffer = new Buffer(post.id);
