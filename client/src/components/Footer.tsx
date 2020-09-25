@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 // import Link from "../Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 // import { NextPage } from 'next';
 import Link from 'next/link'
+import { sortedLastIndexOf } from "lodash";
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: "#1546d6",
@@ -63,6 +64,12 @@ const useStyles = makeStyles(theme => ({
 //  const Footer:NextPage<IProps>= (props)=>{
   const Footer= ()=>{
   const classes = useStyles();
+//   const [date , setDate] = useState();
+//  const getYear = () =>  setDate(new Date().getFullYear())
+ 
+//  useEffect(() => {
+//   getYear();
+// }, [])
 
   return (
     <footer className={classes.footer}>
@@ -221,12 +228,11 @@ const useStyles = makeStyles(theme => ({
 
 
 
-
+ 
 
       </Hidden>
 
-      
-
+  
      
     </footer>
   );

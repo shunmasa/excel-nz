@@ -93,6 +93,7 @@ console.log('valuep',props.somePost)
 
   <div className={classes.root}>
       <Paper component={Box} className={classes.papper}elevation={3}>
+     {/* @ts-ignore */}
     <DialogForm />
     </Paper>
  

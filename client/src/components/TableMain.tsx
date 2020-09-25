@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const TableMain = () => {
+const TableMain = ():any => {
   const [deletePost] = useMutation(DELETE_POST)
   const [open, setOpen] = React.useState(false);
   const [route,setRoute] = useState(false);

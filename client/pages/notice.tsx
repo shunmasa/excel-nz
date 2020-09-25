@@ -188,6 +188,7 @@ const Notice = (props:any) => {
 
             <Grid item xs={12}>
               <Paper className={classes.paper}>
+                {/* @ts-ignore */}
               <TableNotice/>
               </Paper>
             </Grid>
@@ -195,6 +196,7 @@ const Notice = (props:any) => {
 
           <Grid item xs={12}>
               <Paper className={classes.form}>
+                 {/* @ts-ignore */}
               <NoticeForm/>
              </Paper>
             </Grid>

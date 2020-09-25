@@ -4,7 +4,7 @@ import { ApolloProvider } from "@apollo/react-hooks"
 import { InMemoryCache } from "apollo-cache-inmemory"
 import { ApolloClient } from "apollo-client"
 
-import fetch from "isomorphic-unfetch"
+import fetch from 'isomorphic-unfetch'
 import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
@@ -36,9 +36,10 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
       () => apolloClient || initApolloClient(apolloState),
       []
     )
+    // const client = apolloClient || initApolloClient(apolloState)
     return (
       <ApolloProvider client={client}>
-        <PageComponent {...pageProps} />
+        <PageComponent  />
       </ApolloProvider>
     )
   }

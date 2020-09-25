@@ -612,6 +612,7 @@ return (
                 className={`title ${index === selected || activeElement === index ? "selected" :" "  }`}
                 // id={`title ${activeElement === index && "selected"}`}
                 style={{ color: index === selected || activeElement === index ? color : "#333" }}
+                //@ts-ignore 
                 onClick={() => {setSelected(activeElement === index&&index),goTo(index)}}
               >
      
