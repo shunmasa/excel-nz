@@ -53,7 +53,7 @@ ExpressServer.init();
 /**
  * Listen to port
  */
-ExpressServer.httpServer.listen(process.env.PORT || config.port, () => {
+ExpressServer.httpServer.listen( 4020 || config.port, () => {
   console.log(`🚀  Server ready at ${config.port}`);
   console.log(
     `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
