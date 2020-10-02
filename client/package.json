@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "npm start",
+    "serve": "npm start",
     "client": "cd client && npm start",
     "heroku-postbuild": "npm run build"
   },
