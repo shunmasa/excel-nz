@@ -4,7 +4,7 @@ import config from './config/index';
 import Express from './config/express';
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
-
+const path = require("path");
 
 const sendEmail = require('./server/sendEmail')
 const express = require("express");
@@ -38,6 +38,12 @@ mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
 });
 
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 /**
  * Initialize Express
  */
