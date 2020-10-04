@@ -38,9 +38,9 @@ mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
 });
 
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
-}
+
+app.use(express.static('client/build'));
+
 app.get('*', (request, response) => {
 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
