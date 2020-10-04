@@ -31,7 +31,7 @@ mongoose.connect(config.db, {
   useFindAndModify:false
 });
 
-/**
+/*
  * Throw error when not able to connect to database
  */
 mongoose.connection.on('error', () => {
