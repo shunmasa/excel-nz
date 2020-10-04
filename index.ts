@@ -59,9 +59,7 @@ mongoose.connection.on('error', () => {
 const ExpressServer = new Express();
 ExpressServer.init();
 
-/**
- * Listen to port
- */
+//web
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
