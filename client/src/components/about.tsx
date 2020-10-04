@@ -35,9 +35,9 @@ boxContainer:{
 boxContainer2:{
   backgroundColor:"#fff",
   padding:"2em",
-  // boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
+   //boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
 boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
-   
+   //web
   [theme.breakpoints.down("xs")]: {
     margin:0,
     padding:0,

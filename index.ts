@@ -2,13 +2,14 @@ import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import config from './config/index';
 import Express from './config/express';
+const express = require('express')
+const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
-const path = require("path");
-
-const sendEmail = require('./server/sendEmail')
-const express = require("express");
-const app = express();
+//const path = require("path");
+////const sendEmail = require('./server/sendEmail')
+//const express = require("express");
+// const app = express();
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -39,19 +40,21 @@ mongoose.connection.on('error', () => {
 });
 
 
-app.use(express.static('client/build'));
+// app.use(express.static('client/build'));
 
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('*', (request, response) => {
+// 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 /**
  * Initialize Express
  */
-sendEmail();
-app.post('/send', function (req, res) {
-  const name = req.body.name
-  console.log(name)
-})
+
+
+// sendEmail();
+// app.post('/send', function (req, res) {
+//   const name = req.body.name
+//   console.log(name)
+// })
 
 const ExpressServer = new Express();
 ExpressServer.init();
@@ -59,6 +62,19 @@ ExpressServer.init();
 /**
  * Listen to port
  */
+
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+app.prepare()
+.then(() => {
+  
+  const server = express()
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+})
+
 ExpressServer.httpServer.listen( 4020 || config.port, () => {
   console.log(`🚀  Server ready at ${config.port}`);
   console.log(
