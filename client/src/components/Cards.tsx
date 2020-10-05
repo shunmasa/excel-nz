@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimation from '../../pages/node_modules/react-animate-on-scroll';
 import StudentDialog from '../../pages/card/[studentDialog]'
 // import { withApollo } from '../../lib/withApolloData'
 // import GET_POSTS from '../graphql/query/posts';

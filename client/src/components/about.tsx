@@ -7,6 +7,7 @@ import MainPhoto from '../../src/components/MainPhoto'
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
 
+
 import ScrollAnimation from 'react-animate-on-scroll';
 
 

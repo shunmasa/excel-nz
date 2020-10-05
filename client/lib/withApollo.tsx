@@ -5,7 +5,7 @@ import { InMemoryCache } from "apollo-cache-inmemory"
 import { ApolloClient } from "apollo-client"
 
 import fetch from 'isomorphic-unfetch'
-import Cookies from 'js-cookie';
+import Cookies from '../pages/node_modules/js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
