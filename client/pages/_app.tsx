@@ -19,7 +19,7 @@ const App = (props:any):JSX.Element => {
       jssStyles.parentElement!.removeChild(jssStyles);
     }
   }, []);
-
+//
     const { Component, pageProps} = props;
     return (
       <React.Fragment>
