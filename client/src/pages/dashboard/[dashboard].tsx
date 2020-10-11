@@ -3,12 +3,12 @@ import { Formik, Form, Field } from 'formik';
 import { Button, LinearProgress} from '@material-ui/core';
 import { TextField } from 'formik-material-ui';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import DropZone from '../../src/components/DropZone'
-import { withApollo } from '../../lib/withApolloData'
+import DropZone from '../../components/DropZone'
+import { withApollo } from '../../../lib/withApolloData'
 import { useMutation,useQuery} from '@apollo/react-hooks';
-import UPDATE_POST from '../../src/graphql/mutation/updatePost'
+import UPDATE_POST from '../../graphql/mutation/updatePost'
 import { toast } from 'react-toastify';
-import GET_POST from "../../src/graphql/query/post";
+import GET_POST from "../../graphql/query/post";
 import Router, { useRouter } from 'next/router';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,7 +20,7 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import Edit from "@material-ui/icons/Edit";
 import Link from 'next/link';
 import { Paper, Box,Grid } from '@material-ui/core';
-import Loader from '../../src/components/Loading'
+import Loader from '../../components/Loading'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root:{  

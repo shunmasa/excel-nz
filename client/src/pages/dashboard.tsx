@@ -15,14 +15,14 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MainListItems from '../src/components/listItems';
-import TableMain from '../src/components/TableMain';
-import { withAuthSync } from '../src/utils/auth';
+import MainListItems from '../components/listItems';
+import TableMain from '../components/TableMain';
+import { withAuthSync } from '../utils/auth';
 import Cookies from 'js-cookie';
-import {destroyToken } from '../src/utils/apolloClient';
+import {destroyToken } from '../utils/apolloClient';
 import Router from 'next/router';
 
-import GET_NOTICES from '../src/graphql/query/notices'
+import GET_NOTICES from '../graphql/query/notices'
 import { useQuery } from '@apollo/react-hooks';
 
 

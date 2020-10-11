@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ButtonArrow(props) {
+export default function Arrow(props) {
   return (
     <svg
       className={props.class}

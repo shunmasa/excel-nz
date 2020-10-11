@@ -3,10 +3,10 @@ import { Button, LinearProgress, Grid } from "@material-ui/core";
 import { TextField } from 'formik-material-ui';
 import { toast } from 'react-toastify';
 import { useMutation } from '@apollo/react-hooks';
-import { withApollo } from '../lib/withApolloData'
-import DropZone from '../src/components/DropZone'
+import { withApollo } from '../../lib/withApolloData'
+import DropZone from '../components/DropZone'
 import Paper from '@material-ui/core/Paper';
-import CREATE_POST from '../src/graphql/mutation/createPost'
+import CREATE_POST from '../graphql/mutation/createPost'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Field,Formik,Form } from "formik";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';

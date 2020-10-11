@@ -15,14 +15,14 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 
-import ScrollAnimation from '../../pages/node_modules/react-animate-on-scroll';
-import StudentDialog from '../../pages/card/[studentDialog]'
+import ScrollAnimation from '../../node_modules/react-animate-on-scroll';
+import StudentDialog from '../pages/card/[studentDialog]'
 // import { withApollo } from '../../lib/withApolloData'
 // import GET_POSTS from '../graphql/query/posts';
 // import { useMutation,useQuery} from '@apollo/react-hooks';
 import moment from 'moment'
 import Link from 'next/link';
-import Loading from '../../src/components/Loading'
+import Loading from '../components/Loading'
  
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

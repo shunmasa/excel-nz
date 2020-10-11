@@ -3,8 +3,8 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import * as http from 'http';
-import schema from '../server/graphql/schema/index';
-import auth from '../server/middleware/auth';
+import schema from '../graphql/schema/index';
+import auth from '../middleware/auth';
 import config from './index';
 
 class Express {
@@ -19,6 +19,7 @@ class Express {
     /**
      * Middlerware for using CORS
      */
+    
     this.express.use(cors({
       origin(origin, callback) {
         /**
@@ -34,6 +35,7 @@ class Express {
         return callback(null, true);
       }
     }));
+   
     /**
      *  Middlerware for extracting authToken
      */

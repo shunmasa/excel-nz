@@ -9,15 +9,15 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import LOGIN_USER from '../src/graphql/mutation/login';
-import { validateEmail } from '../src/utils/validation';
-import { setToken } from '../src/utils/apolloClient';
+import LOGIN_USER from '../graphql/mutation/login';
+import { validateEmail } from '../utils/validation';
+import { setToken } from '../utils/apolloClient';
 import Cookies from 'js-cookie';
 import Button from '@material-ui/core/Button';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import { withApollo } from '../lib/withApolloData'
+import { withApollo } from '../../lib/withApolloData'
 
 function Copyright() {
   return (

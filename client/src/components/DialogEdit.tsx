@@ -12,7 +12,7 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import Edit from "@material-ui/icons/Edit";
 // import Grid from '@material-ui/core/Grid'
-import DialogForm from '../../pages/dashboard/[dashboard]'
+import DialogForm from '../pages/dashboard/[dashboard]'
 import { Paper, Box } from '@material-ui/core';
 // import Router, { useRouter } from 'next/router';
 import Link from 'next/link';

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
+    "dev": "nodemon dist/index.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "tsc --watch & nodemon dist/index.js"
+  
   },
   "keywords": [],
   "author": "",

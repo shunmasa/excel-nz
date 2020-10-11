@@ -6,6 +6,8 @@ const express = require('express')
 const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+// const path = require('path')
+
 //const path = require("path");
 ////const sendEmail = require('./server/sendEmail')
 //const express = require("express");
@@ -49,7 +51,6 @@ mongoose.connection.on('error', () => {
  * Initialize Express
  */
 
-
 // sendEmail();
 // app.post('/send', function (req, res) {
 //   const name = req.body.name
@@ -60,17 +61,22 @@ const ExpressServer = new Express();
 ExpressServer.init();
 
 //web
+// const nextApp = next({
+//   dev: process.env.NODE_ENV !== 'production',
+//   dir: __dirname,
+// });
+// console.log(__dirname) 
+// const handle = nextApp.getRequestHandler()
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev ,dir: "./client" });
+const handle = app.getRequestHandler();
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
 app.prepare()
 .then(() => {
   
   const server = express()
   server.get('*', (req, res) => {
     return handle(req, res)
-
   });
 
   ExpressServer.httpServer.listen( 4020 || config.port, () => {
@@ -82,5 +88,6 @@ app.prepare()
       `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
     );
   });
+ 
 })
 

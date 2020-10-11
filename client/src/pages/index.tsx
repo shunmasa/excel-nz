@@ -7,31 +7,31 @@ import React,{useState,useEffect,useCallback, useRef} from 'react';
 // import { debounce } from "lodash";
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Carousel from '../src/components/Carousel'
-import Cards from '../src/components/Cards'
+import Carousel from '../components/Carousel'
+import Cards from '../components/Cards'
 import { useTheme } from "@material-ui/core/styles";
 import { Grid, Typography, useScrollTrigger, Button, Paper } from '@material-ui/core';
-import StepperFnc from '../src/components/StepperFnc'
+import StepperFnc from '../components/StepperFnc'
 import Lottie from "react-lottie";
-import PlaneData from '../public/assets/plane.json'
-import CallAnimation from '../src/components/CallAnimation'
+import PlaneData from '../../public/assets/plane.json'
+import CallAnimation from '../components/CallAnimation'
 import TextLoop from "react-text-loop";
-import Footer from '../src/components/Footer'
-import GET_POSTS from '../src/graphql/query/posts';
+import Footer from '../components/Footer'
+import GET_POSTS from '../graphql/query/posts';
 import Link from 'next/link'
 import moment from 'moment'
-import useSticky from "../src/components/UseStickey"
+import useSticky from "../components/UseStickey"
 // import ListPost from '../src/components/ListPost'
-import PhotoGallery from '../src/components/PhotoGallery'
-import Loading from '../src/components/Loading'
+import PhotoGallery from '../components/PhotoGallery'
+import Loading from '../components/Loading'
 
-import { withApollo } from '../lib/withApolloData'
+import { withApollo } from '../../lib/withApolloData'
 import { useQuery } from '@apollo/react-hooks';
-import About from '../src/components/about'
+import About from '../components/about'
 import Hidden from "@material-ui/core/Hidden";
 
-import GET_NOTICES from '../src/graphql/query/notices'
-import ButtonArrow from "../src/components/ButtonArrow";
+import GET_NOTICES from '../graphql/query/notices'
+import ButtonArrow from "../components/ButtonArrow";
 import ScrollAnimation from 'react-animate-on-scroll';
 import Router from 'next/router';
 // import MainPhoto from '../src/components/MainPhoto'

@@ -15,7 +15,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 import Link from 'next/link'
 
-import ButtonArrow from "../src/components/ButtonArrow";
+import ButtonArrow from "../components/ButtonArrow";
 
 
 const useStyles = makeStyles(theme => ({

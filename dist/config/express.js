@@ -5,8 +5,8 @@ const apollo_server_express_1 = require("apollo-server-express");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const express_1 = tslib_1.__importDefault(require("express"));
 const http = tslib_1.__importStar(require("http"));
-const index_1 = tslib_1.__importDefault(require("../server/graphql/schema/index"));
-const auth_1 = tslib_1.__importDefault(require("../server/middleware/auth"));
+const index_1 = tslib_1.__importDefault(require("../graphql/schema/index"));
+const auth_1 = tslib_1.__importDefault(require("../middleware/auth"));
 const index_2 = tslib_1.__importDefault(require("./index"));
 class Express {
     constructor() {

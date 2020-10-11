@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ScrollAnimation from '../../pages/node_modules/react-animate-on-scroll';
+import ScrollAnimation from '../../node_modules/react-animate-on-scroll';
 import Button from "@material-ui/core/Button";
 import Link from 'next/link'
 import useMediaQuery from "@material-ui/core/useMediaQuery";

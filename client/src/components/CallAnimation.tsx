@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
-import Lottie from "../../pages/node_modules/react-lottie";
+import Lottie from "../../node_modules/react-lottie";
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import SupportData from '../../public/assets/support.json'
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import ScrollAnimation from '../../pages/node_modules/react-animate-on-scroll';
+import ScrollAnimation from '../../node_modules/react-animate-on-scroll';
 import Hidden from "@material-ui/core/Hidden";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
