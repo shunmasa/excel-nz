@@ -7,7 +7,6 @@
     "dev": "nodemon dist/index.js",
     "build": "next build",
     "start": "tsc --watch & nodemon dist/index.js"
-  
   },
   "keywords": [],
   "author": "",
@@ -37,7 +36,8 @@
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "shortid": "^2.2.15",
-    "streamifier": "^0.1.1"
+    "streamifier": "^0.1.1",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
