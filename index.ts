@@ -65,7 +65,7 @@ ExpressServer.init();
 //   dev: process.env.NODE_ENV !== 'production',
 //   dir: __dirname,
 // });
-// console.log(__dirname) 
+//console.log(__dirname) 
 // const handle = nextApp.getRequestHandler()
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev ,dir: "./client" });
