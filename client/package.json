@@ -68,9 +68,4 @@
     "typescript": "^3.9.2"
   },
   "proxy": "http://localhost:4020"
- 
 }
-
-
-
-

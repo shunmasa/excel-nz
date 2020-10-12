@@ -35,7 +35,6 @@
     "next": "^9.5.3",
     "nodemailer": "^6.4.10",
     "nodemon": "^2.0.4",
-    "react": "^16.13.1",
     "shortid": "^2.2.15",
     "streamifier": "^0.1.1"
   },
