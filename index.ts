@@ -77,7 +77,8 @@ app.prepare()
   const server = express()
   server.get('*', (req, res) => {
     return handle(req, res)
-  })
+  });
+  
   
 
   ExpressServer.httpServer.listen( 4020 || config.port, () => {
