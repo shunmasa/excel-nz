@@ -60,7 +60,6 @@ mongoose.connection.on('error', () => {
 const ExpressServer = new Express();
 ExpressServer.init();
 
-//web
 // const nextApp = next({
 //   dev: process.env.NODE_ENV !== 'production',
 //   dir: __dirname,
