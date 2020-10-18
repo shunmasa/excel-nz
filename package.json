@@ -4,9 +4,9 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "serve": "node index",
     "build": "next build",
-    "start": "tsc --watch & nodemon dist/index.js & next start"
+    "heroku-postbuild": "next build",
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "keywords": [],
   "author": "",
