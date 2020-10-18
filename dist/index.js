@@ -53,7 +53,7 @@ mongoose_1.default.connection.on('error', () => {
 //   console.log(name)
 // })
 const ExpressServer = new express_1.default();
-ExpressServer.init();
+ExpressServer.init()
 //web
 // const nextApp = next({
 //   dev: process.env.NODE_ENV !== 'production',
