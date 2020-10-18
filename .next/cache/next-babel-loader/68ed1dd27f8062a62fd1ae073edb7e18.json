@@ -1,0 +1,1 @@
+{"ast":null,"code":"import gql from 'graphql-tag';\nconst CREATE_POST = gql`\n  mutation createPost($postInput: PostInput) {\n    createPost(postInput: $postInput) {\n       _id\n       username\n       description\n       file\n    }\n  }\n`;\nexport default CREATE_POST;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import gql from 'graphql-tag';\nconst DELETE_NOTICE = gql`\n  mutation deleteNotice($_id: ID!) {\n    deleteNotice(_id:$_id){\n      _id\n    }\n  }\n`;\nexport default DELETE_NOTICE;","map":null,"metadata":{},"sourceType":"module"}

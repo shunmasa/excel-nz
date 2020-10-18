@@ -1,0 +1,1 @@
+{"ast":null,"code":"const validateEmail = email => {\n  if (/^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$/.test(email)) {\n    return true;\n  }\n\n  return false;\n};\n\nexport { validateEmail };","map":null,"metadata":{},"sourceType":"module"}

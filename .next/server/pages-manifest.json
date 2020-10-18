@@ -1,0 +1,15 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/card/[studentDialog]": "pages/card/[studentDialog].js",
+  "/contact": "pages/contact.html",
+  "/dashboard": "pages/dashboard.js",
+  "/dashboard/[dashboard]": "pages/dashboard/[dashboard].js",
+  "/form": "pages/form.js",
+  "/": "pages/index.js",
+  "/login": "pages/login.js",
+  "/notice": "pages/notice.js",
+  "/welcome": "pages/welcome.js",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}
