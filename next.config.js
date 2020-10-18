@@ -1,4 +1,5 @@
 module.exports = {
+  experimental: { granularChunks: true },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
