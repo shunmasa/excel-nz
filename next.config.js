@@ -9,10 +9,10 @@ module.exports = {
       "/notice": { page: "/notice" },
     };
   },
-  experimental: { granularChunks: true ,
-    reactMode: 'concurrent'
-  },
-  reactStrictMode: true,
+  // experimental: { 
+  //   reactMode: 'concurrent'
+  // },
+  // reactStrictMode: true,
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if

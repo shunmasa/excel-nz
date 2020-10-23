@@ -170,6 +170,120 @@ module.exports = require("@material-ui/icons/NotificationsNone");
 
 /***/ }),
 
+/***/ "2D7x":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("vmXh");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+const {
+  createUploadLink
+} = __webpack_require__("BPlj");
+
+let authToken = null;
+const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
+  operation.setContext({
+    headers: {
+      authorization: authToken || null
+    }
+  }); // Add onto payload for WebSocket authentication
+
+  operation.authToken = authToken;
+  return forward(operation);
+});
+const webSocketLink = false ? undefined : null;
+/**
+ * Set Token
+ * @param token
+ */
+
+const setToken = async token => {
+  try {
+    authToken = token ? `Bearer ${token}` : null;
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
+      expires: 7
+    });
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+};
+/**
+ * Set Token In Request
+ * @param token
+ */
+
+const setTokenInRequest = async token => {
+  try {
+    authToken = token ? token : null;
+    return authToken;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+};
+/**
+ * Destroy Token
+ * For logout purpose
+ */
+
+const destroyToken = async () => {
+  try {
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
+    authToken = null;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+};
+const isBrowser = false;
+const httpLink = createUploadLink({
+  uri: "http://localhost:4020/graphql",
+  credentials: "same-origin",
+  fetch: !isBrowser && fetch
+});
+const link = false ? undefined : httpLink;
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+
+function createApolloClient(initialState, ctx) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
+    connectToDevTools: isBrowser,
+    ssrMode: !isBrowser,
+    // Disables forceFetch on the server (so queries are only run once)
+    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
+    //createUploadLink
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
+  });
+}
+
+/***/ }),
+
 /***/ "2Hsl":
 /***/ (function(module, exports) {
 
@@ -712,7 +826,7 @@ module.exports = require("@material-ui/core/IconButton");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("3i/4");
 /* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _apolloClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("cNYH");
+/* harmony import */ var _apolloClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("2D7x");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0__["createElement"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -733,6 +847,7 @@ const auth = ctx => {
     token,
     userId
   } = next_cookies__WEBPACK_IMPORTED_MODULE_2___default()(ctx);
+  console.log('logs:', ctx);
 
   if (ctx.req && !token) {
     ctx.res.writeHead(302, {
@@ -1027,7 +1142,7 @@ var Loading = __webpack_require__("Qb08");
 var external_graphql_tag_ = __webpack_require__("txk1");
 var external_graphql_tag_default = /*#__PURE__*/__webpack_require__.n(external_graphql_tag_);
 
-// CONCATENATED MODULE: ./src/graphql/mutation/deletePost.js
+// CONCATENATED MODULE: ./src/graphql/mutation/deletePost.ts
 
 const DELETE_POST = external_graphql_tag_default.a`
   mutation deletePost($_id: ID!) {
@@ -1240,8 +1355,8 @@ var auth = __webpack_require__("FpJU");
 var external_js_cookie_ = __webpack_require__("vmXh");
 var external_js_cookie_default = /*#__PURE__*/__webpack_require__.n(external_js_cookie_);
 
-// EXTERNAL MODULE: ./src/utils/apolloClient.js
-var apolloClient = __webpack_require__("cNYH");
+// EXTERNAL MODULE: ./src/utils/apolloClient.ts
+var apolloClient = __webpack_require__("2D7x");
 
 // CONCATENATED MODULE: ./pages/dashboard.tsx
 var dashboard_jsx = external_react_default.a.createElement;
@@ -1675,150 +1790,6 @@ module.exports = require("@material-ui/core/ListItem");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "cNYH":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("vmXh");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
-var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
-
-
-
-
-
-
-
-const {
-  createUploadLink
-} = __webpack_require__("BPlj");
-
-let authToken = null;
-const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
-  operation.setContext({
-    headers: {
-      authorization: authToken || null
-    }
-  }); // Add onto payload for WebSocket authentication
-
-  operation.authToken = authToken;
-  return forward(operation);
-});
-const webSocketLink = false ? undefined : null;
-/**
- * Set Token
- * @param token
- */
-
-const setToken = token => __awaiter(void 0, void 0, void 0, function* () {
-  try {
-    authToken = token ? `Bearer ${token}` : null;
-    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
-      expires: 7
-    });
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-});
-/**
- * Set Token In Request
- * @param token
- */
-
-const setTokenInRequest = token => __awaiter(void 0, void 0, void 0, function* () {
-  try {
-    authToken = token ? token : null;
-    return authToken;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-});
-/**
- * Destroy Token
- * For logout purpose
- */
-
-const destroyToken = () => __awaiter(void 0, void 0, void 0, function* () {
-  try {
-    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
-    authToken = null;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-});
-const isBrowser = false;
-const httpLink = createUploadLink({
-  uri: "http://localhost:4020/graphql",
-  credentials: "same-origin",
-  fetch: !isBrowser && fetch
-});
-const link = false ? undefined : httpLink;
-/**
- * Creates and configures the ApolloClient
- * @param  {Object} [initialState={}]
- */
-
-function createApolloClient(initialState, ctx) {
-  // The `ctx` (NextPageContext) will only be present on the server.
-  // use it to extract auth headers (ctx.req) or similar.
-  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
-    connectToDevTools: isBrowser,
-    ssrMode: !isBrowser,
-    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
-    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
-  });
-}
 
 /***/ }),
 
@@ -3477,7 +3448,7 @@ module.exports = require("@material-ui/icons/Dashboard");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("mU8t");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("cNYH");
+/* harmony import */ var _src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("2D7x");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
