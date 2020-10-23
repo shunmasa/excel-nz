@@ -108,7 +108,33 @@ module.exports = require("styled-jsx/server");
 
 /***/ }),
 
-/***/ "5Ivq":
+/***/ "8cZr":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("VDXt")
+
+
+/***/ }),
+
+/***/ "9Pu4":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "AXZJ":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+exports.__esModule=true;exports.htmlEscapeJsonString=htmlEscapeJsonString;// This utility is based on https://github.com/zertosh/htmlescape
+// License: https://github.com/zertosh/htmlescape/blob/0527ca7156a524d256101bb310a9f970f63078ad/LICENSE
+const ESCAPE_LOOKUP={'&':'\\u0026','>':'\\u003e','<':'\\u003c','\u2028':'\\u2028','\u2029':'\\u2029'};const ESCAPE_REGEX=/[&><\u2028\u2029]/g;function htmlEscapeJsonString(str){return str.replace(ESCAPE_REGEX,match=>ESCAPE_LOOKUP[match]);}
+//# sourceMappingURL=htmlescape.js.map
+
+/***/ }),
+
+/***/ "MWzF":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -212,32 +238,6 @@ const Dark = "#0a0a0a";
     }
   }
 }));
-
-/***/ }),
-
-/***/ "8cZr":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("VDXt")
-
-
-/***/ }),
-
-/***/ "9Pu4":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "AXZJ":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-exports.__esModule=true;exports.htmlEscapeJsonString=htmlEscapeJsonString;// This utility is based on https://github.com/zertosh/htmlescape
-// License: https://github.com/zertosh/htmlescape/blob/0527ca7156a524d256101bb310a9f970f63078ad/LICENSE
-const ESCAPE_LOOKUP={'&':'\\u0026','>':'\\u003e','<':'\\u003c','\u2028':'\\u2028','\u2029':'\\u2029'};const ESCAPE_REGEX=/[&><\u2028\u2029]/g;function htmlEscapeJsonString(str){return str.replace(ESCAPE_REGEX,match=>ESCAPE_LOOKUP[match]);}
-//# sourceMappingURL=htmlescape.js.map
 
 /***/ }),
 
@@ -883,7 +883,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("9Pu4");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ui_Theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("5Ivq");
+/* harmony import */ var _src_ui_Theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("MWzF");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -902,7 +902,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
       lang: "en"
     }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("meta", {
       name: "theme-color",
-      content: _ui_Theme__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].palette.primary.main
+      content: _src_ui_Theme__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].palette.primary.main
     }), __jsx("link", {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css?family=Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap"

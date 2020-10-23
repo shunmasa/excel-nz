@@ -15,7 +15,7 @@ import { Typography, Tabs, Paper, Box } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import { withApollo } from '../../lib/withApolloData'
 import { useQuery } from '@apollo/react-hooks';
-import GET_POST from "../../graphql/query/post";
+import GET_POST from "../../src/graphql/query/post";
 import { useRouter } from "next/router";
 // import StudentOverview from '../../src/components/StudentOverview'
 // import Link from 'next/link';

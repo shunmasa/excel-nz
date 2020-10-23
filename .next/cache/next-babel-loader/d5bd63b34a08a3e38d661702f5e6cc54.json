@@ -1,1 +1,0 @@
-{"ast":null,"code":"import gql from 'graphql-tag';\nconst DELETE_POST = gql`\n  mutation deletePost($_id: ID!) {\n    deletePost(_id: $_id) {\n      _id\n    }\n  }\n`;\nexport default DELETE_POST;","map":null,"metadata":{},"sourceType":"module"}

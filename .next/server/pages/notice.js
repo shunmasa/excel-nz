@@ -129,7 +129,7 @@ function isDynamicRoute(route) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.default = withRouter;
@@ -167,67 +167,6 @@ module.exports = require("@material-ui/core/List");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/NotificationsNone");
-
-/***/ }),
-
-/***/ "284h":
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__("cDf5");
-
-function _getRequireWildcardCache() {
-  if (typeof WeakMap !== "function") return null;
-  var cache = new WeakMap();
-
-  _getRequireWildcardCache = function _getRequireWildcardCache() {
-    return cache;
-  };
-
-  return cache;
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  }
-
-  if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
-    return {
-      "default": obj
-    };
-  }
-
-  var cache = _getRequireWildcardCache();
-
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-
-  newObj["default"] = obj;
-
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-
-  return newObj;
-}
-
-module.exports = _interopRequireWildcard;
 
 /***/ }),
 
@@ -460,117 +399,64 @@ function formatUrl(urlObj) {
 
 /***/ }),
 
-/***/ "7Ofu":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "7KCV":
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("p46w");
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+var _typeof = __webpack_require__("C+bE");
 
+function _getRequireWildcardCache() {
+  if (typeof WeakMap !== "function") return null;
+  var cache = new WeakMap();
 
+  _getRequireWildcardCache = function _getRequireWildcardCache() {
+    return cache;
+  };
 
-
-
-
-
-const {
-  createUploadLink
-} = __webpack_require__("BPlj");
-
-let authToken = null;
-const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
-  operation.setContext({
-    headers: {
-      authorization: authToken || null
-    }
-  }); // Add onto payload for WebSocket authentication
-
-  operation.authToken = authToken;
-  return forward(operation);
-});
-const webSocketLink = false ? undefined : null;
-/**
- * Set Token
- * @param token
- */
-
-const setToken = async token => {
-  try {
-    authToken = token ? `Bearer ${token}` : null;
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
-      expires: 7
-    });
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Set Token In Request
- * @param token
- */
-
-const setTokenInRequest = async token => {
-  try {
-    authToken = token ? token : null;
-    return authToken;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Destroy Token
- * For logout purpose
- */
-
-const destroyToken = async () => {
-  try {
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
-    authToken = null;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-const isBrowser = false;
-const httpLink = createUploadLink({
-  uri: "http://localhost:4020/graphql",
-  credentials: "same-origin",
-  fetch: !isBrowser && fetch
-});
-const link = false ? undefined : httpLink;
-/**
- * Creates and configures the ApolloClient
- * @param  {Object} [initialState={}]
- */
-
-function createApolloClient(initialState, ctx) {
-  // The `ctx` (NextPageContext) will only be present on the server.
-  // use it to extract auth headers (ctx.req) or similar.
-  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
-    connectToDevTools: isBrowser,
-    ssrMode: !isBrowser,
-    // Disables forceFetch on the server (so queries are only run once)
-    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
-    //createUploadLink
-    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
-  });
+  return cache;
 }
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+
+  if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
+    return {
+      "default": obj
+    };
+  }
+
+  var cache = _getRequireWildcardCache();
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+
+  newObj["default"] = obj;
+
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+
+  return newObj;
+}
+
+module.exports = _interopRequireWildcard;
 
 /***/ }),
 
@@ -618,13 +504,26 @@ module.exports = require("@material-ui/core/TableCell");
 
 /***/ }),
 
+/***/ "AroE":
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
 /***/ "B5Ud":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.Container = Container;
@@ -757,7 +656,128 @@ module.exports = require("@material-ui/core/Table");
 
 /***/ }),
 
-/***/ "C34g":
+/***/ "C+bE":
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ "EN0U":
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-link-ws");
+
+/***/ }),
+
+/***/ "EmCc":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/IconButton");
+
+/***/ }),
+
+/***/ "FpJU":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export auth */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return withAuthSync; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4Q3z");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("3i/4");
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _apolloClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("cNYH");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0__["createElement"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+const getDisplayName = Component => Component.displayName || Component.name || 'Component';
+
+const auth = ctx => {
+  const {
+    token,
+    userId
+  } = next_cookies__WEBPACK_IMPORTED_MODULE_2___default()(ctx);
+
+  if (ctx.req && !token) {
+    ctx.res.writeHead(302, {
+      Location: '/'
+    });
+    ctx.res.end();
+    return;
+  }
+
+  if (!token) {
+    next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push('/');
+  }
+
+  return {
+    token,
+    userId
+  };
+};
+const withAuthSync = WrappedComponent => {
+  var _class, _temp;
+
+  return _temp = _class = class extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+    static async getInitialProps(ctx) {
+      const {
+        token,
+        userId
+      } = auth(ctx);
+      await Object(_apolloClient__WEBPACK_IMPORTED_MODULE_3__[/* setTokenInRequest */ "d"])(token);
+      const componentProps = WrappedComponent.getInitialProps && (await WrappedComponent.getInitialProps(ctx));
+      return _objectSpread(_objectSpread({}, componentProps), {}, {
+        token,
+        userId
+      });
+    }
+
+    render() {
+      return __jsx(WrappedComponent, this.props);
+    }
+
+  }, _defineProperty(_class, "displayName", `withAuthSync(${getDisplayName(WrappedComponent)})`), _temp;
+};
+
+/***/ }),
+
+/***/ "GLYF":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/ListItemIcon");
+
+/***/ }),
+
+/***/ "GoYp":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -777,116 +797,6 @@ function Title(props) {
     gutterBottom: true
   }, props.children);
 }
-
-/***/ }),
-
-/***/ "EN0U":
-/***/ (function(module, exports) {
-
-module.exports = require("apollo-link-ws");
-
-/***/ }),
-
-/***/ "EmCc":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/IconButton");
-
-/***/ }),
-
-/***/ "GGpH":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("c25J");
-/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("GLYF");
-/* harmony import */ var _material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("W+03");
-/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("vFf/");
-/* harmony import */ var _material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4nWC");
-/* harmony import */ var _material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("YZXy");
-/* harmony import */ var _material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("RiyV");
-/* harmony import */ var _material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("0LMq");
-/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("YFqc");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("15X6");
-/* harmony import */ var _material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-
-
-
-
- //   props:()=>void;
-// }
-
-const MainListItems = ({
-  handleLogout
-}) => {
-  return __jsx("div", null, __jsx(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_8___default.a, null, __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    button: true
-  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "dashboard"
-  }, __jsx(_material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "dashboard"
-  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    primary: "\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9"
-  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    button: true
-  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/form"
-  }, __jsx(_material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/form"
-  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    primary: "\u30DD\u30B9\u30C8\u306E\u4F5C\u6210"
-  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    button: true
-  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/notice"
-  }, __jsx(_material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/notice"
-  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    primary: "\u304A\u77E5\u3089\u305B\u306E\u4F5C\u6210"
-  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    button: true
-  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/home"
-  }, __jsx(_material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-    href: "/home"
-  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    primary: "\u30DB\u30FC\u30E0\u30DA\u30FC\u30B8"
-  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    button: true
-  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(_material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    onClick: handleLogout
-  })), __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    primary: "\u30ED\u30B0\u30A2\u30A6\u30C8",
-    onClick: handleLogout
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (MainListItems);
-
-/***/ }),
-
-/***/ "GLYF":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/ListItemIcon");
 
 /***/ }),
 
@@ -970,8 +880,8 @@ var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu_);
 var ChevronLeft_ = __webpack_require__("jQ8v");
 var ChevronLeft_default = /*#__PURE__*/__webpack_require__.n(ChevronLeft_);
 
-// EXTERNAL MODULE: ./components/listItems.tsx
-var listItems = __webpack_require__("GGpH");
+// EXTERNAL MODULE: ./src/components/listItems.tsx
+var listItems = __webpack_require__("zJCo");
 
 // EXTERNAL MODULE: external "@material-ui/core/Table"
 var Table_ = __webpack_require__("BjFw");
@@ -993,8 +903,8 @@ var TableHead_default = /*#__PURE__*/__webpack_require__.n(TableHead_);
 var TableRow_ = __webpack_require__("iDDF");
 var TableRow_default = /*#__PURE__*/__webpack_require__.n(TableRow_);
 
-// EXTERNAL MODULE: ./components/Title.tsx
-var Title = __webpack_require__("C34g");
+// EXTERNAL MODULE: ./src/components/Title.tsx
+var Title = __webpack_require__("GoYp");
 
 // EXTERNAL MODULE: external "@material-ui/core"
 var core_ = __webpack_require__("KKbo");
@@ -1018,7 +928,7 @@ var router_default = /*#__PURE__*/__webpack_require__.n(router_);
 var external_graphql_tag_ = __webpack_require__("txk1");
 var external_graphql_tag_default = /*#__PURE__*/__webpack_require__.n(external_graphql_tag_);
 
-// CONCATENATED MODULE: ./graphql/mutation/deleteNotice.ts
+// CONCATENATED MODULE: ./src/graphql/mutation/deleteNotice.js
 
 const DELETE_NOTICE = external_graphql_tag_default.a`
   mutation deleteNotice($_id: ID!) {
@@ -1028,13 +938,13 @@ const DELETE_NOTICE = external_graphql_tag_default.a`
   }
 `;
 /* harmony default export */ var mutation_deleteNotice = (DELETE_NOTICE);
-// EXTERNAL MODULE: ./graphql/query/notices.ts
-var notices = __webpack_require__("UnwW");
+// EXTERNAL MODULE: ./src/graphql/query/notices.js
+var notices = __webpack_require__("Rzzt");
 
 // EXTERNAL MODULE: external "@apollo/react-hooks"
 var react_hooks_ = __webpack_require__("mU8t");
 
-// CONCATENATED MODULE: ./components/TableNotice.tsx
+// CONCATENATED MODULE: ./src/components/TableNotice.tsx
 var __jsx = external_react_default.a.createElement;
 
 
@@ -1143,15 +1053,15 @@ const TableNotice = () => {
 /* harmony default export */ var components_TableNotice = (Object(withApolloData["a" /* withApollo */])({
   ssr: true
 })(TableNotice));
-// EXTERNAL MODULE: ./utils/auth.tsx
-var auth = __webpack_require__("oy9d");
+// EXTERNAL MODULE: ./src/utils/auth.tsx
+var auth = __webpack_require__("FpJU");
 
 // EXTERNAL MODULE: external "js-cookie"
 var external_js_cookie_ = __webpack_require__("vmXh");
 var external_js_cookie_default = /*#__PURE__*/__webpack_require__.n(external_js_cookie_);
 
-// EXTERNAL MODULE: ./utils/apolloClient.ts
-var apolloClient = __webpack_require__("7Ofu");
+// EXTERNAL MODULE: ./src/utils/apolloClient.js
+var apolloClient = __webpack_require__("cNYH");
 
 // EXTERNAL MODULE: external "formik-material-ui"
 var external_formik_material_ui_ = __webpack_require__("VxNu");
@@ -1159,7 +1069,7 @@ var external_formik_material_ui_ = __webpack_require__("VxNu");
 // EXTERNAL MODULE: external "react-toastify"
 var external_react_toastify_ = __webpack_require__("oAEb");
 
-// CONCATENATED MODULE: ./graphql/mutation/createNotice.ts
+// CONCATENATED MODULE: ./src/graphql/mutation/createNotice.js
 
 const CREATE_NOTICE = external_graphql_tag_default.a`
   mutation createNotice($body: String!) {
@@ -1174,7 +1084,7 @@ const CREATE_NOTICE = external_graphql_tag_default.a`
 // EXTERNAL MODULE: external "formik"
 var external_formik_ = __webpack_require__("QxnH");
 
-// CONCATENATED MODULE: ./components/NoticeForm.tsx
+// CONCATENATED MODULE: ./src/components/NoticeForm.tsx
 var NoticeForm_jsx = external_react_default.a.createElement;
 
 
@@ -1307,6 +1217,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ // import Router from 'next/router';
 
 
 
@@ -1401,7 +1312,8 @@ const Notice = props => {
   const {
     0: open,
     1: setOpen
-  } = Object(external_react_["useState"])(true); // const [createNotice] = useMutation(CREATE_NOTICE)
+  } = Object(external_react_["useState"])(true);
+  const Router = Object(router_["useRouter"])(); // const [createNotice] = useMutation(CREATE_NOTICE)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -1416,7 +1328,7 @@ const Notice = props => {
   const handleLogout = () => {
     Object(apolloClient["b" /* destroyToken */])();
     external_js_cookie_default.a.remove('name');
-    router_default.a.replace('/home');
+    Router.push('/');
   };
 
   return notice_jsx("div", {
@@ -1527,42 +1439,7 @@ module.exports = require("@material-ui/icons/ExitToApp");
 
 /***/ }),
 
-/***/ "S3md":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
-/***/ "TWtx":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/TableHead");
-
-/***/ }),
-
-/***/ "TqRt":
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "UVoM":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Typography");
-
-/***/ }),
-
-/***/ "UnwW":
+/***/ "Rzzt":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1579,6 +1456,28 @@ const GET_NOTICES = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
 }
 `;
 /* harmony default export */ __webpack_exports__["a"] = (GET_NOTICES);
+
+/***/ }),
+
+/***/ "S3md":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "TWtx":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/TableHead");
+
+/***/ }),
+
+/***/ "UVoM":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
 
 /***/ }),
 
@@ -1784,26 +1683,147 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "cDf5":
-/***/ (function(module, exports) {
+/***/ "cNYH":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("vmXh");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
   }
 
-  return _typeof(obj);
-}
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
 
-module.exports = _typeof;
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+
+
+
+
+
+
+
+const {
+  createUploadLink
+} = __webpack_require__("BPlj");
+
+let authToken = null;
+const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
+  operation.setContext({
+    headers: {
+      authorization: authToken || null
+    }
+  }); // Add onto payload for WebSocket authentication
+
+  operation.authToken = authToken;
+  return forward(operation);
+});
+const webSocketLink = false ? undefined : null;
+/**
+ * Set Token
+ * @param token
+ */
+
+const setToken = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? `Bearer ${token}` : null;
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
+      expires: 7
+    });
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Set Token In Request
+ * @param token
+ */
+
+const setTokenInRequest = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? token : null;
+    return authToken;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Destroy Token
+ * For logout purpose
+ */
+
+const destroyToken = () => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
+    authToken = null;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+const isBrowser = false;
+const httpLink = createUploadLink({
+  uri: "http://localhost:4020/graphql",
+  credentials: "same-origin",
+  fetch: !isBrowser && fetch
+});
+const link = false ? undefined : httpLink;
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+
+function createApolloClient(initialState, ctx) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
+    connectToDevTools: isBrowser,
+    ssrMode: !isBrowser,
+    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
+  });
+}
 
 /***/ }),
 
@@ -1813,7 +1833,7 @@ module.exports = _typeof;
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__("284h");
+var _interopRequireWildcard = __webpack_require__("7KCV");
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -3267,9 +3287,9 @@ module.exports = require("@apollo/react-hooks");
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__("284h");
+var _interopRequireWildcard = __webpack_require__("7KCV");
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.useRouter = useRouter;
@@ -3427,261 +3447,10 @@ module.exports = require("react-toastify");
 
 /***/ }),
 
-/***/ "oy9d":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export auth */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return withAuthSync; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4Q3z");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("3i/4");
-/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _apolloClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("7Ofu");
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0__["createElement"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-const getDisplayName = Component => Component.displayName || Component.name || 'Component';
-
-const auth = ctx => {
-  const {
-    token,
-    userId
-  } = next_cookies__WEBPACK_IMPORTED_MODULE_2___default()(ctx);
-
-  if (ctx.req && !token) {
-    ctx.res.writeHead(302, {
-      Location: '/'
-    });
-    ctx.res.end();
-    return;
-  }
-
-  if (!token) {
-    next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push('/');
-  }
-
-  return {
-    token,
-    userId
-  };
-};
-const withAuthSync = WrappedComponent => {
-  var _class, _temp;
-
-  return _temp = _class = class extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    static async getInitialProps(ctx) {
-      const {
-        token,
-        userId
-      } = auth(ctx);
-      await Object(_apolloClient__WEBPACK_IMPORTED_MODULE_3__[/* setTokenInRequest */ "d"])(token);
-      const componentProps = WrappedComponent.getInitialProps && (await WrappedComponent.getInitialProps(ctx));
-      return _objectSpread(_objectSpread({}, componentProps), {}, {
-        token,
-        userId
-      });
-    }
-
-    render() {
-      return __jsx(WrappedComponent, this.props);
-    }
-
-  }, _defineProperty(_class, "displayName", `withAuthSync(${getDisplayName(WrappedComponent)})`), _temp;
-};
-
-/***/ }),
-
 /***/ "oz4i":
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-cache-inmemory");
-
-/***/ }),
-
-/***/ "p46w":
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * JavaScript Cookie v2.2.1
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
-;(function (factory) {
-	var registeredInModuleLoader;
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		registeredInModuleLoader = true;
-	}
-	if (true) {
-		module.exports = factory();
-		registeredInModuleLoader = true;
-	}
-	if (!registeredInModuleLoader) {
-		var OldCookies = window.Cookies;
-		var api = window.Cookies = factory();
-		api.noConflict = function () {
-			window.Cookies = OldCookies;
-			return api;
-		};
-	}
-}(function () {
-	function extend () {
-		var i = 0;
-		var result = {};
-		for (; i < arguments.length; i++) {
-			var attributes = arguments[ i ];
-			for (var key in attributes) {
-				result[key] = attributes[key];
-			}
-		}
-		return result;
-	}
-
-	function decode (s) {
-		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
-	}
-
-	function init (converter) {
-		function api() {}
-
-		function set (key, value, attributes) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			attributes = extend({
-				path: '/'
-			}, api.defaults, attributes);
-
-			if (typeof attributes.expires === 'number') {
-				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
-			}
-
-			// We're using "expires" because "max-age" is not supported by IE
-			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
-
-			try {
-				var result = JSON.stringify(value);
-				if (/^[\{\[]/.test(result)) {
-					value = result;
-				}
-			} catch (e) {}
-
-			value = converter.write ?
-				converter.write(value, key) :
-				encodeURIComponent(String(value))
-					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-
-			key = encodeURIComponent(String(key))
-				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-				.replace(/[\(\)]/g, escape);
-
-			var stringifiedAttributes = '';
-			for (var attributeName in attributes) {
-				if (!attributes[attributeName]) {
-					continue;
-				}
-				stringifiedAttributes += '; ' + attributeName;
-				if (attributes[attributeName] === true) {
-					continue;
-				}
-
-				// Considers RFC 6265 section 5.2:
-				// ...
-				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
-				//     character:
-				// Consume the characters of the unparsed-attributes up to,
-				// not including, the first %x3B (";") character.
-				// ...
-				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
-			}
-
-			return (document.cookie = key + '=' + value + stringifiedAttributes);
-		}
-
-		function get (key, json) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			var jar = {};
-			// To prevent the for loop in the first place assign an empty array
-			// in case there are no cookies at all.
-			var cookies = document.cookie ? document.cookie.split('; ') : [];
-			var i = 0;
-
-			for (; i < cookies.length; i++) {
-				var parts = cookies[i].split('=');
-				var cookie = parts.slice(1).join('=');
-
-				if (!json && cookie.charAt(0) === '"') {
-					cookie = cookie.slice(1, -1);
-				}
-
-				try {
-					var name = decode(parts[0]);
-					cookie = (converter.read || converter)(cookie, name) ||
-						decode(cookie);
-
-					if (json) {
-						try {
-							cookie = JSON.parse(cookie);
-						} catch (e) {}
-					}
-
-					jar[name] = cookie;
-
-					if (key === name) {
-						break;
-					}
-				} catch (e) {}
-			}
-
-			return key ? jar[key] : jar;
-		}
-
-		api.set = set;
-		api.get = function (key) {
-			return get(key, false /* read as raw */);
-		};
-		api.getJSON = function (key) {
-			return get(key, true /* read as json */);
-		};
-		api.remove = function (key, attributes) {
-			set(key, '', extend(attributes, {
-				expires: -1
-			}));
-		};
-
-		api.defaults = {};
-
-		api.withConverter = init;
-
-		return api;
-	}
-
-	return init(function () {});
-}));
-
 
 /***/ }),
 
@@ -3720,7 +3489,7 @@ module.exports = require("@material-ui/icons/Dashboard");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("mU8t");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("7Ofu");
+/* harmony import */ var _src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("cNYH");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -3770,12 +3539,12 @@ const initOnContext = ctx => {
 
 const initApolloClient = (initialState, ctx) => {
   if (true) {
-    return Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    return Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   } // Reuse client on the client-side
 
 
   if (!globalApolloClient) {
-    globalApolloClient = Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    globalApolloClient = Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   }
 
   return globalApolloClient;
@@ -3926,6 +3695,95 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("next/head");
+
+/***/ }),
+
+/***/ "zJCo":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("c25J");
+/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("GLYF");
+/* harmony import */ var _material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("W+03");
+/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("vFf/");
+/* harmony import */ var _material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4nWC");
+/* harmony import */ var _material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("YZXy");
+/* harmony import */ var _material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("RiyV");
+/* harmony import */ var _material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("0LMq");
+/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("YFqc");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("15X6");
+/* harmony import */ var _material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+ //   props:()=>void;
+// }
+
+const MainListItems = ({
+  handleLogout
+}) => {
+  return __jsx("div", null, __jsx(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_8___default.a, null, __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    button: true
+  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "dashboard"
+  }, __jsx(_material_ui_icons_Dashboard__WEBPACK_IMPORTED_MODULE_4___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "dashboard"
+  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    primary: "\u30C0\u30C3\u30B7\u30E5\u30DC\u30FC\u30C9"
+  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    button: true
+  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/form"
+  }, __jsx(_material_ui_icons_Assignment__WEBPACK_IMPORTED_MODULE_5___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/form"
+  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    primary: "\u30DD\u30B9\u30C8\u306E\u4F5C\u6210"
+  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    button: true
+  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/notice"
+  }, __jsx(_material_ui_icons_NotificationsNone__WEBPACK_IMPORTED_MODULE_10___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/notice"
+  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    primary: "\u304A\u77E5\u3089\u305B\u306E\u4F5C\u6210"
+  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    button: true
+  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/home"
+  }, __jsx(_material_ui_icons_Home__WEBPACK_IMPORTED_MODULE_6___default.a, null))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    href: "/home"
+  }, __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    primary: "\u30DB\u30FC\u30E0\u30DA\u30FC\u30B8"
+  }))), __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    button: true
+  }, __jsx(_material_ui_core_ListItemIcon__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(_material_ui_icons_ExitToApp__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    onClick: handleLogout
+  })), __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    primary: "\u30ED\u30B0\u30A2\u30A6\u30C8",
+    onClick: handleLogout
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (MainListItems);
 
 /***/ })
 

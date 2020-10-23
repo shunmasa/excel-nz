@@ -1,13 +1,14 @@
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
-import withApollo from 'next-with-apollo';
-import { HttpLink } from 'apollo-link-http';
-import fetch from 'isomorphic-unfetch';
 import { WebSocketLink } from 'apollo-link-ws';
-import Cookies from './node_modules/js-cookie';
-import { SERVER, WEB_SOCKET_LINK } from './src/config';
+const { createUploadLink } = require('apollo-upload-client');
+
+
+
 
 interface Definintion {
   kind: string;
@@ -15,11 +16,6 @@ interface Definintion {
 }
 
 let authToken = null;
-
-const httpLink = new HttpLink({
-  fetch,
-  uri: SERVER
-});
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
@@ -35,7 +31,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri: WEB_SOCKET_LINK,
+      uri:"ws://localhost:4020/graphql",
       options: {
         reconnect: true
       }
@@ -84,6 +80,13 @@ export const destroyToken = async () => {
   }
 };
 
+const isBrowser = typeof window !== "undefined"
+const httpLink = createUploadLink({
+  uri: "http://localhost:4020/graphql", 
+  credentials: "same-origin", 
+  fetch: !isBrowser && fetch,
+})
+
 const link = process.browser
   ? split(
       ({ query }) => {
@@ -95,10 +98,18 @@ const link = process.browser
     )
   : httpLink;
 
-export default withApollo(
-  ({ initialState }) =>
-    new ApolloClient({
-      link: concat(authMiddleware, link),
-      cache: new InMemoryCache().restore(initialState || {})
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+
+export default function createApolloClient(initialState, ctx) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+    return new ApolloClient({
+      connectToDevTools: isBrowser,
+      ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
+      link: concat(authMiddleware, link),//createUploadLink
+      cache: new InMemoryCache().restore(initialState),
     })
-);
+  }

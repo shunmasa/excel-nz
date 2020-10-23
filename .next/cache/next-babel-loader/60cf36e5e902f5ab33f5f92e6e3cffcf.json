@@ -1,1 +1,0 @@
-{"ast":null,"code":"import gql from 'graphql-tag';\nconst GET_NOTICES = gql`\n{\n  notices{\n    _id\n    body\n    createdAt\n  }\n}\n`;\nexport default GET_NOTICES;","map":null,"metadata":{},"sourceType":"module"}

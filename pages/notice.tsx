@@ -14,19 +14,20 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MainListItems from '../components/listItems';
-import TableNotice from '../components/TableNotice';
-import { withAuthSync } from '../utils/auth';
+import MainListItems from '../src/components/listItems';
+import TableNotice from '../src/components/TableNotice';
+import { withAuthSync } from '../src/utils/auth';
 import Cookies from 'js-cookie';
-import {destroyToken } from '../utils/apolloClient';
-import Router from 'next/router';
-import NoticeForm from '../components/NoticeForm'
+import {destroyToken } from '../src/utils/apolloClient';
+// import Router from 'next/router';
+import { useRouter } from 'next/router'
+import NoticeForm from '../src/components/NoticeForm'
 import { withApollo } from '../lib/withApolloData'
 // import { useMutation } from '@apollo/react-hooks';
-import GET_NOTICES from '../graphql/query/notices'
+import GET_NOTICES from '../src/graphql/query/notices'
 // import GET_POSTS from '../src/graphql/query/posts'
 import { useMutation,useQuery} from '@apollo/react-hooks';
-import CREATE_NOTICE from '../graphql/mutation/createNotice'
+import CREATE_NOTICE from '../src/graphql/mutation/createNotice'
 import { TableRow, TableCell } from '@material-ui/core';
 
 const drawerWidth = 240;
@@ -123,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
 const Notice = (props:any) => {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
-
+  const Router = useRouter()
   // const [createNotice] = useMutation(CREATE_NOTICE)
 
   const handleDrawerOpen = () => {
@@ -140,7 +141,7 @@ const Notice = (props:any) => {
   const handleLogout = () => {
   destroyToken()
   Cookies.remove('name');
-  Router.replace('/home');
+  Router.push('/');
   }
   return (
     <div className={classes.root}>

@@ -1,15 +1,8 @@
-import * as React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { Button, LinearProgress} from '@material-ui/core';
-import { TextField } from 'formik-material-ui';
+import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import DropZone from '../../src/components/DropZone'
-import { withApollo } from '../../lib/withApolloData'
-import { useMutation,useQuery} from '@apollo/react-hooks';
-import UPDATE_POST from '../../src/graphql/mutation/updatePost'
-import { toast } from 'react-toastify';
-import GET_POST from "../../src/graphql/query/post";
-import Router, { useRouter } from 'next/router';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import ListItem from '@material-ui/core/ListItem';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,9 +11,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import Edit from "@material-ui/icons/Edit";
+// import Grid from '@material-ui/core/Grid'
+import DialogForm from '../../pages/dashboard/[dashboard]'
+import { Paper, Box } from '@material-ui/core';
+// import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Paper, Box,Grid } from '@material-ui/core';
-import Loader from '../../src/components/Loading'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root:{  
@@ -35,29 +30,17 @@ const useStyles = makeStyles((theme: Theme) =>
     overflowX: 'hidden',
   
   },
-  rootin:{
-    position: 'absolute',
-    marginTop:"8rem",
-    marginBottom:"10rem", 
-    width: '80%',
-    marginRight:'10%',
-    marginLeft:'10%',
-    height:"600px",
-    backgroundColor:"#fff",
-    // boxShadow: `-7px 6px 39px 0px rgba(0,0,0,0.75)`
-  },
     appBar: {
       position: 'relative',
     },
     title: {
       marginLeft: theme.spacing(2),
       flex: 1,
-      color:"#fff"
     },
     papper:{
       height:"100%",
-      maxWidth: '100%',
-      margin:"10em 10% 10em 10%",
+      maxWidth: '60%',
+      margin:"5em 20% 5em 20%",
       [theme.breakpoints.down("md")]: {
         maxWidth:"100%",
         margin:"3rem 1rem 5rem 1rem"
@@ -67,226 +50,58 @@ const useStyles = makeStyles((theme: Theme) =>
         maxHeight:"100%",
         margin:0
       }
-    }, 
-    formContainer:{
-      width:"100%",
-      height:"600px",
-     
-     },
-      userFieled:{
-        marginLeft:"1rem",
-        marginRight:"1rem",
-       marginTop:"2rem",
-       width:"90%"
-     },
-     descriptionField:{
-       marginTop:"2rem",
-       fontSize:"14px",
-       marginBottom:"2rem",
-       marginRight:"1rem",
-       width:"90%"
-     },
-     btn:{
-      width:"30%",
-      marginRight:"37%",
-      marginLeft:"33%",
-      marginTop:"2rem",
-      height:"40px"
-  
-    }
+    },  
   }),
 );
 
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & { children?: React.ReactElement },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
-
-
-
-
-
-interface Values {
-  username:string
-  description:string
-  file:[File] | null
-  postTitle:string
-  }
-interface File{
-  path:string
-  size:string
-  type:string
-}
-
-
-const DialogForm = ({props}) => {
-  // console.log('props',postId)
+const DialogEdit = (props) => {
   const classes = useStyles();
-  const router = useRouter()
-  const { dashboard} = router.query;
-console.log('dashboard',dashboard)
-  const [updatePost]= useMutation(UPDATE_POST)
-
-  const {data,error,loading} = useQuery(GET_POST,{
-    variables: {postId:dashboard},
-  })
-console.log('datap',data)
-  let message = 'Post';
-  if (loading) message = 'Loading...';
-  if (error) message = `Error! ${error}`;
-  if (data && data.post.length <= 0) message = 'No Post';
-
-  const handleDrawerClose = () => {
-    Router.push('/dashboard')
-  };
-
-
+  
+console.log('valuep',props.somePost)
+// const router = useRouter();
+// console.log('router',router.query.postUrl)
   return (
-  <>
-     {loading? (
-          <Loader/>
-    
-      ) : (
-    <Formik
-      initialValues={{
-        username: data.post.username,
-        postTitle:data.post.postTitle,
-        description: data.post.description,
-        file:null
-      }}
-      validate={values => {
-        const errors: Partial<Values> = {};
-        if (!values.username) {
-          errors.username = '入力必須です';
-        } 
-        if (!values.postTitle) {
-          errors.postTitle = '入力必須です';
-        } 
-        if (!values.description) {
-          errors.description = '入力必須です';
-        } 
-        return errors;
-      }}
-      onSubmit={async(values, { setSubmitting }) => {
-        event.preventDefault();
-        await updatePost({
-         variables:{postId:router.query.dashboard,postUpdate:{...values}}}),
-       toast.success('体験談がアップデートされました');
-       Router.push('/dashboard');
-        setSubmitting(false)
-      }}
-    >
-      {({ submitForm, isSubmitting,values }) => (
-        
+    <div>
+      <Link href={`/dashboard/[dashboard]?dashboard=${props.somePost._id}`} as={`/dashboard/${props.somePost._id}`}>
+  <IconButton color="primary" onClick={props.handleClickOpen}>
+  <Edit fontSize="small" />
+  </IconButton>
+  </Link>
 
-        <Form className={classes.formContainer}>
-            <AppBar className={classes.appBar}>
+      <Dialog fullScreen open={props.open} onClose={props.handleClose} TransitionComponent={Transition}>
+        <AppBar className={classes.appBar}>
           <Toolbar>
-            {/* <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close"> */}
-            <IconButton edge="start" color="inherit"aria-label="close">
-              <CloseIcon  onClick={handleDrawerClose}/>
+            <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close">
+              <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
              留学体験談アップデート
             </Typography>
-            
+            <Button autoFocus color="inherit" onClick={props.handleClose}>
+              save
+            </Button>
           </Toolbar>
         </AppBar>
-
-          <Grid item className={classes.root}>
-            <Grid item className={classes.rootin}>
-            <Grid item xs={12} container direction="column">
-         
-         <Grid item xs container direction="row">
-         <Grid item xs={6}>
-
-
-          <Grid item xs container direction="row" className={classes.userFieled}>
-          <Field
       
-            component={TextField}
-            name="username"
-            type="text"
-            label="Username"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-          />
-          <br />
-          <Field
-          
-            component={TextField}
-            name="postTitle"
-            type="text"
-            label="PostTitle"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-          />
 
-           <Field
-            component={DropZone}
-            name="file"
-            type="file"
-            label="Imgae file"
-            variant="outlined"
-            margin="small"
-            required
+  <div className={classes.root}>
+      <Paper component={Box} className={classes.papper}elevation={3}>
+     {/* @ts-ignore */}
+    <DialogForm />
+    </Paper>
+ 
+        </div>
 
-          />
-        </Grid>
-   </Grid>
-
-
-   <Grid item xs={6}>
-
-           
-  <Grid item xs container direction="column" className={classes.descriptionField}>
-          <Field  
-            component={TextField}
-            type="text"
-            label="Description"
-            name="description"
-            variant="outlined"
-            margin="normal"
-            multiline={true}
-            rows={16}
-            required
-            fullWidth
-          />
-         
-
-
-          </Grid>
-          </Grid>
-          {isSubmitting && <LinearProgress />}
-          <br />
-          <Button
-            className={classes.btn}
-            variant="contained"
-            color="primary"
-            disabled={isSubmitting}
-            onClick={submitForm}
-          >
-            Submit
-          </Button>
-
-
-
-        </Grid>
-        </Grid>
-         </Grid>
-         </Grid>
-        </Form>
-      
-      )}
-
-    </Formik>
-    
-    )}
-   
-
-    </>
+      </Dialog>
+    </div>
   );
 }
 
-export default withApollo({ssr:true})(DialogForm);
+export default DialogEdit

@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
-import Theme from '../ui/Theme';
+import Theme from '../src/ui/Theme';
 import { ToastContainer } from 'react-toastify';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';

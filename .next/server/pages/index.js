@@ -106,13 +106,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/0OW":
-/***/ (function(module, exports) {
-
-module.exports = require("babel-runtime/helpers/extends");
-
-/***/ }),
-
 /***/ "/jkW":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -136,7 +129,7 @@ function isDynamicRoute(route) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.default = withRouter;
@@ -196,9 +189,9 @@ var Grid_default = /*#__PURE__*/__webpack_require__.n(Grid_);
 var Typography_ = __webpack_require__("UVoM");
 var Typography_default = /*#__PURE__*/__webpack_require__.n(Typography_);
 
-// EXTERNAL MODULE: ./node_modules/react-animate-on-scroll/dist/scrollAnimation.min.js
-var scrollAnimation_min = __webpack_require__("NGwb");
-var scrollAnimation_min_default = /*#__PURE__*/__webpack_require__.n(scrollAnimation_min);
+// EXTERNAL MODULE: external "react-animate-on-scroll"
+var external_react_animate_on_scroll_ = __webpack_require__("J8oA");
+var external_react_animate_on_scroll_default = /*#__PURE__*/__webpack_require__.n(external_react_animate_on_scroll_);
 
 // EXTERNAL MODULE: external "@material-ui/core/Button"
 var Button_ = __webpack_require__("Wh1t");
@@ -208,7 +201,7 @@ var Button_default = /*#__PURE__*/__webpack_require__.n(Button_);
 var next_link = __webpack_require__("YFqc");
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
-// CONCATENATED MODULE: ./components/Carousel.tsx
+// CONCATENATED MODULE: ./src/components/Carousel.tsx
 var __jsx = external_react_default.a.createElement;
 
 
@@ -307,7 +300,7 @@ function CallToAction() {
     direction: "column"
   }, __jsx(Grid_default.a, {
     item: true
-  }, __jsx(scrollAnimation_min_default.a, {
+  }, __jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
   }, __jsx(Typography_default.a, {
@@ -317,7 +310,7 @@ function CallToAction() {
     style: {
       color: "#fff"
     }
-  }, "\u30A8\u30AF\u30BB\u30EB\u30CB\u30E5\u30FC\u30B8\u30FC\u30E9\u30F3\u30C9"), __jsx("br", null), "\u306B\u304A\u4EFB\u305B\u304F\u3060\u3055\u3044")), __jsx(scrollAnimation_min_default.a, {
+  }, "\u30A8\u30AF\u30BB\u30EB\u30CB\u30E5\u30FC\u30B8\u30FC\u30E9\u30F3\u30C9"), __jsx("br", null), "\u306B\u304A\u4EFB\u305B\u304F\u3060\u3055\u3044")), __jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight",
     delay: 800
@@ -333,7 +326,7 @@ function CallToAction() {
     item: true
   })))), __jsx(Grid_default.a, {
     item: true
-  }, __jsx(scrollAnimation_min_default.a, {
+  }, __jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "fadeIn"
   }, "\u3000", __jsx(link_default.a, {
     href: "/contact"
@@ -349,10 +342,10 @@ var router_default = /*#__PURE__*/__webpack_require__.n(router_);
 // EXTERNAL MODULE: external "@material-ui/core"
 var core_ = __webpack_require__("KKbo");
 
-// EXTERNAL MODULE: ./components/Loading.tsx
-var Loading = __webpack_require__("zOGZ");
+// EXTERNAL MODULE: ./src/components/Loading.tsx
+var Loading = __webpack_require__("Qb08");
 
-// CONCATENATED MODULE: ./components/Cards.tsx
+// CONCATENATED MODULE: ./src/components/Cards.tsx
 var Cards_jsx = external_react_default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -556,7 +549,7 @@ function Cards({
     direction: "row",
     justify: "center",
     lg: true
-  }, Cards_jsx(scrollAnimation_min_default.a, {
+  }, Cards_jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "fadeIn"
   }, Cards_jsx(core_["Typography"], {
     variant: "h1"
@@ -581,7 +574,7 @@ function Cards({
     container: true,
     direction: "column",
     md: 4
-  }, Cards_jsx(scrollAnimation_min_default.a, {
+  }, Cards_jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "fadeIn",
     delay: 300
   }, Cards_jsx(core_["Grid"], {
@@ -637,7 +630,7 @@ var Step_default = /*#__PURE__*/__webpack_require__.n(Step_);
 var StepLabel_ = __webpack_require__("EfMu");
 var StepLabel_default = /*#__PURE__*/__webpack_require__.n(StepLabel_);
 
-// CONCATENATED MODULE: ./components/StepperFnc.tsx
+// CONCATENATED MODULE: ./src/components/StepperFnc.tsx
 var StepperFnc_jsx = external_react_default.a.createElement;
 
 
@@ -746,10 +739,6 @@ var external_react_lottie_default = /*#__PURE__*/__webpack_require__.n(external_
 // EXTERNAL MODULE: ./public/assets/plane.json
 var plane = __webpack_require__("31e9");
 
-// EXTERNAL MODULE: ./node_modules/react-lottie/dist/index.js
-var dist = __webpack_require__("hxQi");
-var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
-
 // EXTERNAL MODULE: ./public/assets/support.json
 var support = __webpack_require__("rL3P");
 
@@ -757,7 +746,7 @@ var support = __webpack_require__("rL3P");
 var Hidden_ = __webpack_require__("Y8uC");
 var Hidden_default = /*#__PURE__*/__webpack_require__.n(Hidden_);
 
-// CONCATENATED MODULE: ./components/CallAnimation.tsx
+// CONCATENATED MODULE: ./src/components/CallAnimation.tsx
 var CallAnimation_jsx = external_react_default.a.createElement;
 
 
@@ -846,10 +835,10 @@ const CallAnimation = () => {
     sm: true,
     item: true,
     className: classes.animation
-  }, CallAnimation_jsx(scrollAnimation_min_default.a, {
+  }, CallAnimation_jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
-  }, CallAnimation_jsx(dist_default.a, {
+  }, CallAnimation_jsx(external_react_lottie_default.a, {
     options: CallAnimation_defaultOptions,
     height: "100%",
     width: "100%"
@@ -901,10 +890,10 @@ const CallAnimation = () => {
     sm: true,
     item: true,
     className: classes.animation
-  }, CallAnimation_jsx(scrollAnimation_min_default.a, {
+  }, CallAnimation_jsx(external_react_animate_on_scroll_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
-  }, CallAnimation_jsx(dist_default.a, {
+  }, CallAnimation_jsx(external_react_lottie_default.a, {
     options: CallAnimation_defaultOptions,
     height: "100%",
     width: "100%"
@@ -916,7 +905,7 @@ const CallAnimation = () => {
 var external_react_text_loop_ = __webpack_require__("IV1l");
 var external_react_text_loop_default = /*#__PURE__*/__webpack_require__.n(external_react_text_loop_);
 
-// CONCATENATED MODULE: ./components/Footer.tsx
+// CONCATENATED MODULE: ./src/components/Footer.tsx
 var Footer_jsx = external_react_default.a.createElement;
  // import Link from "../Link";
 
@@ -1114,7 +1103,7 @@ const Footer = () => {
 var external_graphql_tag_ = __webpack_require__("txk1");
 var external_graphql_tag_default = /*#__PURE__*/__webpack_require__.n(external_graphql_tag_);
 
-// CONCATENATED MODULE: ./graphql/query/posts.ts
+// CONCATENATED MODULE: ./src/graphql/query/posts.js
 
 const GET_POSTS = external_graphql_tag_default.a`
   {
@@ -1132,7 +1121,7 @@ const GET_POSTS = external_graphql_tag_default.a`
 var external_moment_ = __webpack_require__("wy2R");
 var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment_);
 
-// CONCATENATED MODULE: ./components/UseStickey.tsx
+// CONCATENATED MODULE: ./src/components/UseStickey.tsx
 
 
 function useSticky() {
@@ -1186,7 +1175,7 @@ function useSticky() {
 // EXTERNAL MODULE: external "react-intersection-observer"
 var external_react_intersection_observer_ = __webpack_require__("p1tF");
 
-// CONCATENATED MODULE: ./components/PhotoGallery.tsx
+// CONCATENATED MODULE: ./src/components/PhotoGallery.tsx
 var PhotoGallery_jsx = external_react_default.a.createElement;
 
 
@@ -1427,7 +1416,7 @@ var withApolloData = __webpack_require__("vaDH");
 // EXTERNAL MODULE: external "@apollo/react-hooks"
 var react_hooks_ = __webpack_require__("mU8t");
 
-// CONCATENATED MODULE: ./components/MainPhoto.tsx
+// CONCATENATED MODULE: ./src/components/MainPhoto.tsx
 var MainPhoto_jsx = external_react_default.a.createElement;
 
 
@@ -1498,11 +1487,7 @@ const MainPhoto = () => {
 };
 
 /* harmony default export */ var components_MainPhoto = (MainPhoto);
-// EXTERNAL MODULE: external "react-animate-on-scroll"
-var external_react_animate_on_scroll_ = __webpack_require__("J8oA");
-var external_react_animate_on_scroll_default = /*#__PURE__*/__webpack_require__.n(external_react_animate_on_scroll_);
-
-// CONCATENATED MODULE: ./components/about.tsx
+// CONCATENATED MODULE: ./src/components/about.tsx
 var about_jsx = external_react_default.a.createElement;
 
 
@@ -1534,9 +1519,8 @@ const about_useStyles = Object(styles_["makeStyles"])(theme => ({
   boxContainer2: {
     backgroundColor: "#fff",
     padding: "2em",
-    //boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
+    // boxShadow:`-7px 7px 22px -6px rgba(0,0,0,0.76)`,
     boxShadow: `0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
-    //web
     [theme.breakpoints.down("xs")]: {
       margin: 0,
       padding: 0,
@@ -1669,11 +1653,15 @@ function About() {
     className: classes.galleryContainer
   }, about_jsx(components_MainPhoto, null)))));
 }
-// EXTERNAL MODULE: ./graphql/query/notices.ts
-var notices = __webpack_require__("UnwW");
+// EXTERNAL MODULE: ./src/graphql/query/notices.js
+var notices = __webpack_require__("Rzzt");
 
-// EXTERNAL MODULE: ./components/ButtonArrow.tsx
-var ButtonArrow = __webpack_require__("pBuL");
+// EXTERNAL MODULE: ./src/components/ButtonArrow.tsx
+var ButtonArrow = __webpack_require__("9wSV");
+
+// EXTERNAL MODULE: ./node_modules/react-animate-on-scroll/dist/scrollAnimation.min.js
+var scrollAnimation_min = __webpack_require__("NGwb");
+var scrollAnimation_min_default = /*#__PURE__*/__webpack_require__.n(scrollAnimation_min);
 
 // CONCATENATED MODULE: ./pages/index.tsx
 var pages_jsx = external_react_default.a.createElement;
@@ -2246,7 +2234,7 @@ const Home = props => {
     }
   }), title)))))))), pages_jsx("div", {
     className: "hero"
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "fadeIn"
   }, pages_jsx("h1", null, pages_jsx("span", null, "\u30A8\u30AF\u30BB\u30EB\u30CB\u30E5\u30FC\u30B8\u30FC\u30E9\u30F3\u30C9"), pages_jsx("br", null), pages_jsx("div", {
     className: "reveals-main"
@@ -2307,7 +2295,7 @@ const Home = props => {
     container: true,
     direction: "column",
     className: classes.rowContainer
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInRight",
     animateOut: "bounceOutLeft"
   }, pages_jsx(core_["Grid"], {
@@ -2349,7 +2337,7 @@ const Home = props => {
     style: {
       paddingTop: ".7em"
     }
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "fadeIn",
     animateOut: "fadeOut"
   }, pages_jsx("img", {
@@ -2383,7 +2371,7 @@ const Home = props => {
     style: {
       paddingTop: "1em"
     }
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "fadeIn",
     animateOut: "fadeOut",
     delay: 1000
@@ -2413,7 +2401,7 @@ const Home = props => {
     item: true
   }, pages_jsx(core_["Typography"], {
     variant: "h5"
-  }, "\u2462\u6B63\u3057\u3044\u30A8\u30FC\u30B8\u30A7\u30F3\u30C8\u3092\u9078\u3076\u2212\u3069\u3046\u3057\u3066Excel NZ\u306A\u306E\u304B"), pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, "\u2462\u6B63\u3057\u3044\u30A8\u30FC\u30B8\u30A7\u30F3\u30C8\u3092\u9078\u3076\u2212\u3069\u3046\u3057\u3066Excel NZ\u306A\u306E\u304B"), pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "fadeIn",
     animateOut: "fadeOut",
     delay: 2000
@@ -2464,7 +2452,7 @@ const Home = props => {
       marginTop: '20px',
       marginLeft: matchesXS ? "1rem" : "2rem"
     }
-  }, pages_jsx("br", null), "\u2212\u4E2D\u5B66\u3001\u9AD8\u6821\u751F\u6B63\u898F\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8", pages_jsx("br", null), "\u2212\u82F1\u8A9E\u7FD2\u5F97\u306E\u70BA\u306E\u8A9E\u5B66\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8", pages_jsx("br", null), "\u2212\u9AD8\u6821\u5352\u696D\u5F8C\u3001\u9032\u8DEF\u3068\u3057\u3066\u306E\u5927\u5B66\u3001\u5404\u7A2E\u5C02\u9580\u5B66\u6821\u306E\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073", pages_jsx("br", null), "\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8 \u30FB\u305D\u306E\u4ED6\u30B5\u30FC\u30D3\u30B9", pages_jsx("br", null), "\u2212\u7121\u6599\u5404\u7A2E\u5B66\u6821\u7533\u3057\u8FBC\u307F\u4EE3\u884C\u3001\u6D77\u5916\u65C5\u884C\u4FDD\u967A\u52A0\u5165\u4EE3\u884C")), pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx("br", null), "\u2212\u4E2D\u5B66\u3001\u9AD8\u6821\u751F\u6B63\u898F\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8", pages_jsx("br", null), "\u2212\u82F1\u8A9E\u7FD2\u5F97\u306E\u70BA\u306E\u8A9E\u5B66\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8", pages_jsx("br", null), "\u2212\u9AD8\u6821\u5352\u696D\u5F8C\u3001\u9032\u8DEF\u3068\u3057\u3066\u306E\u5927\u5B66\u3001\u5404\u7A2E\u5C02\u9580\u5B66\u6821\u306E\u7559\u5B66\u6848\u5185\u3001\u53CA\u3073", pages_jsx("br", null), "\u73FE\u5730\u7559\u5B66\u30B5\u30DD\u30FC\u30C8 \u30FB\u305D\u306E\u4ED6\u30B5\u30FC\u30D3\u30B9", pages_jsx("br", null), "\u2212\u7121\u6599\u5404\u7A2E\u5B66\u6821\u7533\u3057\u8FBC\u307F\u4EE3\u884C\u3001\u6D77\u5916\u65C5\u884C\u4FDD\u967A\u52A0\u5165\u4EE3\u884C")), pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
   }, pages_jsx(core_["Grid"], {
@@ -2513,7 +2501,7 @@ const Home = props => {
     item: true,
     className: classes.checkboard,
     xs: 1
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "flipInY",
     animateOut: "flipOutY"
   }, pages_jsx("img", {
@@ -2542,7 +2530,7 @@ const Home = props => {
   }, pages_jsx(core_["Grid"], {
     item: true,
     xs: 1
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
   }, pages_jsx("img", {
@@ -2569,7 +2557,7 @@ const Home = props => {
   }, pages_jsx(core_["Grid"], {
     item: true,
     xs: 1
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInRight",
     animateOut: "bounceOutLeft"
   }, pages_jsx("img", {
@@ -2596,7 +2584,7 @@ const Home = props => {
   }, pages_jsx(core_["Grid"], {
     item: true,
     xs: 1
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
   }, pages_jsx("img", {
@@ -2623,7 +2611,7 @@ const Home = props => {
   }, pages_jsx(core_["Grid"], {
     item: true,
     xs: 1
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInRight",
     animateOut: "bounceOutLeft"
   }, pages_jsx("img", {
@@ -2641,7 +2629,7 @@ const Home = props => {
     }
   }, "\u7559\u5B66\u3092\u901A\u3057\u3066\u3001\u591A\u69D8\u6027\u3092\u808C\u3067\u611F\u3058\u3001\u30B0\u30ED\u30FC\u30D0\u30EB\u306A\u611F\u899A\u3092\u898B\u306B\u3064\u3051\u3066", pages_jsx("br", null), "\u4EBA\u3068\u3057\u3066\u5927\u304D\u304F\u6210\u9577\u3057\u305F\u3044\u3002"))))), pages_jsx(Hidden_default.a, {
     mdDown: true
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "fadeIn",
     delay: 500
   }, "\u3000", pages_jsx(link_default.a, {
@@ -2669,7 +2657,7 @@ const Home = props => {
     sm: true,
     item: true,
     className: classes.imageContainer
-  }, pages_jsx(external_react_animate_on_scroll_default.a, {
+  }, pages_jsx(scrollAnimation_min_default.a, {
     animateIn: "bounceInLeft",
     animateOut: "bounceOutRight"
   }, pages_jsx("img", {
@@ -2732,67 +2720,6 @@ const Home = props => {
 /* harmony default export */ var pages = __webpack_exports__["default"] = (Object(withApolloData["a" /* withApollo */])({
   ssr: true
 })(Home));
-
-/***/ }),
-
-/***/ "284h":
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__("cDf5");
-
-function _getRequireWildcardCache() {
-  if (typeof WeakMap !== "function") return null;
-  var cache = new WeakMap();
-
-  _getRequireWildcardCache = function _getRequireWildcardCache() {
-    return cache;
-  };
-
-  return cache;
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  }
-
-  if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
-    return {
-      "default": obj
-    };
-  }
-
-  var cache = _getRequireWildcardCache();
-
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-
-  newObj["default"] = obj;
-
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-
-  return newObj;
-}
-
-module.exports = _interopRequireWildcard;
 
 /***/ }),
 
@@ -3012,117 +2939,64 @@ module.exports = __webpack_require__("23aj");
 
 /***/ }),
 
-/***/ "7Ofu":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "7KCV":
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("p46w");
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+var _typeof = __webpack_require__("C+bE");
 
+function _getRequireWildcardCache() {
+  if (typeof WeakMap !== "function") return null;
+  var cache = new WeakMap();
 
+  _getRequireWildcardCache = function _getRequireWildcardCache() {
+    return cache;
+  };
 
-
-
-
-
-const {
-  createUploadLink
-} = __webpack_require__("BPlj");
-
-let authToken = null;
-const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
-  operation.setContext({
-    headers: {
-      authorization: authToken || null
-    }
-  }); // Add onto payload for WebSocket authentication
-
-  operation.authToken = authToken;
-  return forward(operation);
-});
-const webSocketLink = false ? undefined : null;
-/**
- * Set Token
- * @param token
- */
-
-const setToken = async token => {
-  try {
-    authToken = token ? `Bearer ${token}` : null;
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
-      expires: 7
-    });
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Set Token In Request
- * @param token
- */
-
-const setTokenInRequest = async token => {
-  try {
-    authToken = token ? token : null;
-    return authToken;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Destroy Token
- * For logout purpose
- */
-
-const destroyToken = async () => {
-  try {
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
-    authToken = null;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-const isBrowser = false;
-const httpLink = createUploadLink({
-  uri: "http://localhost:4020/graphql",
-  credentials: "same-origin",
-  fetch: !isBrowser && fetch
-});
-const link = false ? undefined : httpLink;
-/**
- * Creates and configures the ApolloClient
- * @param  {Object} [initialState={}]
- */
-
-function createApolloClient(initialState, ctx) {
-  // The `ctx` (NextPageContext) will only be present on the server.
-  // use it to extract auth headers (ctx.req) or similar.
-  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
-    connectToDevTools: isBrowser,
-    ssrMode: !isBrowser,
-    // Disables forceFetch on the server (so queries are only run once)
-    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
-    //createUploadLink
-    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
-  });
+  return cache;
 }
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+
+  if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
+    return {
+      "default": obj
+    };
+  }
+
+  var cache = _getRequireWildcardCache();
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+
+  newObj["default"] = obj;
+
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+
+  return newObj;
+}
+
+module.exports = _interopRequireWildcard;
 
 /***/ }),
 
@@ -3148,13 +3022,50 @@ module.exports = require("@material-ui/core/styles");
 
 /***/ }),
 
+/***/ "9wSV":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonArrow; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function ButtonArrow(props) {
+  return __jsx("svg", {
+    className: props.class,
+    xmlns: "http://www.w3.org/2000/svg",
+    width: props.width,
+    height: props.height,
+    fill: props.fill,
+    viewBox: "0 0 18 18"
+  }, __jsx("path", {
+    d: "M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z"
+  }));
+}
+
+/***/ }),
+
+/***/ "AroE":
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
 /***/ "B5Ud":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.Container = Container;
@@ -3280,10 +3191,26 @@ module.exports = require("apollo-upload-client");
 
 /***/ }),
 
-/***/ "Do0I":
+/***/ "C+bE":
 /***/ (function(module, exports) {
 
-module.exports = require("babel-runtime/helpers/createClass");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
 
 /***/ }),
 
@@ -3319,13 +3246,6 @@ module.exports = require("react-animate-on-scroll");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core/Grid");
-
-/***/ }),
-
-/***/ "K0gk":
-/***/ (function(module, exports) {
-
-module.exports = require("babel-runtime/helpers/inherits");
 
 /***/ }),
 
@@ -3656,35 +3576,35 @@ module.exports = require("apollo-client");
 
 /***/ }),
 
-/***/ "S3md":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "Qb08":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_loader_spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2Hsl");
+/* harmony import */ var react_loader_spinner__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_loader_spinner__WEBPACK_IMPORTED_MODULE_1__);
 
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const Loading = () => {
+  //other logic
+  return __jsx(react_loader_spinner__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    type: "Puff",
+    color: "#00BFFF",
+    height: 100,
+    width: 100,
+    timeout: 6000 //3 secs
+
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Loading);
 
 /***/ }),
 
-/***/ "TqRt":
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "UVoM":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Typography");
-
-/***/ }),
-
-/***/ "UnwW":
+/***/ "Rzzt":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3701,6 +3621,21 @@ const GET_NOTICES = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
 }
 `;
 /* harmony default export */ __webpack_exports__["a"] = (GET_NOTICES);
+
+/***/ }),
+
+/***/ "S3md":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "UVoM":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
 
 /***/ }),
 
@@ -3742,13 +3677,6 @@ function removePathTrailingSlash(path) {
 
 const normalizePathTrailingSlash =  false ? undefined : removePathTrailingSlash;
 exports.normalizePathTrailingSlash = normalizePathTrailingSlash;
-
-/***/ }),
-
-/***/ "XHuY":
-/***/ (function(module, exports) {
-
-module.exports = require("babel-runtime/helpers/classCallCheck");
 
 /***/ }),
 
@@ -3892,13 +3820,6 @@ function getRouteRegex(normalizedRoute) {
 
 /***/ }),
 
-/***/ "b6vm":
-/***/ (function(module, exports) {
-
-module.exports = require("babel-runtime/core-js/object/get-prototype-of");
-
-/***/ }),
-
 /***/ "cDcd":
 /***/ (function(module, exports) {
 
@@ -3906,26 +3827,147 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "cDf5":
-/***/ (function(module, exports) {
+/***/ "cNYH":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("vmXh");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
   }
 
-  return _typeof(obj);
-}
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
 
-module.exports = _typeof;
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+
+
+
+
+
+
+
+const {
+  createUploadLink
+} = __webpack_require__("BPlj");
+
+let authToken = null;
+const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
+  operation.setContext({
+    headers: {
+      authorization: authToken || null
+    }
+  }); // Add onto payload for WebSocket authentication
+
+  operation.authToken = authToken;
+  return forward(operation);
+});
+const webSocketLink = false ? undefined : null;
+/**
+ * Set Token
+ * @param token
+ */
+
+const setToken = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? `Bearer ${token}` : null;
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
+      expires: 7
+    });
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Set Token In Request
+ * @param token
+ */
+
+const setTokenInRequest = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? token : null;
+    return authToken;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Destroy Token
+ * For logout purpose
+ */
+
+const destroyToken = () => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
+    authToken = null;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+const isBrowser = false;
+const httpLink = createUploadLink({
+  uri: "http://localhost:4020/graphql",
+  credentials: "same-origin",
+  fetch: !isBrowser && fetch
+});
+const link = false ? undefined : httpLink;
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+
+function createApolloClient(initialState, ctx) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
+    connectToDevTools: isBrowser,
+    ssrMode: !isBrowser,
+    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
+  });
+}
 
 /***/ }),
 
@@ -3942,7 +3984,7 @@ module.exports = require("@material-ui/core/useMediaQuery");
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__("284h");
+var _interopRequireWildcard = __webpack_require__("7KCV");
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -4199,13 +4241,6 @@ function mitt() {
 
   };
 }
-
-/***/ }),
-
-/***/ "ekhF":
-/***/ (function(module, exports) {
-
-module.exports = require("babel-runtime/helpers/possibleConstructorReturn");
 
 /***/ }),
 
@@ -5362,289 +5397,6 @@ function parseRelativeUrl(url, base) {
 
 /***/ }),
 
-/***/ "hxQi":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = __webpack_require__("/0OW");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = __webpack_require__("b6vm");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__("XHuY");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__("Do0I");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__("ekhF");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__("K0gk");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__("cDcd");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__("rf6O");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _lottieWeb = __webpack_require__("mdCM");
-
-var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Lottie = function (_React$Component) {
-  (0, _inherits3.default)(Lottie, _React$Component);
-
-  function Lottie() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, Lottie);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
-      // The pause() method is for handling pausing by passing a prop isPaused
-      // This method is for handling the ability to pause by clicking on the animation
-      if (_this.anim.isPaused) {
-        _this.anim.play();
-      } else {
-        _this.anim.pause();
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(Lottie, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          options = _props.options,
-          eventListeners = _props.eventListeners;
-      var loop = options.loop,
-          autoplay = options.autoplay,
-          animationData = options.animationData,
-          rendererSettings = options.rendererSettings,
-          segments = options.segments;
-
-
-      this.options = {
-        container: this.el,
-        renderer: 'svg',
-        loop: loop !== false,
-        autoplay: autoplay !== false,
-        segments: segments !== false,
-        animationData: animationData,
-        rendererSettings: rendererSettings
-      };
-
-      this.options = (0, _extends3.default)({}, this.options, options);
-
-      this.anim = _lottieWeb2.default.loadAnimation(this.options);
-      this.registerEvents(eventListeners);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps /* , nextState */) {
-      /* Recreate the animation handle if the data is changed */
-      if (this.options.animationData !== nextProps.options.animationData) {
-        this.deRegisterEvents(this.props.eventListeners);
-        this.destroy();
-        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
-        this.anim = _lottieWeb2.default.loadAnimation(this.options);
-        this.registerEvents(nextProps.eventListeners);
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      if (this.props.isStopped) {
-        this.stop();
-      } else if (this.props.segments) {
-        this.playSegments();
-      } else {
-        this.play();
-      }
-
-      this.pause();
-      this.setSpeed();
-      this.setDirection();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.deRegisterEvents(this.props.eventListeners);
-      this.destroy();
-      this.options.animationData = null;
-      this.anim = null;
-    }
-  }, {
-    key: 'setSpeed',
-    value: function setSpeed() {
-      this.anim.setSpeed(this.props.speed);
-    }
-  }, {
-    key: 'setDirection',
-    value: function setDirection() {
-      this.anim.setDirection(this.props.direction);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.anim.play();
-    }
-  }, {
-    key: 'playSegments',
-    value: function playSegments() {
-      this.anim.playSegments(this.props.segments);
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.anim.stop();
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      if (this.props.isPaused && !this.anim.isPaused) {
-        this.anim.pause();
-      } else if (!this.props.isPaused && this.anim.isPaused) {
-        this.anim.pause();
-      }
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.anim.destroy();
-    }
-  }, {
-    key: 'registerEvents',
-    value: function registerEvents(eventListeners) {
-      var _this2 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'deRegisterEvents',
-    value: function deRegisterEvents(eventListeners) {
-      var _this3 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var _props2 = this.props,
-          width = _props2.width,
-          height = _props2.height,
-          ariaRole = _props2.ariaRole,
-          ariaLabel = _props2.ariaLabel,
-          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
-          title = _props2.title;
-
-
-      var getSize = function getSize(initial) {
-        var size = void 0;
-
-        if (typeof initial === 'number') {
-          size = initial + 'px';
-        } else {
-          size = initial || '100%';
-        }
-
-        return size;
-      };
-
-      var lottieStyles = (0, _extends3.default)({
-        width: getSize(width),
-        height: getSize(height),
-        overflow: 'hidden',
-        margin: '0 auto',
-        outline: 'none'
-      }, this.props.style);
-
-      var onClickHandler = isClickToPauseDisabled ? function () {
-        return null;
-      } : this.handleClickToPause;
-
-      return (
-        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        _react2.default.createElement('div', {
-          ref: function ref(c) {
-            _this4.el = c;
-          },
-          style: lottieStyles,
-          onClick: onClickHandler,
-          title: title,
-          role: ariaRole,
-          'aria-label': ariaLabel,
-          tabIndex: '0'
-        })
-      );
-    }
-  }]);
-  return Lottie;
-}(_react2.default.Component);
-
-exports.default = Lottie;
-
-
-Lottie.propTypes = {
-  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
-  options: _propTypes2.default.object.isRequired,
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  isStopped: _propTypes2.default.bool,
-  isPaused: _propTypes2.default.bool,
-  speed: _propTypes2.default.number,
-  segments: _propTypes2.default.arrayOf(_propTypes2.default.number),
-  direction: _propTypes2.default.number,
-  ariaRole: _propTypes2.default.string,
-  ariaLabel: _propTypes2.default.string,
-  isClickToPauseDisabled: _propTypes2.default.bool,
-  title: _propTypes2.default.string
-};
-
-Lottie.defaultProps = {
-  eventListeners: [],
-  isStopped: false,
-  isPaused: false,
-  speed: 1,
-  ariaRole: 'button',
-  ariaLabel: 'animation',
-  isClickToPauseDisabled: false,
-  title: ''
-};
-
-/***/ }),
-
 /***/ "iYUx":
 /***/ (function(module, exports) {
 
@@ -5666,22 +5418,15 @@ module.exports = require("@apollo/react-hooks");
 
 /***/ }),
 
-/***/ "mdCM":
-/***/ (function(module, exports) {
-
-module.exports = require("lottie-web");
-
-/***/ }),
-
 /***/ "nOHt":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__("284h");
+var _interopRequireWildcard = __webpack_require__("7KCV");
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.useRouter = useRouter;
@@ -5839,204 +5584,6 @@ module.exports = require("react-intersection-observer");
 
 /***/ }),
 
-/***/ "p46w":
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * JavaScript Cookie v2.2.1
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
-;(function (factory) {
-	var registeredInModuleLoader;
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		registeredInModuleLoader = true;
-	}
-	if (true) {
-		module.exports = factory();
-		registeredInModuleLoader = true;
-	}
-	if (!registeredInModuleLoader) {
-		var OldCookies = window.Cookies;
-		var api = window.Cookies = factory();
-		api.noConflict = function () {
-			window.Cookies = OldCookies;
-			return api;
-		};
-	}
-}(function () {
-	function extend () {
-		var i = 0;
-		var result = {};
-		for (; i < arguments.length; i++) {
-			var attributes = arguments[ i ];
-			for (var key in attributes) {
-				result[key] = attributes[key];
-			}
-		}
-		return result;
-	}
-
-	function decode (s) {
-		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
-	}
-
-	function init (converter) {
-		function api() {}
-
-		function set (key, value, attributes) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			attributes = extend({
-				path: '/'
-			}, api.defaults, attributes);
-
-			if (typeof attributes.expires === 'number') {
-				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
-			}
-
-			// We're using "expires" because "max-age" is not supported by IE
-			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
-
-			try {
-				var result = JSON.stringify(value);
-				if (/^[\{\[]/.test(result)) {
-					value = result;
-				}
-			} catch (e) {}
-
-			value = converter.write ?
-				converter.write(value, key) :
-				encodeURIComponent(String(value))
-					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-
-			key = encodeURIComponent(String(key))
-				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-				.replace(/[\(\)]/g, escape);
-
-			var stringifiedAttributes = '';
-			for (var attributeName in attributes) {
-				if (!attributes[attributeName]) {
-					continue;
-				}
-				stringifiedAttributes += '; ' + attributeName;
-				if (attributes[attributeName] === true) {
-					continue;
-				}
-
-				// Considers RFC 6265 section 5.2:
-				// ...
-				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
-				//     character:
-				// Consume the characters of the unparsed-attributes up to,
-				// not including, the first %x3B (";") character.
-				// ...
-				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
-			}
-
-			return (document.cookie = key + '=' + value + stringifiedAttributes);
-		}
-
-		function get (key, json) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			var jar = {};
-			// To prevent the for loop in the first place assign an empty array
-			// in case there are no cookies at all.
-			var cookies = document.cookie ? document.cookie.split('; ') : [];
-			var i = 0;
-
-			for (; i < cookies.length; i++) {
-				var parts = cookies[i].split('=');
-				var cookie = parts.slice(1).join('=');
-
-				if (!json && cookie.charAt(0) === '"') {
-					cookie = cookie.slice(1, -1);
-				}
-
-				try {
-					var name = decode(parts[0]);
-					cookie = (converter.read || converter)(cookie, name) ||
-						decode(cookie);
-
-					if (json) {
-						try {
-							cookie = JSON.parse(cookie);
-						} catch (e) {}
-					}
-
-					jar[name] = cookie;
-
-					if (key === name) {
-						break;
-					}
-				} catch (e) {}
-			}
-
-			return key ? jar[key] : jar;
-		}
-
-		api.set = set;
-		api.get = function (key) {
-			return get(key, false /* read as raw */);
-		};
-		api.getJSON = function (key) {
-			return get(key, true /* read as json */);
-		};
-		api.remove = function (key, attributes) {
-			set(key, '', extend(attributes, {
-				expires: -1
-			}));
-		};
-
-		api.defaults = {};
-
-		api.withConverter = init;
-
-		return api;
-	}
-
-	return init(function () {});
-}));
-
-
-/***/ }),
-
-/***/ "pBuL":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Arrow; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-function Arrow(props) {
-  return __jsx("svg", {
-    className: props.class,
-    xmlns: "http://www.w3.org/2000/svg",
-    width: props.width,
-    height: props.height,
-    fill: props.fill,
-    viewBox: "0 0 18 18"
-  }, __jsx("path", {
-    d: "M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z"
-  }));
-}
-
-/***/ }),
-
 /***/ "rL3P":
 /***/ (function(module) {
 
@@ -6079,7 +5626,7 @@ module.exports = require("graphql-tag");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("mU8t");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("7Ofu");
+/* harmony import */ var _src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("cNYH");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -6129,12 +5676,12 @@ const initOnContext = ctx => {
 
 const initApolloClient = (initialState, ctx) => {
   if (true) {
-    return Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    return Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   } // Reuse client on the client-side
 
 
   if (!globalApolloClient) {
-    globalApolloClient = Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    globalApolloClient = Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   }
 
   return globalApolloClient;
@@ -6251,6 +5798,13 @@ const withApollo = ({
 
 /***/ }),
 
+/***/ "vmXh":
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
+
+/***/ }),
+
 /***/ "vuC2":
 /***/ (function(module, exports) {
 
@@ -6292,34 +5846,6 @@ module.exports = require("next/head");
 /***/ (function(module, exports) {
 
 module.exports = require("lodash.throttle");
-
-/***/ }),
-
-/***/ "zOGZ":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_loader_spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2Hsl");
-/* harmony import */ var react_loader_spinner__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_loader_spinner__WEBPACK_IMPORTED_MODULE_1__);
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-const Loading = () => {
-  //other logic
-  return __jsx(react_loader_spinner__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    type: "Puff",
-    color: "#00BFFF",
-    height: 100,
-    width: 100,
-    timeout: 6000 //3 secs
-
-  });
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Loading);
 
 /***/ })
 

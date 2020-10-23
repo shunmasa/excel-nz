@@ -1,1 +1,0 @@
-{"ast":null,"code":"import gql from 'graphql-tag';\nconst UPDATE_POST = gql`\n  mutation updatePost($postId:ID!,$postUpdate: PostUpdate){\n         updatePost(postId:$postId,postUpdate: $postUpdate){\n           _id\n           description\n           username\n           file\n         }\n  }\n\n`;\nexport default UPDATE_POST;","map":null,"metadata":{},"sourceType":"module"}

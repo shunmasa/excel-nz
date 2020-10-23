@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import Footer from '../src/components/Footer';
-import { withAuthSync } from '../utils/auth';
+import { withAuthSync } from '../src/utils/auth';
 
 const Welcome: React.SFC = () => {
   return (

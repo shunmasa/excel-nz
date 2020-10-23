@@ -1,1 +1,0 @@
-{"ast":null,"code":"import gql from 'graphql-tag';\nconst CREATE_NOTICE = gql`\n  mutation createNotice($body: String!) {\n    createNotice(body:$body) {\n       _id\n      body\n      createdAt\n    }\n  }\n`;\nexport default CREATE_NOTICE;","map":null,"metadata":{},"sourceType":"module"}

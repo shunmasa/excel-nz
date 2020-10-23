@@ -128,120 +128,6 @@ module.exports = require("next/router");
 
 /***/ }),
 
-/***/ "7Ofu":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("p46w");
-/* harmony import */ var _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-
-const {
-  createUploadLink
-} = __webpack_require__("BPlj");
-
-let authToken = null;
-const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
-  operation.setContext({
-    headers: {
-      authorization: authToken || null
-    }
-  }); // Add onto payload for WebSocket authentication
-
-  operation.authToken = authToken;
-  return forward(operation);
-});
-const webSocketLink = false ? undefined : null;
-/**
- * Set Token
- * @param token
- */
-
-const setToken = async token => {
-  try {
-    authToken = token ? `Bearer ${token}` : null;
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
-      expires: 7
-    });
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Set Token In Request
- * @param token
- */
-
-const setTokenInRequest = async token => {
-  try {
-    authToken = token ? token : null;
-    return authToken;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-/**
- * Destroy Token
- * For logout purpose
- */
-
-const destroyToken = async () => {
-  try {
-    _node_modules_js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
-    authToken = null;
-  } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
-  }
-};
-const isBrowser = false;
-const httpLink = createUploadLink({
-  uri: "http://localhost:4020/graphql",
-  credentials: "same-origin",
-  fetch: !isBrowser && fetch
-});
-const link = false ? undefined : httpLink;
-/**
- * Creates and configures the ApolloClient
- * @param  {Object} [initialState={}]
- */
-
-function createApolloClient(initialState, ctx) {
-  // The `ctx` (NextPageContext) will only be present on the server.
-  // use it to extract auth headers (ctx.req) or similar.
-  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
-    connectToDevTools: isBrowser,
-    ssrMode: !isBrowser,
-    // Disables forceFetch on the server (so queries are only run once)
-    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
-    //createUploadLink
-    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
-  });
-}
-
-/***/ }),
-
 /***/ "7fVs":
 /***/ (function(module, exports) {
 
@@ -264,13 +150,26 @@ module.exports = require("@material-ui/core/styles");
 
 /***/ }),
 
+/***/ "AroE":
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
 /***/ "B5Ud":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__("TqRt");
+var _interopRequireDefault = __webpack_require__("AroE");
 
 exports.__esModule = true;
 exports.Container = Container;
@@ -424,42 +323,6 @@ module.exports = require("apollo-client");
 
 /***/ }),
 
-/***/ "TqRt":
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "VWkZ":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("txk1");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
-
-const GET_POST = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
-query post($postId:ID!){
-  post(postId:$postId){
-       _id
-      username
-      description
-      file
-      postTitle
-  }
-  
-  }
-`;
-/* harmony default export */ __webpack_exports__["a"] = (GET_POST);
-
-/***/ }),
-
 /***/ "ayVz":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -480,7 +343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_withApolloData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("vaDH");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("mU8t");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _graphql_query_post__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("VWkZ");
+/* harmony import */ var _src_graphql_query_post__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("xO0O");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("4Q3z");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -591,7 +454,7 @@ const StudentDialog = () => {
     data,
     error,
     loading
-  } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_7__["useQuery"])(_graphql_query_post__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
+  } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_7__["useQuery"])(_src_graphql_query_post__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
     variables: {
       postId: studentDialog
     }
@@ -648,6 +511,150 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "cNYH":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTokenInRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return destroyToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createApolloClient; });
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Oyez");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("oz4i");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("vmXh");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vuC2");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("fflE");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("EN0U");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_5__);
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+
+
+
+
+
+
+
+const {
+  createUploadLink
+} = __webpack_require__("BPlj");
+
+let authToken = null;
+const authMiddleware = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"]((operation, forward) => {
+  operation.setContext({
+    headers: {
+      authorization: authToken || null
+    }
+  }); // Add onto payload for WebSocket authentication
+
+  operation.authToken = authToken;
+  return forward(operation);
+});
+const webSocketLink = false ? undefined : null;
+/**
+ * Set Token
+ * @param token
+ */
+
+const setToken = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? `Bearer ${token}` : null;
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set('token', authToken, {
+      expires: 7
+    });
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Set Token In Request
+ * @param token
+ */
+
+const setTokenInRequest = token => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    authToken = token ? token : null;
+    return authToken;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+/**
+ * Destroy Token
+ * For logout purpose
+ */
+
+const destroyToken = () => __awaiter(void 0, void 0, void 0, function* () {
+  try {
+    js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.remove('token');
+    authToken = null;
+  } catch (error) {
+    // tslint:disable-next-line:no-console
+    console.log(error);
+  }
+});
+const isBrowser = false;
+const httpLink = createUploadLink({
+  uri: "http://localhost:4020/graphql",
+  credentials: "same-origin",
+  fetch: !isBrowser && fetch
+});
+const link = false ? undefined : httpLink;
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+
+function createApolloClient(initialState, ctx) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
+    connectToDevTools: isBrowser,
+    ssrMode: !isBrowser,
+    link: Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["concat"])(authMiddleware, link),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState)
+  });
+}
+
+/***/ }),
+
 /***/ "fflE":
 /***/ (function(module, exports) {
 
@@ -683,180 +690,6 @@ module.exports = require("apollo-cache-inmemory");
 
 /***/ }),
 
-/***/ "p46w":
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * JavaScript Cookie v2.2.1
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
-;(function (factory) {
-	var registeredInModuleLoader;
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		registeredInModuleLoader = true;
-	}
-	if (true) {
-		module.exports = factory();
-		registeredInModuleLoader = true;
-	}
-	if (!registeredInModuleLoader) {
-		var OldCookies = window.Cookies;
-		var api = window.Cookies = factory();
-		api.noConflict = function () {
-			window.Cookies = OldCookies;
-			return api;
-		};
-	}
-}(function () {
-	function extend () {
-		var i = 0;
-		var result = {};
-		for (; i < arguments.length; i++) {
-			var attributes = arguments[ i ];
-			for (var key in attributes) {
-				result[key] = attributes[key];
-			}
-		}
-		return result;
-	}
-
-	function decode (s) {
-		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
-	}
-
-	function init (converter) {
-		function api() {}
-
-		function set (key, value, attributes) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			attributes = extend({
-				path: '/'
-			}, api.defaults, attributes);
-
-			if (typeof attributes.expires === 'number') {
-				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
-			}
-
-			// We're using "expires" because "max-age" is not supported by IE
-			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
-
-			try {
-				var result = JSON.stringify(value);
-				if (/^[\{\[]/.test(result)) {
-					value = result;
-				}
-			} catch (e) {}
-
-			value = converter.write ?
-				converter.write(value, key) :
-				encodeURIComponent(String(value))
-					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-
-			key = encodeURIComponent(String(key))
-				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-				.replace(/[\(\)]/g, escape);
-
-			var stringifiedAttributes = '';
-			for (var attributeName in attributes) {
-				if (!attributes[attributeName]) {
-					continue;
-				}
-				stringifiedAttributes += '; ' + attributeName;
-				if (attributes[attributeName] === true) {
-					continue;
-				}
-
-				// Considers RFC 6265 section 5.2:
-				// ...
-				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
-				//     character:
-				// Consume the characters of the unparsed-attributes up to,
-				// not including, the first %x3B (";") character.
-				// ...
-				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
-			}
-
-			return (document.cookie = key + '=' + value + stringifiedAttributes);
-		}
-
-		function get (key, json) {
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			var jar = {};
-			// To prevent the for loop in the first place assign an empty array
-			// in case there are no cookies at all.
-			var cookies = document.cookie ? document.cookie.split('; ') : [];
-			var i = 0;
-
-			for (; i < cookies.length; i++) {
-				var parts = cookies[i].split('=');
-				var cookie = parts.slice(1).join('=');
-
-				if (!json && cookie.charAt(0) === '"') {
-					cookie = cookie.slice(1, -1);
-				}
-
-				try {
-					var name = decode(parts[0]);
-					cookie = (converter.read || converter)(cookie, name) ||
-						decode(cookie);
-
-					if (json) {
-						try {
-							cookie = JSON.parse(cookie);
-						} catch (e) {}
-					}
-
-					jar[name] = cookie;
-
-					if (key === name) {
-						break;
-					}
-				} catch (e) {}
-			}
-
-			return key ? jar[key] : jar;
-		}
-
-		api.set = set;
-		api.get = function (key) {
-			return get(key, false /* read as raw */);
-		};
-		api.getJSON = function (key) {
-			return get(key, true /* read as json */);
-		};
-		api.remove = function (key, attributes) {
-			set(key, '', extend(attributes, {
-				expires: -1
-			}));
-		};
-
-		api.defaults = {};
-
-		api.withConverter = init;
-
-		return api;
-	}
-
-	return init(function () {});
-}));
-
-
-/***/ }),
-
 /***/ "txk1":
 /***/ (function(module, exports) {
 
@@ -878,7 +711,7 @@ module.exports = require("graphql-tag");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("mU8t");
 /* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("7Ofu");
+/* harmony import */ var _src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("cNYH");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -928,12 +761,12 @@ const initOnContext = ctx => {
 
 const initApolloClient = (initialState, ctx) => {
   if (true) {
-    return Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    return Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   } // Reuse client on the client-side
 
 
   if (!globalApolloClient) {
-    globalApolloClient = Object(_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
+    globalApolloClient = Object(_src_utils_apolloClient__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(initialState, ctx);
   }
 
   return globalApolloClient;
@@ -1050,10 +883,40 @@ const withApollo = ({
 
 /***/ }),
 
+/***/ "vmXh":
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
+
+/***/ }),
+
 /***/ "vuC2":
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-link");
+
+/***/ }),
+
+/***/ "xO0O":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("txk1");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
+
+const GET_POST = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
+query post($postId:ID!){
+  post(postId:$postId){
+       _id
+      username
+      description
+      file
+      postTitle
+  }
+  
+  }
+`;
+/* harmony default export */ __webpack_exports__["a"] = (GET_POST);
 
 /***/ }),
 
