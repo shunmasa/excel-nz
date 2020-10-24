@@ -75,7 +75,21 @@ app.prepare()
   
   const server = express()
   server.get('*', (req, res) => {
-    return handle(req, res)
+    if (req.url === '/') {
+      res.writeHead(200, {
+        Connection: 'keep-alive',
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'text/event-stream',
+      });
+      res.write('data: Processing...\n\n');
+      setTimeout(() => {
+        res.write('data: Processing2...\n\n');
+      }, 10000);
+    } else {
+      return handle(req, res)
+    }
+    
+    
   });
   
   
