@@ -59,7 +59,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   // Allow Next.js to remove getInitialProps from the browser build
   if (typeof window === "undefined") {
     if (ssr) {
-      WithApollo.getInitialProps = async ctx => {
+      WithApollo.getInitialProps = async (ctx: { ctx?: any; AppTree?: any }) => {
         const { AppTree } = ctx
         // Run all GraphQL queries in the component tree
         // and extract the resulting data

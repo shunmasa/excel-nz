@@ -144,8 +144,9 @@ const Dashboard = () => {
   }
   const handleLogout = () => {
   destroyToken()
-  Cookies.remove('name');
-  Router.push('/home');
+  // Cookies.remove('name');
+  Cookies.remove('token');
+  Router.push('/');
   }
   return (
     <div className={classes.root}>
