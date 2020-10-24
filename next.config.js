@@ -1,7 +1,13 @@
 module.exports = {
   exportPathMap: async function() {
+
     return {
-      "/": { page: "/" }
+      "/": { page: "/" },
+      "/contact": { page: "/contact" },
+      "/dashboard": { page: "/dashboard" },
+      "/form": { page: "/form" },
+      "/login": { page: "/login" },
+      "/notice": { page: "/notice" },
     };
   },
   // experimental: { 

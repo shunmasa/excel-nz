@@ -149,8 +149,11 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri:"ws://localhost:4020/graphql",
+      lazy: true,
       options: {
-        reconnect: true
+        reconnect: true,
+        timeout: 30000
+    
       }
     })
   : null;
@@ -203,10 +206,9 @@ const httpLink = new HttpLink({
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {
-    mode: 'no-cors'
-  },
-})
-
+    mode: 'cors',
+  }
+}) 
 const link = process.browser
   ? split(
       ({ query }) => {

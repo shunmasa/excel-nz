@@ -32,6 +32,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri:"ws://localhost:4020/graphql",
+      lazy: true,
       options: {
         reconnect: true,
         timeout: 30000

@@ -36,6 +36,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri: WEB_SOCKET_LINK,
+      lazy: true,
       options: {
         reconnect: true,
         timeout: 30000
