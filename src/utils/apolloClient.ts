@@ -33,7 +33,8 @@ const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri:"ws://localhost:4020/graphql",
       options: {
-        reconnect: true
+        reconnect: true,
+        timeout: 30000
       }
     })
   : null;

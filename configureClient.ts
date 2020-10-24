@@ -37,7 +37,8 @@ const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri: WEB_SOCKET_LINK,
       options: {
-        reconnect: true
+        reconnect: true,
+        timeout: 30000
       }
     })
   : null;
