@@ -203,7 +203,7 @@ const httpLink = new HttpLink({
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {
-    mode: 'cors',
+    mode: 'no-cors'
   },
 })
 
