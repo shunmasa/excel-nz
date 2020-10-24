@@ -202,6 +202,9 @@ const httpLink = new HttpLink({
   uri: "http://localhost:4020/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
+  fetchOptions: {
+    mode: 'cors',
+  },
 })
 
 const link = process.browser
