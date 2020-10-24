@@ -5,7 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "build": "next build",
-    "start": "NODE_ENV=production node dist/index.js & next start -p $PORT"
+    "heroku-postbuild": "next build",
+    "export": "next export",
+    "start": "NODE_ENV=production node dist/index.js & next start"
   },
   "keywords": [],
   "author": "",
