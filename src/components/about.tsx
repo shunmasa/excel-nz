@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import MainPhoto from './MainPhoto'
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
-
+///
 
 import ScrollAnimation from 'react-animate-on-scroll';
 
