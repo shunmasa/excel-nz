@@ -77,6 +77,15 @@ app.prepare()
 .then(() => {
   
   const server = express()
+
+  server.get('/card/:id', (req, res) => {
+    return app.render(req, res, '/card', { id: req.params.id })
+  })
+  server.get('/dashboard/:id', (req, res) => {
+    return app.render(req, res, '/dashboard', { id: req.params.id })
+  })
+
+  
   server.get('*', (req, res) => {
     if (req.url === '/') {
       res.writeHead(200, {
