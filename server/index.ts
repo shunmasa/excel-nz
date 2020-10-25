@@ -7,12 +7,6 @@ const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 
-// import React from 'react';
-// import ReactDOMServer from 'react-dom/server';
-// import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
-// import App from '../pages/_app';
-// import theme from '../src/ui/Theme';
-// const path = require('path')
 
 //const path = require("path");
 ////const sendEmail = require('./server/sendEmail')
@@ -86,19 +80,19 @@ app.prepare()
   
   const server = express()
   server.get('*', (req, res) => {
-    // if (req.url === '/') {
-    //   res.writeHead(200, {
-    //     Connection: 'keep-alive',
-    //     'Cache-Control': 'no-cache',
-    //     'Content-Type': 'text/event-stream',
-    //   });
-    //   res.write('data: Processing...\n\n');
-    //   setTimeout(() => {
-    //     res.write('data: Processing2...\n\n');
-    //   }, 10000);
-    // } else {
-    //   return handle(req, res)
-    // }
+    if (req.url === '/') {
+      res.writeHead(200, {
+        Connection: 'keep-alive',
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'text/event-stream',
+      });
+      res.write('data: Processing...\n\n');
+      setTimeout(() => {
+        res.write('data: Processing2...\n\n');
+      }, 10000);
+    } else {
+      return handle(req, res)
+    }
     
     
   });
