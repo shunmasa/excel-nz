@@ -11,7 +11,9 @@ export const auth = (ctx: { req: any; res?: any; }) => {
   const { token, userId } = nextCookie(ctx);
 console.log('logs:',ctx)
   if (ctx.req && !token) {
+       {/* @ts-ignore */}
     ctx.res.writeHead(307, { Location: '/' });
+       {/* @ts-ignore */}
     ctx.res.end();
     return;
   }

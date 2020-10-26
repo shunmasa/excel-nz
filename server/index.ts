@@ -78,11 +78,11 @@ app.prepare()
   
   const server = express()
 
-  server.get('/card/:id', (req, res) => {
-    return app.render(req, res, '/card', { id: req.params.id })
+  server.get('/card/:studentDialog', (req, res) => {
+    return app.render(req, res, '/card', { studentDialog: req.params.id })
   })
-  server.get('/dashboard/:id', (req, res) => {
-    return app.render(req, res, '/dashboard', { id: req.params.id })
+  server.get('/dashboard/:dashboard', (req, res) => {
+    return app.render(req, res, '/dashboard', { dashboard: req.params.id })
   })
 
   
@@ -91,7 +91,8 @@ app.prepare()
       res.writeHead(200, {
         Connection: 'keep-alive',
         'Cache-Control': 'no-cache',
-        'Content-Type': 'text/event-stream',
+        'Content-Type': 'text/plain'
+        // 'Content-Type': 'text/event-stream',
       });
       res.write('data: Processing...\n\n');
       setTimeout(() => {
