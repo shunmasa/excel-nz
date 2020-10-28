@@ -39,5 +39,5 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["server/**/*", "config/**/*", "index.ts"]
+  "include": ["server/**/*", "config/**/*", "index.ts", "next-env.d.ts"]
 }
