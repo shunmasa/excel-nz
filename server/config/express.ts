@@ -6,11 +6,23 @@ import * as http from 'http';
 import schema from '../graphql/schema/index';
 import auth from '../middleware/auth';
 import config from './index';
+import fs from 'fs'
+
+const configurations = {
+  // Note: You may need sudo to run on port 443
+  production: { ssl: true, port: 443, hostname: 'example.com' },
+  development: { ssl: false, port: 4000, hostname: 'localhost' }
+}
+
+const environment = process.env.NODE_ENV || 'production'
+const configs = configurations[environment]
 
 class Express {
   public express: express.Application;
   public server: ApolloServer = new ApolloServer(schema);
   public httpServer: http.Server;
+ 
+
   public init = (): void => {
     /**
      * Creating an express application
@@ -39,9 +51,22 @@ class Express {
     /**
      *  Middlerware for extracting authToken
      */
+
     this.express.use(auth);
     this.server.applyMiddleware({ app: this.express });
-    this.httpServer = http.createServer(this.express);
+   
+  
+if (configs.ssl) {
+    this.httpServer = http.createServer(
+      {
+              /* @ts-ignore */
+        key: fs.readFileSync(`./ssl/${environment}/server.key`),
+        cert: fs.readFileSync(`./ssl/${environment}/server.crt`)
+      },
+      this.express
+      );
+    }
+    
     /**
      * Installing subscription handlers
      */
