@@ -107,7 +107,7 @@ app.prepare()
   
   
 
-  ExpressServer.httpServer.listen( 8080 || config.port, () => {
+  ExpressServer.httpServer.listen( 4020 || config.port, () => {
     console.log(`🚀  Server ready at ${config.port}`);
     console.log(
       `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
