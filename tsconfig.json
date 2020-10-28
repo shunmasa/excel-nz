@@ -9,6 +9,8 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
+    "outDir": "dist",
+    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "noEmit": false,
     "esModuleInterop": true,

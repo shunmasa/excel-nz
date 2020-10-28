@@ -1,0 +1,198 @@
+import React from "react";
+import Hidden from "@material-ui/core/Hidden";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+const PhotoGallery = () => {
+    // const { scrollY } = useViewportScroll();
+    // const y1 = useTransform(scrollY, [0, 300], [0, 200]);
+    // const y2 = useTransform(scrollY, [0, 300], [0, -100]);
+    const [ref, inView, entry] = useInView({
+        /* Optional options */
+        threshold: 0.1,
+        triggerOnce: false
+    });
+    const variants = {
+        visible: { opacity: 1, scale: 1, y: 0 },
+        hidden: {
+            opacity: 0,
+            scale: 0.65,
+            y: 50
+        }
+    };
+    return (<>
+    <Hidden smDown>
+    <div className="galleryBody">
+    <div className="galleryText">エクセルNZ<br />フォトギャラリー</div>
+   <ul className="gallery">
+
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 1, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery1.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 1, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery2.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+    </motion.li>
+
+ 
+ <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 5, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery3.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 0.5, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery4.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 2.5, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery5.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 3.5, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery6.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 3.5, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery7.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 3, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery8.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  <motion.li animate={inView ? 'visible' : 'hidden'} variants={variants} transition={{ duration: 3, ease: 'easeOut' }} ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery9.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+  </ul>
+    </div>
+  
+    </Hidden>
+
+
+    <Hidden lgUp>
+ <div className="galleryBody">
+   
+   <ul className="gallery">
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery1.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery2.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+    </li>
+
+ 
+ <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery3.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery4.jpg" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="https://source.unsplash.com/user/brina_blum/800x600" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="https://source.unsplash.com/user/kharaoke/800x600" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="https://source.unsplash.com/user/mikeenerio/800x600" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="https://source.unsplash.com/user/jontyson/800x600" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="https://source.unsplash.com/user/joshkahen/800x600" alt=""/>
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  </ul>
+    </div>
+  
+    </Hidden>
+    </>);
+};
+export default PhotoGallery;
