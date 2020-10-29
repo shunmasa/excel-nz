@@ -7,6 +7,39 @@ const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 
+import App from '../pages/_app'
+import ReactDOMServer from 'react-dom/server';
+import parser from 'ua-parser-js';
+import mediaQuery from 'css-mediaquery';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+
+
+function handleRender(req, res) {
+  const deviceType = parser(req.headers['user-agent']).device.type || 'desktop';
+  const ssrMatchMedia = query => ({
+    matches: mediaQuery.match(query, {
+      // The estimated CSS width of the browser.
+      width: deviceType === 'mobile' ? '0px' : '1024px',
+    }),
+  });
+
+  const html = ReactDOMServer.renderToString(
+    <ThemeProvider
+      theme={{
+        props: {
+          MuiUseMediaQuery: { ssrMatchMedia },
+        },
+      }}
+    >
+      <App />
+    </ThemeProvider>,
+  );
+
+}
+
+
+
 
 //const path = require("path");
 ////const sendEmail = require('./server/sendEmail')
@@ -23,6 +56,8 @@ Promise.promisifyAll(mongoose);
  * @param uris
  * @param options
  */
+
+
 mongoose.connect(config.db, {
   bufferMaxEntries: 0,
   keepAlive: true,
@@ -34,6 +69,9 @@ mongoose.connect(config.db, {
   useFindAndModify:false
 });
 
+
+
+
 /**
  * Throw error when not able to connect to database
  */
@@ -42,36 +80,19 @@ mongoose.connection.on('error', () => {
 });
 
 
-// app.use(express.static('client/build'));
 
-// app.get('*', (request, response) => {
-// 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// });
-/**
- * Initialize Express
- */
-
-// sendEmail();
-// app.post('/send', function (req, res) {
-//   const name = req.body.name
-//   console.log(name)
-// })
 
 const ExpressServer = new Express();
 ExpressServer.init();
-//web
-// const nextApp = next({
-//   dev: process.env.NODE_ENV !== 'production',
-//   dir: __dirname,
-// });
-//console.log(__dirname) 
-// const handle = nextApp.getRequestHandler()
+
+
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 
 
-
+app.use(handleRender);
 
 app.prepare()
 .then(() => {
@@ -86,6 +107,9 @@ app.prepare()
   })
 
   
+
+
+
   server.get('*', (req, res) => {
     if (req.url === '/') {
       res.writeHead(200, {
@@ -112,9 +136,9 @@ app.prepare()
     console.log(
       `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
     );
-    // console.log(
-    //   `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
-    // );
+    console.log(
+      `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
+    );
   });
  
 })

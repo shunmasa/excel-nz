@@ -7,7 +7,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "importHelpers": true,
-    "strict": true,
+    "strict": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
     "noImplicitThis": true,
@@ -23,6 +23,7 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "jsx": "preserve",
     "lib": [
       "es5",
       "es6",
@@ -39,5 +40,5 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["server/**/*", "config/**/*", "index.ts", "next-env.d.ts"]
+  "include": ["server/**/*", "config/**/*", "index.ts", "next-env.d.ts","**/*.tsx"]
 }
