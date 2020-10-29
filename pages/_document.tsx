@@ -9,6 +9,9 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="theme-color" content={Theme.palette.primary.main} />
+        
+           <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap"
