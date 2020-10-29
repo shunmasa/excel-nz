@@ -112,9 +112,9 @@ app.prepare()
     console.log(
       `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
     );
-    console.log(
-      `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
-    );
+    // console.log(
+    //   `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
+    // );
   });
  
 })
