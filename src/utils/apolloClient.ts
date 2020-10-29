@@ -29,16 +29,16 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const webSocketLink: any = process.browser
-  ? new WebSocketLink({
-      uri:"ws://localhost:4020/graphql",
-      lazy: true,
-      options: {
-        reconnect: true,
-        timeout: 30000
-      }
-    })
-  : null;
+// const webSocketLink: any = process.browser
+//   ? new WebSocketLink({
+//       uri:"ws://localhost:4020/graphql",
+//       lazy: true,
+//       options: {
+//         reconnect: true,
+//         timeout: 30000
+//       }
+//     })
+//   : null;
 
 /**
  * Set Token
@@ -95,7 +95,7 @@ const link = process.browser
         const { kind, operation }: Definintion = getMainDefinition(query);
         return kind === 'OperationDefinition' && operation === 'subscription';
       },
-      webSocketLink,
+      // webSocketLink,
       httpLink
     )
   : httpLink;
