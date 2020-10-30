@@ -50,7 +50,7 @@ const App = (props:any):JSX.Element => {
     // I'm guessing on the pageProps key here based on a couple examples
     return { pageProps: { ...initialProps, deviceType } };
   }
-  
+  //
   useEffect(() => {
    
     const jssStyles = document.querySelector('#jss-server-side');
