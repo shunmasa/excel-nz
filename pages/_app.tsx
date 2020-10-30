@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-
+import NextApp from "next/app";
 import 'react-toastify/dist/ReactToastify.css';
 import Theme from '../src/ui/Theme';
 import { ToastContainer } from 'react-toastify';
@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import parser from "ua-parser-js";
 // import withData from '../src/configureClient';
 import mediaQuery from "css-mediaquery";
 
@@ -39,6 +40,16 @@ const App = (props:any):JSX.Element => {
       MuiUseMediaQuery: { ssrMatchMedia: desktopSsrMatchMedia }
     }
   });
+
+  const getInitialProps = async(ctx) => {
+    // I'm guessing on this line based on your _document.js example
+    const initialProps = await NextApp.getInitialProps(ctx);
+    // OP's edit: The ctx that we really want is inside the function parameter "ctx"
+    const deviceType =
+      parser(ctx.ctx.req.headers["user-agent"]).device.type || "desktop";
+    // I'm guessing on the pageProps key here based on a couple examples
+    return { pageProps: { ...initialProps, deviceType } };
+  }
   
   useEffect(() => {
    
