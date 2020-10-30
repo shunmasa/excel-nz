@@ -23,7 +23,7 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": [
       "es5",
       "es6",
@@ -40,5 +40,5 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["server/**/*", "config/**/*", "index.ts", "next-env.d.ts","**/*.tsx"]
+  "include": ["server/**/*", "config/**/*", "index.ts", "next-env.d.ts"]
 }

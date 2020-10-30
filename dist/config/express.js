@@ -45,7 +45,7 @@ class Express {
             /**
              * Installing subscription handlers
              */
-            this.server.installSubscriptionHandlers(this.httpServer);
+            // this.server.installSubscriptionHandlers(this.httpServer);
         };
     }
 }

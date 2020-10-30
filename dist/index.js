@@ -9,6 +9,8 @@ const express = require('express');
 const next = require('next');
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+// import parser from 'ua-parser-js';
+// import mediaQuery from 'css-mediaquery';
 //const path = require("path");
 ////const sendEmail = require('./server/sendEmail')
 //const express = require("express");
@@ -39,27 +41,8 @@ mongoose_1.default.connect(index_1.default.db, {
 mongoose_1.default.connection.on('error', () => {
     throw new Error(`unable to connect to database: ${index_1.default.db}`);
 });
-// app.use(express.static('client/build'));
-// app.get('*', (request, response) => {
-// 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// });
-/**
- * Initialize Express
- */
-// sendEmail();
-// app.post('/send', function (req, res) {
-//   const name = req.body.name
-//   console.log(name)
-// })
 const ExpressServer = new express_1.default();
 ExpressServer.init();
-//web
-// const nextApp = next({
-//   dev: process.env.NODE_ENV !== 'production',
-//   dir: __dirname,
-// });
-//console.log(__dirname) 
-// const handle = nextApp.getRequestHandler()
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
