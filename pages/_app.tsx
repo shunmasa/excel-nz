@@ -46,7 +46,7 @@ const App = (props:any):JSX.Element => {
     const initialProps = await NextApp.getInitialProps(ctx);
     // OP's edit: The ctx that we really want is inside the function parameter "ctx"
     const deviceType =
-      parser(ctx.ctx.req.headers["user-agent"]).device.type || "desktop";
+      parser(ctx.req.headers["user-agent"]).device.type || "desktop";
     // I'm guessing on the pageProps key here based on a couple examples
     return { pageProps: { ...initialProps, deviceType } };
   }
