@@ -1,5 +1,6 @@
 const path = require('path');
-const dev = process.env.NODE_ENV = 'production';
+
+const dev = process.env.NODE_ENV !== 'production';
 module.exports = {
   webpack: (config) => {
     config.plugins.push(new Dotenv({
