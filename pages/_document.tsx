@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content={Theme.palette.primary.main} />
         
-           <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
 
           <link
             rel="stylesheet"

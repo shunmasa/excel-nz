@@ -159,9 +159,9 @@ const PostForm = () => {
 <AppBar className={classes.appBar}>
 <Toolbar>
   {/* <IconButton edge="start" color="inherit" onClick={props.handleClose} aria-label="close"> */}
-  <IconButton edge="start" color="inherit"aria-label="close">
+  <div color="inherit"aria-label="close">
     <CloseIcon  onClick={handleDrawerClose}/>
-  </IconButton>
+  </div>
   <Typography variant="h6" className={classes.title}>
  ポストの作成
   </Typography>
