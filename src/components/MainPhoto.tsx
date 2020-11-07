@@ -35,7 +35,7 @@ const MainPhoto = () => {
 
         <div className="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
 
-<img src="/assets/B.jpg/" alt="Sheep"/>   
+<img src="/assets/B.jpg" alt="Sheep"/>   
 
 
 

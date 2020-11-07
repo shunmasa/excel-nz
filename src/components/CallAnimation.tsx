@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "2em",
       marginLeft:"12em",
       marginRight:"1em",
+      [theme.breakpoints.down("md")]: {
+  
+        maxWidth:"20em",
+        margin:0
+        },
       [theme.breakpoints.down("sm")]: {
         maxWidth: "35em",
         margin:0
@@ -34,13 +39,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
       height:"42rem",
       [theme.breakpoints.down("md")]: {
-        height:"55rem",
-        maxWidth:"768px",
+        height:"50rem",
+        maxWidth:"1280px",
         weidth:"100%",
         },
+        [theme.breakpoints.down("sm")]: {
+          height:"50rem",
+          maxWidth:"768px",
+         
+          },
       [theme.breakpoints.down("xs")]: {
       height:"65rem",
-      width: "100%",
+   
       maxWidth:"35em"
       }
 

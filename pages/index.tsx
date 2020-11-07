@@ -1,10 +1,10 @@
 import ScrollNavigation from 'react-single-page-navigation';
-import ReactGA from "react-ga";
-import Head from "next/head";
+// import ReactGA from "react-ga";
+// import Head from "next/head";
 
 import { motion, AnimateSharedLayout,useViewportScroll, useTransform  } from "framer-motion";
 import React,{useState,useEffect,useCallback, useRef} from 'react';
-// import { debounce } from "lodash";
+import HeadLine from "../src/components/HeadLine"
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Carousel from '../src/components/Carousel'
@@ -15,7 +15,8 @@ import StepperFnc from '../src/components/StepperFnc'
 import Lottie from "react-lottie";
 import PlaneData from '../public/assets/plane.json'
 import CallAnimation from '../src/components/CallAnimation'
-import TextLoop from "react-text-loop";
+import {Check} from '../src/components/Check'
+import Background from '../src/components/Background'
 import Footer from '../src/components/Footer'
 import GET_POSTS from '../src/graphql/query/posts';
 import Link from 'next/link'
@@ -66,8 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
    mainContainer:{
-     width:"100%",
-   
+     width:"100%"
    },
    supportContainer:{
     width:"100%",
@@ -75,16 +75,31 @@ const useStyles = makeStyles((theme: Theme) =>
     [theme.breakpoints.down("md")]: {
       marginTop:"3em",
       height:"25em",
-      maxWidth:"768px",
+      maxWidth:"1280px",
       weidth:"100%", 
       },
+      [theme.breakpoints.down("sm")]: {
+        height:"35em" ,
+        width:"100%",
+        maxWidth:"960px"
+        },
+    [theme.breakpoints.down("xs")]: {
+    height:"45em" 
+    }
   },
     secondContainer:{
       height:"20em",
       [theme.breakpoints.down("md")]: {
         marginTop:"3em",
-        height:"25em" 
+        height:"30em" ,
+        width:"100%",
+        maxWidth:"1280px"
         },
+        [theme.breakpoints.down("sm")]: {
+          height:"40em" ,
+          width:"100%",
+          maxWidth:"960px"
+          },
       [theme.breakpoints.down("xs")]: {
        marginTop:"4em",
       height:"45em" 
@@ -99,6 +114,10 @@ const useStyles = makeStyles((theme: Theme) =>
         height:"25em",
         weidth:"100%",
         },
+        [theme.breakpoints.down("sm")]: {
+          height:"26em",
+          weidth:"100%",
+          },
       [theme.breakpoints.down("xs")]: {
       height:"28em",
       weidth:"100%",
@@ -108,13 +127,17 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex:100,
       marginTop:"2.5em",
       paddingTop:"2em",
-      paddingLeft: "10em",
+      paddingLeft: "10.5em",
       paddingRight: "12.5em",
-      
+      [theme.breakpoints.down("sm")]: {
+        padding:0,
+        marign:0,
+         },
       [theme.breakpoints.down("sm")]: {
      padding:0,
      marign:0,
       },
+      
       [theme.breakpoints.down("xs")]: {
         padding:0,
         marign:0,
@@ -159,10 +182,16 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: "10em",
         [theme.breakpoints.down("md")]: {
           height:"45em",
-          maxWidth:"768px",
+          maxWidth:"1280px",
           weidth:"100%", 
           marginLeft:0
           },
+          [theme.breakpoints.down("sm")]: {
+            height:"50em",
+            maxWidth:"960px",
+            weidth:"100%", 
+            marginLeft:0
+            },
         [theme.breakpoints.down("xs")]: {
          marginLeft:"2rem",
          marginRight:0,
@@ -235,9 +264,14 @@ const useStyles = makeStyles((theme: Theme) =>
    　width:"80%",
       [theme.breakpoints.down("md")]: {
         height:"35rem",
-        maxWidth:"768px",
+        maxWidth:"1280px",
         weidth:"100%",
         },
+        [theme.breakpoints.down("md")]: {
+          height:"40rem",
+          maxWidth:"960px",
+          weidth:"100%",
+          },
       [theme.breakpoints.down("xs")]: {
       height:"47rem",
       width:"100%",
@@ -253,9 +287,14 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight:"25em", 
       [theme.breakpoints.down("md")]: {
         maxHeight:"30em",
-        maxWidth:"768px",
+        maxWidth:"1280px",
         weidth:"100%",
         },
+        [theme.breakpoints.down("sm")]: {
+          maxHeight:"35em",
+          maxWidth:"960px",
+          weidth:"100%",
+          },
       [theme.breakpoints.down("xs")]: {
         marginRight:0,
         width:"100%"
@@ -288,15 +327,20 @@ const useStyles = makeStyles((theme: Theme) =>
      primaryContainer:{
       height:"100%",
       maxHeight:"157rem",
-      paddingTop:"310px",
       paddingBottom:"30px",
 
       [theme.breakpoints.down("md")]: {
         height:"100%",
-        maxHeight:"157rem",
-        maxWidth:"768px",
+        maxHeight:"170rem",
+        maxWidth:"1280px",
         weidth:"100%",
         },
+        [theme.breakpoints.down("sm")]: {
+          height:"100%",
+          maxHeight:"185rem",
+          maxWidth:"960px",
+          weidth:"100%",
+          },
       [theme.breakpoints.down("xs")]: {
       maxHeight:"355rem",
       height:"100%",
@@ -318,11 +362,18 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom:"5em",
       [theme.breakpoints.down("md")]: {
         height:"30em",
-        maxWidth:"768px",
+        maxWidth:"1280px",
         weidth:"100%", 
         marginLeft:0,
         marginRight:0,
         },
+        [theme.breakpoints.down("sm")]: {
+          height:"35em",
+          maxWidth:"960px",
+          weidth:"100%", 
+          marginLeft:0,
+          marginRight:0,
+          },
       [theme.breakpoints.down("xs")]: {
         height:"60em",
         marginTop:"1em",
@@ -339,9 +390,14 @@ const useStyles = makeStyles((theme: Theme) =>
       width:"60%",
       [theme.breakpoints.down("md")]: {
         marginLeft:0,
-        maxWidth:"768px",
+        maxWidth:"1280px",
         weidth:"100%", 
         },
+        [theme.breakpoints.down("sm")]: {
+          marginLeft:0,
+          maxWidth:"960px",
+          weidth:"100%", 
+          },
       [theme.breakpoints.down("xs")]: {
         width:"100%",
         margin:0
@@ -354,9 +410,14 @@ const useStyles = makeStyles((theme: Theme) =>
        marginTop:"2em",
        [theme.breakpoints.down("md")]: {
        marginLeft:0,
-        maxWidth:"768px",
+        maxWidth:"1280px",
         weidth:"100%", 
         },
+        [theme.breakpoints.down("sm")]: {
+          marginLeft:0,
+           maxWidth:"960px",
+           weidth:"100%", 
+           },
        [theme.breakpoints.down("xs")]: {
         marginLeft:"3em",
         
@@ -366,9 +427,13 @@ const useStyles = makeStyles((theme: Theme) =>
     svg:{
 
 
-backgroundColor: "#00b7ff",
-backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E")`
+// backgroundColor: "#00b7ff",
+// backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E")`
 
+backgroundColor: "#bfdaff",
+backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%234066cd' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%233042a9' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%233558c9' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%233b64a5' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%233151c1' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%2339769c' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23354fbb' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%233c8995' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%232c43b2' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%2347938b' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23293ba7' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23478973' points='943 900 1210 900 971 687'/%3E%3C/svg%3E")`,
+backgroundAttachment: "fixed",
+backgroundSize: "cover"
 
 },
 underline:{
@@ -427,11 +492,11 @@ const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
   const [headerClassName, setHeaderClassName] = useState(
     defaultHeaderClassName
   );
-const [color,setColor] = useState(['red','blue','#00ff00']);
-const [randomColor,setRandomColor] = useState("");
+
 // const [visibleSection, setVisibleSection] = useState('');
 
-const [isOpened, setIsOpened] = React.useState(false);
+
+const [isOpened, setIsOpened] = useState(false);
 const [status, setStatus] = useState('close');
 
 
@@ -446,15 +511,7 @@ const [selected, setSelected] = useState("");
    
   }, [isOpened]);
 
-  useEffect(() => {
-    getColor()
-  },[]);
-
-const getColor = () => {
-  const colorItem = color[Math.floor(Math.random()*color.length)]
- setRandomColor(colorItem);
-}
-
+ 
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -465,21 +522,7 @@ const defaultOptions = {
 };
 
 
-const shuffle = (a:string[])=> {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
-const words = [
-  "親身に",
-  // "信頼のコミュニケーション",
-  // "留学生をサポート",
-  "いつでも",
-  "きめ細やかに",
 
-];
 
 const ReadLimit = ({ children, maxCharacter = 200 }) => {
   const text = children;
@@ -495,17 +538,17 @@ const ReadLimit = ({ children, maxCharacter = 200 }) => {
 
     <Typography style={{fontSize:"1rem"}}>
           {resultString}
+  
           <Button style={{marginLeft:"0.5rem"}}variant="outlined"　onClick={toggleIsShrinked} color="primary">
             {isShrinked ? "もっと読む" : "縮める"}
             </Button>
+      
         
    </Typography>
     
 
   );
 };
-
-
 
 
 
@@ -533,12 +576,12 @@ const screens:Title[] = [
   {
     index:"section5",
     title: "留学体験談",
-    color: "#ff0055"
+    color: "#0099ff"
   },
   {
     index:"section6",
     title: "ギャラリー",
-    color: "#0099ff"
+    color: "#f403fc"
   },
   {
     index:"section7",
@@ -586,7 +629,7 @@ return (
     
         <div className="row">
        
-          <a onClick={() => Router.push('/home')} className="logo" href="#">
+          <a onClick={() => Router.push('/')} className="logo" href="#">
           <img src="/assets/logo.png" alt=""/>
           </a>
     
@@ -642,38 +685,7 @@ return (
           </nav>
         </AnimateSharedLayout>
     </header>
-          {/* <nav>
-        <ul>
-              <li>
-                <a  className={`header_link ${visibleSection === "section1" ? "selected" : ""}`} onClick={() => {goTo('EL1'),setVisibleSection('section1')}}>Section 01 </a>
-              </li>
-              <li>
-                <a className={`header_link ${visibleSection === "section2" ? "selected" : ""}`}onClick={() =>{goTo('EL2'),setVisibleSection('section2')}}>Section 02</a>
-              </li>
-              <li>
-              <a className={`header_link ${visibleSection === "section3" ? "selected" : ""}`} onClick={() => {goTo('EL3'),setVisibleSection('section3')}}>Section 03</a>
-              </li>
-              <li>
-              <a className={`header_link ${visibleSection === "section4" ? "selected" : ""}`} onClick={() =>{goTo('EL4'),setVisibleSection('section4')}}>Section 04</a>
-              </li>
-              <li>
-              <a className={`header_link ${visibleSection === "section5" ? "selected" : ""}`} onClick={() =>{goTo('EL5'),setVisibleSection('section5')}}>Section 05</a>
-              </li>
-              <li>
-              <a className={`header_link ${visibleSection === "section6" ? "selected" : ""}`} onClick={() => {goTo('EL6'),setVisibleSection('section6')}}>Section 06</a>
-              </li>
-              <li>
-    
-              <a className={`header_link ${visibleSection === "section7" ? "selected" : ""}`} onClick={() => {goTo('EL7'),setVisibleSection('section7')}}>Section 07</a>
-              </li>
-              <li>
-    
-    <a className={`header_link ${visibleSection === "section8" ? "selected" : ""}`} onClick={() => {goTo('EL8'),setVisibleSection('section8')}}>Section 08</a>
-    </li>
-           
-            </ul>
-          
-          </nav> */}
+      
     
     
         </div>
@@ -682,19 +694,12 @@ return (
     
     
       <div className="hero">
-      <ScrollAnimation animateIn='fadeIn'>
-    
-        <h1>
-        
-          <span>エクセルニュージーランド</span>
-          <br />
-          <div className="reveals-main">
-           あなたの大切な留学を<div style={{color:randomColor}}>  
-          <TextLoop interval={2000} children={shuffle(words)} /></div>
-           サポートいたします。
      
-        </div>
-        </h1>
+      {/* <div className="opacity">
+        
+  */}
+
+      <HeadLine/>
       
     
     <a className="container" href="#">
@@ -704,8 +709,10 @@ return (
       <span className="chevron"></span>
       <span className="text">下にドラックしてみて</span>
     </a>
-    </ScrollAnimation>
+
       </div>
+    {/* </div> */}
+    
     
     
     
@@ -736,8 +743,12 @@ return (
     </section>
     
      
-    
-    
+
+    <div className="App">
+      <Background />
+    </div>
+
+
      
     <Grid item>
      
@@ -747,16 +758,13 @@ return (
        container
        direction="row"
        className={classes.primaryContainer}
-      //  style={{ backgroundColor:"#e6e7eb"}}
-      style={{background:`linear-gradient( to bottom, #0045ad ,#D5E2F2)`}}
-      // style={{
-      // backgroundImage:`linear-gradient(rgba(36,70,105,.74), rgba(36,70,105,.74)), 
-      // url('assets/NZTram.jpg')`,
-  
-      // }}
+      // style={{background:`linear-gradient( to bottom, #0045ad ,#D5E2F2)`}}
+      style={{background:`linear-gradient( to bottom,#1c2e4a,#0045ad)`}}
      >
-    
+   
+
      <Grid ref={refs.section1} >
+
      <About/>
     </Grid>
 
@@ -769,21 +777,28 @@ return (
             className={classes.rowContainer}
            
           >
-    <ScrollAnimation animateIn='bounceInRight'
+    {/* <ScrollAnimation animateIn='bounceInRight'
       animateOut='bounceOutLeft'>
-    <Grid item className="talk-bubble tri-right border round btm-left-in" style={{marginBottom:"1em",marginTop:"1em"}}>
+   
+    </ScrollAnimation> */}
+
+    <ScrollAnimation duration={5}
+  animateIn='tada'
+  initiallyVisible={true}>
+   <Grid item className="talk-bubble tri-right border round btm-left-in" style={{marginBottom:"1em",marginTop:"1em"}}>
     
     <Grid item container className="talktext">
        
         <p> &nbsp;正しい留学成功の３つの鍵&nbsp;</p><span><img src="/assets/key.svg" style={{height:"30px",width:"30px"}}></img></span>
     </Grid>
     </Grid>
-    </ScrollAnimation>
+</ScrollAnimation>
     
             <Grid item container justify={matchesMD ? "center" : "center"}>
+ 
       
-       
-      
+   
+     
               <Grid
                 item
                 container
@@ -792,7 +807,7 @@ return (
                 alignItems={matchesMD ? "center" : "center"}
                 className={classes.boxContainer}
               >
-                  <Grid item>
+              <Grid item>
                 <Typography  variant="h5">
                 ①正しい留学先を選ぶ−どうしてクライストチャーチなの？
                   </Typography>
@@ -808,8 +823,9 @@ return (
                   />
                   </ScrollAnimation>
                 </Grid>
+             
                 </Grid>
-    
+             
                 <Grid item　style={{paddingTop:"2em"}}>
                   <Typography variant="caption">
                   <ReadLimit>政治、治安が安定し、留学生に対する理解とサポートが充実した国、ニュージーラ
@@ -827,10 +843,11 @@ return (
 </ReadLimit>
                   </Typography>
                 </Grid>
+               
               </Grid>
+         
     
-    
-    
+          
     
     
               <Grid
@@ -994,8 +1011,12 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
           <Grid item xs container direction="column">
       <Hidden xsDown>
           <Grid item className={classes.checkboard} xs={1}>
-          <ScrollAnimation animateIn='flipInY'
-          animateOut='flipOutY'>
+
+
+          <ScrollAnimation  
+          duration={7}
+          animateIn='tada'
+          initiallyVisible={true}>
             <img src="/assets/clipboard.svg"style={{height:"6rem",width:"6rem"}} alt="clip"/>
            </ScrollAnimation>
             </Grid>
@@ -1005,12 +1026,15 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
                 <Grid item xs container direction="column">
                   <Grid item xs={12}>
                       <Grid item xs container direction="row" >
-                        <Grid item xs={1}>
-                        <ScrollAnimation animateIn='bounceInLeft'
-                        animateOut='bounceOutRight'>
+                        <Grid item xs={1} >
+                        <ScrollAnimation animateIn='bounceInRight'
+                        animateOut='bounceOutLeft'>
                         <img src="/assets/checkmark.svg"style={{ height: matchesXS ? "2.5rem":"3rem"
                         ,width: matchesXS ? "2.5rem":"3rem"}} alt="clip"/>
                     </ScrollAnimation>
+                  
+                     {/* <Check /> */}
+                  
                         </Grid>
                         <Grid item xs={11} style={{fontSize:matchesXS ?"1.2rem":"1.3em"}}>
                         ニュージーランドに興味があり、ニュージーランドに留学してみたい。
@@ -1022,10 +1046,14 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
                    
                       <Grid item xs container direction="row">
                         <Grid item xs={1}>
-                        <ScrollAnimation animateIn='bounceInRight'
-                        animateOut='bounceOutLeft'>
-                        <img src="/assets/checkmark.svg"style={{ height: matchesXS ? "2.5rem":"3rem",width: matchesXS ? "2.5rem":"3rem"}}alt="clip"/>
-                       </ScrollAnimation>
+                        <ScrollAnimation animateIn='bounceInLeft'
+                        animateOut='bounceOutRight'>
+                        <img src="/assets/checkmark.svg"style={{ height: matchesXS ? "2.5rem":"3rem"
+                        ,width: matchesXS ? "2.5rem":"3rem"}} alt="clip"/>
+                    </ScrollAnimation>
+                        {/* <Check />
+                      */}
+                     
                         </Grid>
                         <Grid item xs={11} style={{fontSize:matchesXS ?"1.2rem":"1.3em"}}>
                         留学を通して、いろんなことに挑戦してみたい。
@@ -1124,6 +1152,7 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
      alt="image prepare"/>
      </ScrollAnimation>
 
+
     </Grid> 
 
       <Grid sm item className={classes.flow}>
@@ -1162,12 +1191,13 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
 
     <Grid item ref={refs.section6}>
     <PhotoGallery/>
+   
     </Grid> 
     
     {/* <Grid item style={{ height: "300vh",backgroundColor: "#3b6fe0", paddingTop: "320px"}}>
     <Gallery/>
     </Grid>  */}
-    
+   
     <Grid
        item
        container
@@ -1182,7 +1212,7 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
       <Carousel/>
       </Grid> 
     
-    
+  
     
     
       <Grid item>

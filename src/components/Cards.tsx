@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
   papper:{
     height:"100%",
     maxWidth: '80%',
-    margin:"8em 13em 15em 13em",
+    margin:"10em 12.5em 16em 13.5em",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "80%",
       marginTop:"3rem",
@@ -223,9 +223,11 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
    <Grid item className={classes.switch}>
     <Grid item container direction="row"  justify="center" lg>
     <ScrollAnimation animateIn='fadeIn'>
+
     <Typography variant="h1">
             みんなの留学体験談
       </Typography> 
+      
 </ScrollAnimation>
     
       </Grid>

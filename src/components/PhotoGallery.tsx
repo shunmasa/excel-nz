@@ -31,9 +31,11 @@ const PhotoGallery = () => {
   return (
     <>
     <Hidden smDown>
+
     <div className="galleryBody">
     <div className="galleryText">エクセルNZ<br/>フォトギャラリー</div>
    <ul className="gallery">
+
 
   <motion.li  animate={inView ? 'visible' : 'hidden'}
         variants={variants}
@@ -145,7 +147,7 @@ const PhotoGallery = () => {
     </Hidden>
 
 
-<Hidden lgUp>
+<Hidden mdUp>
  <div className="galleryBody">
    
    <ul className="gallery">
@@ -161,7 +163,7 @@ const PhotoGallery = () => {
   <li className="gallery__item">
     <figure>
       <a href="#">
-        <img src="/assets/gallery2.jpg" alt="" />
+        <img src="/assets/gallery2.JPG" alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>

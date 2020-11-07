@@ -63,7 +63,16 @@ boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0,
     marginBottom:"1em",
     // marginTop:"2.5rem",
     boxShadow: `0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
-
+    [theme.breakpoints.down("md")]: {
+      width:"80%",
+      marginRight:"5em",
+      marginLeft:"10em"
+      },
+      [theme.breakpoints.down("sm")]: {
+        width:"100%",
+        marginRight:0,
+        marginLeft:0
+        },
     [theme.breakpoints.down("xs")]: {
     margin:0,
     width:"100%",
@@ -76,23 +85,22 @@ boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0,
     height:"100%",
     minHeight:"25em",
     boxShadow: `0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3)`,
-    marginTop:"8em",
+    marginTop:"6.5em",
     minWidth: "16em",
     marginRight:"10em",
     marginLeft:"14em",
-    // marginBottom: "8em",
-    // '&::before':{
-    //   content: "",
-    //   position: "absolute",
-    //   width: "85%",
-    //   height: "94%",
-    //   top: 0,
-    //   left: 0,
-    //   zIndex:2,
-    //   transform:`translate(-9px, -6px)`,
-    //   background: "#3F51B5",
-    //   opacity:0.7,
-    // },
+    [theme.breakpoints.down("md")]: {
+      marginTop:"4em",
+      width:"80%",
+      marginRight:"5em",
+      marginLeft:"10em"
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginTop:"2em",
+        width:"100%",
+        marginRight:0,
+        marginLeft:0
+        },
     [theme.breakpoints.down("xs")]: {
       margin:0,
       padding:0,
@@ -115,7 +123,9 @@ export default function About() {
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   return (
 
+
  <Grid container className={classes.mainContainer} direction="column">
+
 
 
 

@@ -1,7 +1,7 @@
 
 
 .navbar1 {
-  max-height: 105px;
+  max-height: 115px;
   position: fixed;
   z-index: 999;
   padding-top:50px;
@@ -35,20 +35,21 @@
   }
 }
 .navbar-sticky {
-  max-height: 75px;
+  max-height: 80px;
   // background: #333;
   position: fixed;
   background-color: rgb(255, 255, 255);
   opacity: 0.8;
   top: 0;
   left: 0;
-  padding-top:20px;
+  padding-top:25px;
   box-shadow: 1px 1px 1px #222;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 4s ease;
 }
 .logo {
  margin:0;
  padding:0;
+ background-color: rgba(255, 255, 255, 0.025);
   cursor: pointer;
   float: left;
   display: block;
@@ -340,11 +341,11 @@ h1 {
   // padding-top: calc(500 / 1300 * 100%);
   object-fit: cover;
   color: #fff;
-  padding-top: 90px; 
-  padding-bottom: 70px;
+  padding-top: 140px; 
+  padding-bottom: 50px;
   height:auto;
   width:100%;
-  max-height:655px;
+  min-height:670px;
   letter-spacing: 2px;
  
   font-family: "Montserrat", sans-serif;
@@ -353,6 +354,13 @@ h1 {
   overflow: hidden;
 }
 
+// .opacity {
+//   z-index: 0;
+//   background: rgba(0, 0, 0, 0.431);
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+// }
 
 
 // .hero:before{
@@ -600,7 +608,8 @@ h1 {
    }
 
 .chevron {
-  margin-top:160px;
+  margin-top:200px;
+
   position: absolute;
   width: 60px;
   height: 9px;
@@ -675,8 +684,12 @@ h1 {
 
 .text {
   display: block;
-  margin-top: 265px;
-  margin-left: -30px;
+  background-color: rgb(49, 49, 49,0.3);
+  width:20%;
+  margin-top: 300px;
+  // margin-left: -30px;
+  margin-left:40%;
+  margin-right:40%;
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 20px;
   color: #fff;
@@ -696,15 +709,16 @@ h1 {
   }
 }
 
-///news
+///newhero
+
 .news{
-  width:94%;
-  margin-left:3%;
-  margin-right:3%;
+  width:90%;
+  margin-left:5%;
+  margin-right:5%;
   display:block;
   position: absolute;
   z-index:10;
-  top:610px;
+  top:720px;
  
  
 }
@@ -1268,6 +1282,7 @@ section blockquote:before {
       max-height: calc(50vw + 2px);
   }
 }
+
 @media screen and (max-width: 640px) {
   .gallery {
       display: block;
@@ -1280,6 +1295,15 @@ section blockquote:before {
       height: 16px;
   }
 }
-//////
 
 
+
+svg {
+  cursor: pointer;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  height: 350px;
+}
