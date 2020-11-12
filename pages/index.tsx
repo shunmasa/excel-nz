@@ -72,12 +72,19 @@ const useStyles = makeStyles((theme: Theme) =>
    supportContainer:{
     width:"100%",
     height:"45em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop:"3em",
+      height:"30em",
+      maxWidth:"1600px",
+      weidth:"100%", 
+      },
     [theme.breakpoints.down("md")]: {
       marginTop:"3em",
       height:"25em",
       maxWidth:"1280px",
       weidth:"100%", 
       },
+      
       [theme.breakpoints.down("sm")]: {
         height:"35em" ,
         width:"100%",
@@ -89,6 +96,12 @@ const useStyles = makeStyles((theme: Theme) =>
   },
     secondContainer:{
       height:"20em",
+      [theme.breakpoints.down("lg")]: {
+        marginTop:"3em",
+        height:"30em" ,
+        width:"100%",
+        maxWidth:"1600px"
+        },
       [theme.breakpoints.down("md")]: {
         marginTop:"3em",
         height:"30em" ,
@@ -110,6 +123,10 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop:"4em",
       height:"20em",
       weidth:"20em",
+      [theme.breakpoints.down("lg")]: {
+        height:"23em",
+        weidth:"100%",
+        },
       [theme.breakpoints.down("md")]: {
         height:"25em",
         weidth:"100%",
@@ -129,7 +146,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop:"2em",
       paddingLeft: "10.5em",
       paddingRight: "12.5em",
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         padding:0,
         marign:0,
          },
