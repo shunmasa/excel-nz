@@ -39,7 +39,7 @@ const Background = () => {
       style={{ left: 0, top: "-10px" }}
       xmlns="http://www.w3.org/2000/svg"
     // viewBox="0 0 1450 960"
-    viewBox="0 20 1450 960"
+    viewBox="0 0 1450 1000"
     >
  
       <defs>
