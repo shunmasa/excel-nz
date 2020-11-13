@@ -89,6 +89,14 @@ boxShadow:`0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0,
     minWidth: "16em",
     marginRight:"10em",
     marginLeft:"14em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop:"5.5em",
+      height:"100%",
+      minHeight:"26em",
+      marginRight:"10.5em",
+      marginLeft:"13.5em",
+     
+      },
     [theme.breakpoints.down("md")]: {
       marginTop:"4em",
       width:"80%",
@@ -121,6 +129,7 @@ export default function About() {
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesLG = useMediaQuery(theme.breakpoints.down("lg"));
   return (
 
 
