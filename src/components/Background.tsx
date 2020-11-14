@@ -34,29 +34,20 @@ const Background = () => {
     }
   });
   return (
+ <div className="wave-container">
     <svg
       id="home__svg"
       style={{ left: 0, top: "-10px" }}
       xmlns="http://www.w3.org/2000/svg"
     // viewBox="0 0 1450 960"
-    viewBox="0 0 1450 1000"
+    viewBox="0 0 1440 500"
     >
  
       <defs>
         <motion.path
           className="stars_clip"
           id="a"
-          d="M 0 0 
-                      v 64
-                      c 86 27 107 102 171 160
-                      s 148 62 223 93
-                      c 130 54 183 216 330 216
-                      s 202 -162 332 -216 
-                      c 75 -31 159 -35 223 -93
-                      s 85 -134 171 -160
-                      V 0
-                      H 0
-                      z"
+          d=""
                      
           variants={clip_path_variants}
           animate={hasScrolled ? "closed" : "open"}
@@ -76,6 +67,7 @@ const Background = () => {
         <Stars hasScrolled={hasScrolled} />
       </g>
     </svg>
+    </div>
   );
 };
 // React.memo prevents re-renders which we dont want because it will move the stars locations.

@@ -359,7 +359,7 @@ h1 {
 @media only screen and (min-width: 1330px) {
 
   .hero{
-   height:1000%;
+   height:100%;
    min-height:10px;
    padding-bottom: 10px;
    padding-top:60px; 
@@ -707,7 +707,7 @@ h1 {
   display:block;
   position: absolute;
   z-index:10;
-  top:680px;
+  top:655px;
  
  
 }
@@ -1294,5 +1294,11 @@ svg {
 .App {
   font-family: sans-serif;
   text-align: center;
-  height: 350px;
+  height: 300px;
+}
+
+.wave-container {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
 }
