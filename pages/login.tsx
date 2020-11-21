@@ -83,6 +83,7 @@ const login = () => {
  password:""})
 const [error,setError] = useState()
  const [login,{data}] = useMutation(LOGIN_USER)
+ console.log("data:",data)
  const handleChange = (event:any) => {
   const { name, value } = event.target;
   console.log('value:',value)

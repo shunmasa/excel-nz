@@ -1,10 +1,4 @@
-import React from 'react';
-// import Button from '@material-ui/core/Button';
-// import Dialog from '@material-ui/core/Dialog';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import ListItem from '@material-ui/core/ListItem';
-// import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
+import React,{useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 // import IconButton from '@material-ui/core/IconButton';
@@ -14,7 +8,7 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import { Typography, Tabs, Paper, Box } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import { withApollo } from '../../lib/withApolloData'
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery} from '@apollo/react-hooks';
 import GET_POST from "../../src/graphql/query/post";
 import { useRouter } from "next/router";
 // import StudentOverview from '../../src/components/StudentOverview'
@@ -113,10 +107,14 @@ const StudentDialog = () =>{
     if (data && data.post.length <= 0) message = 'No Post';
   const classes = useStyles();
   
-  // const handleClose = () =>{
-  //   router.push('/home')
-  // }
-//merge with cards
+  useEffect(()=> {
+  if(loading){
+    router.reload()
+  }
+  },[]) // eslint-disable-line
+  
+
+
   return (
     <div>
 
@@ -167,6 +165,7 @@ const StudentDialog = () =>{
          
         
   </Typography>
+
 </div>
 </>
       

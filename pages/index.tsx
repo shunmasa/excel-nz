@@ -1,7 +1,7 @@
 import ScrollNavigation from 'react-single-page-navigation';
 // import ReactGA from "react-ga";
 // import Head from "next/head";
-
+import { useRouter } from "next/router";
 import { motion, AnimateSharedLayout,useViewportScroll, useTransform  } from "framer-motion";
 import React,{useState,useEffect,useCallback, useRef} from 'react';
 import HeadLine from "../src/components/HeadLine"
@@ -483,6 +483,15 @@ const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
   if (errorN) message = `Error! ${errorN}`;
   if (dataN && dataN.notices.length <= 0) message = 'No Posts';
 
+
+  const router = useRouter();
+useEffect(()=> {
+  if(loadingN){
+    router.reload()
+  }
+  },[]) // eslint-disable-line
+
+  
  console.log('pdata',data)
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
@@ -592,6 +601,7 @@ const screens:Title[] = [
 ];
 
 const { isSticky, element } = useSticky()
+
 
 return (
 

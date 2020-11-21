@@ -1,6 +1,10 @@
 
 module.exports = {
- 
+  exportTrailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   exportPathMap: async function() {
  
     return {
@@ -13,7 +17,5 @@ module.exports = {
     };
   },
 
-  typescript: {
-    ignoreBuildErrors: true,
-  }
+
 }

@@ -1,5 +1,6 @@
 import React,{useState,useEffect}from 'react'
 import { useRouter } from "next/router";
+
 import {
   Paper,
   Grid,
@@ -16,7 +17,7 @@ import {
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 
 import ScrollAnimation from 'react-animate-on-scroll';
-import StudentDialog from '../../pages/card/[studentDialog]'
+// import StudentDialog from '../../pages/card/[studentDialog]'
 // import { withApollo } from '../../lib/withApolloData'
 // import GET_POSTS from '../graphql/query/posts';
 // import { useMutation,useQuery} from '@apollo/react-hooks';
