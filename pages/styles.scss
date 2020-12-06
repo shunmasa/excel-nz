@@ -1302,3 +1302,14 @@ svg {
   background: #fff;
   overflow: hidden;
 }
+
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background: #d309e1 0%;
+}

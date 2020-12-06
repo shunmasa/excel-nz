@@ -1,6 +1,6 @@
 
 module.exports = {
-  exportTrailingSlash: true,
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -110,7 +110,7 @@ const useStyles = makeStyles(theme => ({
                 className={classes.link}
               >
                 <Link href="/login">
-                <a style={{color:"#fff"}}>ご担当者様</a>
+                <a style={{color:"#fff"}}>エージェント用</a>
                 </Link>
                
               </Grid>
@@ -142,12 +142,12 @@ const useStyles = makeStyles(theme => ({
               <Grid
                 item
               >
-               nzsuport@gmail.com
+               nzesc2016@gmail.com
               </Grid>
               <Grid
                 item
               >
-               (+64)999-999-99
+               (+64)21-1427-282
               </Grid>
             </Grid>
           </Grid>

@@ -5,7 +5,7 @@ import Theme from '../src/ui/Theme';
 import { ToastContainer } from 'react-toastify';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-
+import {Ball} from '../src/components/Ball'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 
@@ -51,7 +51,9 @@ const App = (props:any):JSX.Element => {
     return (
       <React.Fragment>
        {loading ? (
-        <h1>Loading...</h1>
+         <div className="loading">
+       <Ball/>
+       </div>
       ) :(
         
       <ThemeProvider theme={Theme}>
