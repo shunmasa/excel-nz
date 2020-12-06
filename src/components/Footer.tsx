@@ -147,7 +147,7 @@ const useStyles = makeStyles(theme => ({
               <Grid
                 item
               >
-               (+64)21-1427-282
+               (+64)-21-1427-282
               </Grid>
             </Grid>
           </Grid>
