@@ -1,5 +1,6 @@
 
 module.exports = {
+  target: 'serverless',
   trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
@@ -16,6 +17,4 @@ module.exports = {
       // "/notice": { page: "/notice" },
     };
   },
-
-
 }

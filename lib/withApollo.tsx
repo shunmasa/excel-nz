@@ -153,7 +153,6 @@ const webSocketLink: any = process.browser
       options: {
         reconnect: true,
         timeout: 30000
-    
       }
     })
   : null;

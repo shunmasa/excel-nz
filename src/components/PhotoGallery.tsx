@@ -141,6 +141,132 @@ const PhotoGallery = () => {
       </a>
     </figure>
   </motion.li>
+
+
+
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery10.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+
+
+  </motion.li>
+
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery12.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery12.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery13.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery14.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery15.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery16.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery17.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+  <motion.li  animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        ref={ref} className="gallery__item">
+    <figure>
+      <a href="#">
+ 
+        <img src="/assets/gallery18.jpg" alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </motion.li>
+
+
+  
   </ul>
     </div>
   
@@ -187,10 +313,11 @@ const PhotoGallery = () => {
       </a>
     </figure>
   </li>
+  
   <li className="gallery__item">
     <figure>
       <a href="#">
-        <img src="https://source.unsplash.com/user/brina_blum/800x600" alt="" />
+        <img src="/assets/gallery5.jpg"alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>
@@ -198,7 +325,7 @@ const PhotoGallery = () => {
   <li className="gallery__item">
     <figure>
       <a href="#">
-        <img src="https://source.unsplash.com/user/kharaoke/800x600" alt="" />
+        <img src="/assets/gallery6.jpg"alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>
@@ -206,7 +333,7 @@ const PhotoGallery = () => {
   <li className="gallery__item">
     <figure>
       <a href="#">
-        <img src="https://source.unsplash.com/user/mikeenerio/800x600" alt="" />
+        <img src="/assets/gallery7.jpg"alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>
@@ -214,7 +341,7 @@ const PhotoGallery = () => {
   <li className="gallery__item">
     <figure>
       <a href="#">
-        <img src="https://source.unsplash.com/user/jontyson/800x600" alt="" />
+        <img src="/assets/gallery8.jpg"alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>
@@ -222,13 +349,87 @@ const PhotoGallery = () => {
   <li className="gallery__item">
     <figure>
       <a href="#">
- 
-        <img src="https://source.unsplash.com/user/joshkahen/800x600" alt="" />
+        <img src="/assets/gallery9.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery10.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery12.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery12.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery13.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery14.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery15.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery16.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery17.jpg"alt="" />
+        <figcaption><span>NZ land label</span></figcaption>
+      </a>
+    </figure>
+  </li>
+  <li className="gallery__item">
+    <figure>
+      <a href="#">
+        <img src="/assets/gallery18.jpg"alt="" />
         <figcaption><span>NZ land label</span></figcaption>
       </a>
     </figure>
   </li>
   </ul>
+
+
+  
     </div>
   
 </Hidden>

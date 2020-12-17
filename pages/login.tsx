@@ -19,6 +19,7 @@ import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 import { withApollo } from '../lib/withApolloData'
 import { useRouter } from "next/router";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -81,10 +82,9 @@ interface Error {
 const login = () => {
  const [props, setProps] = useState({email:"",
  password:""})
-const [error,setError] = useState()
- const [login,{data,loading}] = useMutation(LOGIN_USER)
+
+ const [login,{data,error}] = useMutation(LOGIN_USER)
  console.log("data:",data)
- const router = useRouter();
  const handleChange = (event:any) => {
   const { name, value } = event.target;
   console.log('value:',value)
@@ -93,16 +93,9 @@ const [error,setError] = useState()
       [name]: value}))
   };
 
-  useEffect(()=> {
-    if(loading){
-      router.reload()
-    }
-    },[]) // eslint-disable-line
-    
 
   useEffect(()=> {
-
-    const loginData = async () => {
+    const loginData = async () =>{
         if(data){
         // const { data } = await user.query({query: LOGIN_USER,variables: { ...props },});
         const { token, userId } = data.login;
@@ -117,10 +110,10 @@ const [error,setError] = useState()
   
   
 const handleSubmit = async (event: any) => {
-    console.log("email", props ,"email", props.email)
+    console.log("email",props,"email",props.email)
     event.preventDefault();
   try {
-    if (validateEmail(props.email)) {
+    if (validateEmail(props.email) && !error) {
      await login({variables:{...props}})
      Router.replace('/dashboard');
     } else {

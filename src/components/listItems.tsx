@@ -51,11 +51,11 @@ const MainListItems = ({handleLogout}) =>{
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-      <Link href="/home">
+      <Link href="/">
         <HomeIcon />
         </Link>
       </ListItemIcon>
-      <Link href="/home">
+      <Link href="/">
       <ListItemText primary="ホームページ" />
       </Link>
     </ListItem>

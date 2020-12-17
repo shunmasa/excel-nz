@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build && next export -o outdir",
     "dev": "next dev",
-    "start": "NODE_ENV=production node dist/index.js & next start -p $PORT"
+    "start": "NODE_ENV=production node dist/index.js & NODE_OPTIONS='--inspect' next start"
   },
   "keywords": [],
   "author": "",
@@ -78,6 +78,7 @@
     "react-single-page-navigation": "^1.0.1",
     "react-text-loop": "^2.3.0",
     "react-toastify": "^6.0.9",
+    "request": "^2.79.0",
     "sass": "^1.27.0",
     "shortid": "^2.2.15",
     "streamifier": "^0.1.1",
