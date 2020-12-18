@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build && next export -o outdir",
     "dev": "next dev",
-    "start": "NODE_ENV=production node dist/index.js & NODE_OPTIONS='--inspect' next start -p $PORT"
+    "start": "NODE_ENV=production node dist/index.js & NODE_OPTIONS='--inspect' next start"
   },
   "keywords": [],
   "author": "",

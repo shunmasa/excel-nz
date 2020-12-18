@@ -113,11 +113,11 @@ const handleSubmit = async (event: any) => {
     console.log("email",props,"email",props.email)
     event.preventDefault();
   try {
-    if (validateEmail(props.email) && !error) {
+    if (validateEmail(props.email)) {
      await login({variables:{...props}})
      Router.replace('/dashboard');
     } else {
-      toast.error('Invalid Email');
+      toast.error('メールアドレスが間違っています');
     }
     } catch (error) {
       toast.error(error);
