@@ -31,7 +31,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:"wss://excelnz.herokuapp.com",
+      uri:"ws://ryugaku-excel.co.nz",
       lazy: true,
       options: {
         reconnect: true,
