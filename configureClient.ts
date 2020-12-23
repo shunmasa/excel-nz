@@ -37,6 +37,9 @@ const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri: WEB_SOCKET_LINK,
       lazy: true,
+      connectionParams: {
+        authToken: authToken,
+      },
       options: {
         reconnect: true,
         timeout: 30000

@@ -28,11 +28,14 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
   return forward(operation);
 });
-var host = location.origin.replace(/^http/, 'ws');
+
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:host,
+      uri:"ws://excelnz.herokuapp.com/",
       lazy: true,
+      connectionParams: {
+        authToken: authToken,
+      },
       options: {
         reconnect: true,
         timeout: 30000
