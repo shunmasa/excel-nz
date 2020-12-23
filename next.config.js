@@ -1,6 +1,6 @@
 
 module.exports = {
-  target: 'serverless',
+  // target: 'serverless',
   trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
@@ -14,7 +14,7 @@ module.exports = {
       // "/dashboard": { page: "/dashboard" },
       "/form": { page: "/form" },
       "/login": { page: "/login" },
-      // "/notice": { page: "/notice" },
+      // "/notice": { page: "/notice" }
     };
   },
 }
