@@ -45,7 +45,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   }
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== "development") {
     const displayName =
       PageComponent.displayName || PageComponent.name || "Component"
 
