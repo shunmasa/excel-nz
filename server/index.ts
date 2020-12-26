@@ -8,14 +8,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 
 
-// import parser from 'ua-parser-js';
-// import mediaQuery from 'css-mediaquery';
 
-
-//const path = require("path");
-////const sendEmail = require('./server/sendEmail')
-//const express = require("express");
-// const app = express();
 /**
  * Promisify All The Mongoose
  * @param mongoose
