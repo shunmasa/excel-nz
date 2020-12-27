@@ -70,7 +70,6 @@ app.prepare()
   
 
 
-
   server.get('*', (req, res) => {
     if (req.url === '/') {
       res.writeHead(200, {
