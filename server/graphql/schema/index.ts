@@ -122,7 +122,7 @@ const schema: ApolloServerExpressConfig = {
     apiKey: process.env.ENGINE_API_KEY,
     graphVariant: process.env.NODE_ENV,
   }
-  cors:true,
+  ,
   
   context: async ({ req, connection, payload }: any) => {
     if (connection) {
