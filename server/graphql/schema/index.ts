@@ -118,6 +118,11 @@ const schema: ApolloServerExpressConfig = {
   typeDefs,
   resolvers,
   introspection: true,
+  engine: {
+    apiKey: process.env.ENGINE_API_KEY,
+    graphVariant: process.env.NODE_ENV,
+  },
+  
   context: async ({ req, connection, payload }: any) => {
     if (connection) {
       return { isAuth: payload.authToken };
