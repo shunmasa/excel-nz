@@ -201,7 +201,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = new HttpLink({
-  uri: "/graphql", 
+  uri:"http://localhost:4020/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {
