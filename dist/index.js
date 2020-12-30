@@ -9,12 +9,6 @@ const express = require('express');
 const next = require('next');
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
-// import parser from 'ua-parser-js';
-// import mediaQuery from 'css-mediaquery';
-//const path = require("path");
-////const sendEmail = require('./server/sendEmail')
-//const express = require("express");
-// const app = express();
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -43,7 +37,7 @@ mongoose_1.default.connection.on('error', () => {
 });
 const ExpressServer = new express_1.default();
 ExpressServer.init();
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'development';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare()
