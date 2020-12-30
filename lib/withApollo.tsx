@@ -148,7 +148,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:"wss://excelnz.herokuapp.com:4020/graphql",
+      uri:"wss://excelnz.herokuapp.com/graphql",
       lazy: true,
       options: {
         reconnect: true,
@@ -201,7 +201,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = new HttpLink({
-  uri:"http://localhost:4020/graphql", 
+  uri:"https://excelnz.herokuapp.com/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {

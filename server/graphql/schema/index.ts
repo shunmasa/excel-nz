@@ -133,7 +133,7 @@ const schema: ApolloServerExpressConfig = {
   playground: {
     tabs: [
       {
-        endpoint:'http://excelnz.herokuapp.com:4020/graphql'
+        endpoint:'https://excelnz.herokuapp.com/graphql'
       },
     ],
   }
