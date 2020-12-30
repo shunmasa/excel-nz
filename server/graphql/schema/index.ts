@@ -131,12 +131,8 @@ const schema: ApolloServerExpressConfig = {
     return { isAuth: req.isAuth };
   },
   playground: {
-    tabs: [
-      {
-        endpoint:'https://excelnz.herokuapp.com/graphql'
-      },
-    ],
-  }
+    endpoint: `https://excelnz.herokuapp.com/graphql`,
+},
 }
 
 export default schema;

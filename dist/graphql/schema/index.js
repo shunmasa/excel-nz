@@ -128,12 +128,8 @@ const schema = {
         return { isAuth: req.isAuth };
     }),
     playground: {
-        tabs: [
-            {
-                endpoint: 'http://excelnz.herokuapp.com:4020/graphql'
-            },
-        ],
-    }
+        endpoint: `https://excelnz.herokuapp.com/graphql`,
+    },
 };
 exports.default = schema;
 //# sourceMappingURL=index.js.map
