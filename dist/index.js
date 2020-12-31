@@ -27,7 +27,8 @@ mongoose_1.default.connect(index_1.default.db, {
     socketTimeoutMS: 0,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true,
 });
 /**
  * Throw error when not able to connect to database
@@ -37,7 +38,7 @@ mongoose_1.default.connection.on('error', () => {
 });
 const ExpressServer = new express_1.default();
 ExpressServer.init();
-const dev = process.env.NODE_ENV !== 'development';
+const dev = process.env.NODE_ENV == "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare()
@@ -54,7 +55,7 @@ app.prepare()
             res.writeHead(200, {
                 Connection: 'keep-alive',
                 'Cache-Control': 'no-cache',
-                'Content-Type': 'text/plain'
+                'Content-Type': 'application/json'
                 // 'Content-Type': 'text/event-stream',
             });
             res.write('data: Processing...\n\n');

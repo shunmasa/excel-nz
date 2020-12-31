@@ -30,7 +30,8 @@ mongoose.connect(config.db, {
   socketTimeoutMS: 0,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify:false
+  useFindAndModify:false,
+  useCreateIndex: true,
 });
 
 
@@ -49,7 +50,7 @@ ExpressServer.init();
 
 
 
-const dev = process.env.NODE_ENV !== 'development';
+const dev = process.env.NODE_ENV == "production";
 const app = next({dev});
 const handle = app.getRequestHandler();
 
@@ -75,7 +76,7 @@ app.prepare()
       res.writeHead(200, {
         Connection: 'keep-alive',
         'Cache-Control': 'no-cache',
-        'Content-Type': 'text/plain'
+        'Content-Type': 'application/json'
         // 'Content-Type': 'text/event-stream',
       });
       res.write('data: Processing...\n\n');
