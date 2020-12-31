@@ -55,7 +55,7 @@ app.prepare()
             res.writeHead(200, {
                 Connection: 'keep-alive',
                 'Cache-Control': 'no-cache',
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/plain'
                 // 'Content-Type': 'text/event-stream',
             });
             res.write('data: Processing...\n\n');
