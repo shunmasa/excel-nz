@@ -69,7 +69,7 @@ app.prepare()
     });
     ExpressServer.httpServer.listen(4020 || index_1.default.port, () => {
         console.log(`🚀  Server ready at ${index_1.default.port}`);
-        console.log(`🚀 Server ready at http://localhost:${index_1.default.port}/excelnz.herokuapp.com${ExpressServer.server.graphqlPath}`);
+        console.log(`🚀 Server ready at http://localhost:${index_1.default.port}/${ExpressServer.server.graphqlPath}`);
         console.log(`🚀 Subscriptions ready at ws://localhost:${index_1.default.port}${ExpressServer.server.subscriptionsPath}`);
     });
 });

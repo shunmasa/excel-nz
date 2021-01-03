@@ -38,7 +38,10 @@ class Express {
      *  Middlerware for extracting authToken
      */
     this.express.use(auth);
-    this.server.applyMiddleware({ app: this.express });
+    this.server.applyMiddleware({ app: this.express,cors: {
+      origin: "https://excelnz.herokuapp.com",
+      credentials: true
+      } });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers

@@ -95,7 +95,7 @@ app.prepare()
   ExpressServer.httpServer.listen( 4020 || config.port, () => {
     console.log(`🚀  Server ready at ${config.port}`);
     console.log(
-      `🚀 Server ready at http://localhost:${config.port}/excelnz.herokuapp.com${ExpressServer.server.graphqlPath}`
+      `🚀 Server ready at http://localhost:${config.port}/${ExpressServer.server.graphqlPath}`
     );
     console.log(
       `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`

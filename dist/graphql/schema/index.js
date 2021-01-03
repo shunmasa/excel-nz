@@ -127,9 +127,7 @@ const schema = {
         }
         return { isAuth: req.isAuth };
     }),
-    playground: {
-        endpoint: `https://excelnz.herokuapp.com/graphql`,
-    },
+    playground: process.env.NODE_ENV !== "production",
 };
 exports.default = schema;
 //# sourceMappingURL=index.js.map
