@@ -137,7 +137,7 @@ let authToken = null;
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || ''
+      authorization: authToken || null
     }
   });
   // Add onto payload for WebSocket authentication
@@ -201,7 +201,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = new HttpLink({
-  uri:"/graphql", 
+  uri:"https://excelnz.herokuapp.com/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {
