@@ -18,8 +18,8 @@ class Express {
     this.express = express();
     /**
      * Middlerware for using CORS
-     */
-    this.express.use("/graphql",cors({
+     cors(graphql/)??*/
+    this.express.use(cors({
       origin(origin, callback) {
         /**
          * Allow requests with no origin
