@@ -16,7 +16,7 @@ let globalApolloClient = null
 export const initOnContext = (ctx) => {
   const inAppContext = Boolean(ctx.ctx)
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
     if (inAppContext) {
       console.warn(
         'Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n' +
@@ -83,7 +83,7 @@ export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
   }
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'development') {
     const displayName =
       PageComponent.displayName || PageComponent.name || 'Component'
       WithApollo.displayName = `withApollo(${displayName})`
