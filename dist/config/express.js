@@ -39,8 +39,7 @@ class Express {
             /**
              *  Middlerware for extracting authToken
              */
-            this.express.options('/graphql', cors_1.default());
-            this.express.use('/graphql', auth_1.default);
+            this.express.use(auth_1.default);
             this.server.applyMiddleware({ app: this.express });
             this.httpServer = http.createServer(this.express);
             /**
