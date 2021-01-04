@@ -39,7 +39,7 @@ class Express {
      */
     this.express.use(auth);
     this.server.applyMiddleware({ app: this.express,cors: {
-      origin: "https://excelnz.herokuapp.com",
+      origin: "http://excelnz.herokuapp.com",
       credentials: true
       } });
     this.httpServer = http.createServer(this.express);
