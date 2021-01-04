@@ -127,7 +127,7 @@ const schema = {
         }
         return { isAuth: req.isAuth };
     }),
-    playground: process.env.NODE_ENV !== "production",
+    playground: true,
 };
 exports.default = schema;
 //# sourceMappingURL=index.js.map

@@ -129,7 +129,7 @@ const schema: ApolloServerExpressConfig = {
     }
     return { isAuth: req.isAuth };
   },
-  playground: process.env.NODE_ENV !== "production",
+  playground: true,
 }
 
 export default schema;
