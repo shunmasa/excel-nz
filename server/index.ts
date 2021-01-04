@@ -61,34 +61,34 @@ app.prepare()
   
   const server = express()
 
-  server.get('/card/:studentDialog', (req, res) => {
-    return app.render(req, res, '/card', { studentDialog: req.params.id })
-  })
-  server.get('/dashboard/:dashboard', (req, res) => {
-    return app.render(req, res, '/dashboard', { dashboard: req.params.id })
-  })
+  // server.get('/card/:studentDialog', (req, res) => {
+  //   return app.render(req, res, '/card', { studentDialog: req.params.id })
+  // })
+  // server.get('/dashboard/:dashboard', (req, res) => {
+  //   return app.render(req, res, '/dashboard', { dashboard: req.params.id })
+  // })
 
-  
+  server.all("*", handle);
 
 
-  server.get('*', (req, res) => {
-    if (req.url === '/') {
-      res.writeHead(200, {
-        Connection: 'keep-alive',
-        'Cache-Control': 'no-cache',
-        'Content-Type': 'text/plain'
-        // 'Content-Type': 'text/event-stream',
-      });
-      res.write('data: Processing...\n\n');
-      setTimeout(() => {
-        res.write('data: Processing2...\n\n');
-      }, 10000);
-    } else {
-      return handle(req, res)
-    }
+  // server.get('*', (req, res) => {
+  //   if (req.url === '/') {
+  //     res.writeHead(200, {
+  //       Connection: 'keep-alive',
+  //       'Cache-Control': 'no-cache',
+  //       'Content-Type': 'text/plain'
+  //       // 'Content-Type': 'text/event-stream',
+  //     });
+  //     res.write('data: Processing...\n\n');
+  //     setTimeout(() => {
+  //       res.write('data: Processing2...\n\n');
+  //     }, 10000);
+  //   } else {
+  //     return handle(req, res)
+  //   }
     
     
-  });
+  // });
   
   
 

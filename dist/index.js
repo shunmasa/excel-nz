@@ -44,29 +44,29 @@ const handle = app.getRequestHandler();
 app.prepare()
     .then(() => {
     const server = express();
-    server.get('/card/:studentDialog', (req, res) => {
-        return app.render(req, res, '/card', { studentDialog: req.params.id });
-    });
-    server.get('/dashboard/:dashboard', (req, res) => {
-        return app.render(req, res, '/dashboard', { dashboard: req.params.id });
-    });
-    server.get('*', (req, res) => {
-        if (req.url === '/') {
-            res.writeHead(200, {
-                Connection: 'keep-alive',
-                'Cache-Control': 'no-cache',
-                'Content-Type': 'text/plain'
-                // 'Content-Type': 'text/event-stream',
-            });
-            res.write('data: Processing...\n\n');
-            setTimeout(() => {
-                res.write('data: Processing2...\n\n');
-            }, 10000);
-        }
-        else {
-            return handle(req, res);
-        }
-    });
+    // server.get('/card/:studentDialog', (req, res) => {
+    //   return app.render(req, res, '/card', { studentDialog: req.params.id })
+    // })
+    // server.get('/dashboard/:dashboard', (req, res) => {
+    //   return app.render(req, res, '/dashboard', { dashboard: req.params.id })
+    // })
+    server.all("*", handle);
+    // server.get('*', (req, res) => {
+    //   if (req.url === '/') {
+    //     res.writeHead(200, {
+    //       Connection: 'keep-alive',
+    //       'Cache-Control': 'no-cache',
+    //       'Content-Type': 'text/plain'
+    //       // 'Content-Type': 'text/event-stream',
+    //     });
+    //     res.write('data: Processing...\n\n');
+    //     setTimeout(() => {
+    //       res.write('data: Processing2...\n\n');
+    //     }, 10000);
+    //   } else {
+    //     return handle(req, res)
+    //   }
+    // });
     ExpressServer.httpServer.listen(4020 || index_1.default.port, () => {
         console.log(`🚀  Server ready at ${index_1.default.port}`);
         console.log(`🚀 Server ready at http://localhost:${index_1.default.port}/${ExpressServer.server.graphqlPath}`);
