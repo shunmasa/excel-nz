@@ -24,7 +24,7 @@ const httpLink = new HttpLink({
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || null
+      authorization: authToken || ''
     }
   });
   // Add onto payload for WebSocket authentication
