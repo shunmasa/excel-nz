@@ -38,39 +38,41 @@ mongoose_1.default.connection.on('error', () => {
 });
 const ExpressServer = new express_1.default();
 ExpressServer.init();
-const dev = process.env.NODE_ENV == "production";
+const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare()
     .then(() => {
     const server = express();
-    // server.get('/card/:studentDialog', (req, res) => {
-    //   return app.render(req, res, '/card', { studentDialog: req.params.id })
-    // })
-    // server.get('/dashboard/:dashboard', (req, res) => {
-    //   return app.render(req, res, '/dashboard', { dashboard: req.params.id })
-    // })
-    server.all("*", handle);
-    // server.get('*', (req, res) => {
-    //   if (req.url === '/') {
-    //     res.writeHead(200, {
-    //       Connection: 'keep-alive',
-    //       'Cache-Control': 'no-cache',
-    //       'Content-Type': 'text/plain'
-    //       // 'Content-Type': 'text/event-stream',
-    //     });
-    //     res.write('data: Processing...\n\n');
-    //     setTimeout(() => {
-    //       res.write('data: Processing2...\n\n');
-    //     }, 10000);
-    //   } else {
-    //     return handle(req, res)
-    //   }
-    // });
-    ExpressServer.httpServer.listen(4020 || index_1.default.port, () => {
-        console.log(`🚀  Server ready at ${index_1.default.port}`);
-        console.log(`🚀 Server ready at http://localhost:${index_1.default.port}/${ExpressServer.server.graphqlPath}`);
-        console.log(`🚀 Subscriptions ready at ws://localhost:${index_1.default.port}${ExpressServer.server.subscriptionsPath}`);
+    server.get('/card/:studentDialog', (req, res) => {
+        return app.render(req, res, '/card', { studentDialog: req.params.id });
+    });
+    server.get('/dashboard/:dashboard', (req, res) => {
+        return app.render(req, res, '/dashboard', { dashboard: req.params.id });
+    });
+    // server.all("*", handle);
+    server.get('*', (req, res) => {
+        if (req.url === '/') {
+            res.writeHead(200, {
+                Connection: 'keep-alive',
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'text/plain'
+                // 'Content-Type': 'text/event-stream',
+            });
+            res.write('data: Processing...\n\n');
+            setTimeout(() => {
+                res.write('data: Processing2...\n\n');
+            }, 10000);
+        }
+        else {
+            return handle(req, res);
+        }
+    });
+    const PORT = process.env.PORT || process.env.API_PORT;
+    ExpressServer.httpServer.listen({ port: PORT }, () => {
+        console.log(`🚀  Server ready at  http://localhost:${PORT}`);
+        console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
+        console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
     });
 });
 //# sourceMappingURL=index.js.map
