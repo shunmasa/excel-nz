@@ -1,7 +1,6 @@
 
 module.exports = {
-  // target: 'serverless',
-  trailingSlash: true,
+  //trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
