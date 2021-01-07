@@ -1,4 +1,5 @@
-import { ApolloClient } from 'apollo-client'
+// import { ApolloClient } from ''
+import { ApolloClient } from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import Cookies from 'js-cookie';
@@ -84,7 +85,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createUploadLink({
-  uri:"https://excelnz.herokuapp.com/", 
+  uri:"https://excelnz.herokuapp.com/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
 })

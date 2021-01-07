@@ -1,4 +1,6 @@
-import { ApolloClient } from 'apollo-client';
+// import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from 'apollo-boost';
+
 import { split, ApolloLink, concat } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
