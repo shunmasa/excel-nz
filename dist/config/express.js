@@ -40,7 +40,7 @@ class Express {
              *  Middlerware for extracting authToken
              */
             this.express.use(auth_1.default);
-            this.server.applyMiddleware({ app: this.express, path: '/https://excelnz.herokuapp.com/graphql' });
+            this.server.applyMiddleware({ app: this.express, path: 'https://excelnz.herokuapp.com/graphql' });
             this.httpServer = http.createServer(this.express);
             /**
              * Installing subscription handlers
