@@ -2,8 +2,8 @@ import React, { useMemo } from "react"
 import Head from "next/head"
 import { ApolloProvider } from "@apollo/react-hooks"
 import { InMemoryCache } from "apollo-cache-inmemory"
-// import { ApolloClient } from "apollo-client"
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from "apollo-client"
+
 import fetch from 'isomorphic-unfetch'
 import Cookies from '../node_modules/js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
@@ -200,6 +200,7 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
+
 const httpLink = new HttpLink({
   uri:"https://excelnz.herokuapp.com/graphql", 
   credentials: "same-origin", 

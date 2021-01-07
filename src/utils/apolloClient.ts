@@ -1,5 +1,4 @@
-// import { ApolloClient } from ''
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import Cookies from 'js-cookie';
