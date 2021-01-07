@@ -71,7 +71,7 @@ app.prepare()
     const PORT = process.env.PORT || process.env.API_PORT;
     ExpressServer.httpServer.listen({ port: PORT }, () => {
         console.log(`🚀  Server ready at  http://localhost:${PORT}`);
-        console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
+        console.log(`🚀 Server ready at ${ExpressServer.server.graphqlPath}`);
         console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
     });
 });

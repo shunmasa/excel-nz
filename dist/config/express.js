@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-// import { ApolloServer }from 'apollo-server-express';
-const { GraphqlHTTP } = require('express-graphql');
+const apollo_server_express_1 = require("apollo-server-express");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const express_1 = tslib_1.__importDefault(require("express"));
 const http = tslib_1.__importStar(require("http"));
@@ -11,7 +10,7 @@ const auth_1 = tslib_1.__importDefault(require("../middleware/auth"));
 const index_2 = tslib_1.__importDefault(require("./index"));
 class Express {
     constructor() {
-        this.graphqlHTTP = new GraphqlHTTP({ schema: index_1.default, graphiql: true });
+        this.server = new apollo_server_express_1.ApolloServer(index_1.default);
         this.init = () => {
             /**
              * Creating an express application
@@ -41,12 +40,12 @@ class Express {
              *  Middlerware for extracting authToken
              */
             this.express.use(auth_1.default);
-            this.graphqlHTTP.applyMiddleware('/graphql', { app: this.express });
+            this.server.applyMiddleware({ app: this.express, path: '/https://excelnz.herokuapp.com/graphql' });
             this.httpServer = http.createServer(this.express);
             /**
              * Installing subscription handlers
              */
-            this.graphqlHTTP.installSubscriptionHandlers('/graphql', this.httpServer);
+            this.server.installSubscriptionHandlers(this.httpServer);
         };
     }
 }

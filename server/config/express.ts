@@ -1,6 +1,5 @@
 
-// import { ApolloServer }from 'apollo-server-express';
-const {GraphqlHTTP  } = require('express-graphql');
+import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import * as http from 'http';
@@ -10,7 +9,7 @@ import config from './index';
 
 class Express {
   public express: express.Application;
- public graphqlHTTP  = new GraphqlHTTP ({schema, graphiql: true});
+  public server: ApolloServer = new ApolloServer(schema);
   public httpServer: http.Server;
   public init = (): void => {
     /**
@@ -40,13 +39,12 @@ class Express {
      */
  
     this.express.use(auth);
-
-    this.graphqlHTTP.applyMiddleware( '/graphql',{ app: this.express });
+    this.server.applyMiddleware({ app: this.express,path: '/https://excelnz.herokuapp.com/graphql' });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers
      */
-    this.graphqlHTTP.installSubscriptionHandlers( '/graphql',this.httpServer);
+    this.server.installSubscriptionHandlers(this.httpServer);
   }
 }
 
