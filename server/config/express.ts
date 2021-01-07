@@ -39,7 +39,7 @@ class Express {
      */
  
     this.express.use(auth);
-    this.server.applyMiddleware({ app: this.express,path: 'https://excelnz.herokuapp.com/graphql' });
+    this.server.applyMiddleware({ app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers
