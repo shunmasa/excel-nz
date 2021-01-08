@@ -5,7 +5,7 @@ import { InMemoryCache } from "apollo-cache-inmemory"
 import { ApolloClient } from "apollo-client"
 
 import fetch from 'isomorphic-unfetch'
-import Cookies from '../node_modules/js-cookie';
+import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
@@ -45,7 +45,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   }
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== "production") {
     const displayName =
       PageComponent.displayName || PageComponent.name || "Component"
 
@@ -59,7 +59,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   // Allow Next.js to remove getInitialProps from the browser build
   if (typeof window === "undefined") {
     if (ssr) {
-      WithApollo.getInitialProps = async (ctx: { ctx?: any; AppTree?: any }) => {
+      WithApollo.getInitialProps = async ctx => {
         const { AppTree } = ctx
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
@@ -148,11 +148,9 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:"wss://localhost:4020/graphql",
-      lazy: true,
+      uri:"ws://localhost:4020/graphql",
       options: {
-        reconnect: true,
-        timeout: 30000
+        reconnect: true
       }
     })
   : null;
@@ -200,15 +198,12 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-
 const httpLink = new HttpLink({
   uri: "http://localhost:4020/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
-  fetchOptions: {
-    mode: 'cors',
-  }
-}) 
+})
+
 const link = process.browser
   ? split(
       ({ query }) => {

@@ -20,7 +20,7 @@ let authToken = null;
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || ''
+      authorization: authToken || null
     }
   });
   // Add onto payload for WebSocket authentication
@@ -31,11 +31,9 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:"wss://localhost:4020/graphql",
-      lazy: true,
+      uri:"ws://localhost:4020/graphql",
       options: {
-        reconnect: true,
-        timeout: 30000
+        reconnect: true
       }
     })
   : null;
@@ -46,7 +44,7 @@ const webSocketLink: any = process.browser
  */
 export const setToken = async (token: string) => {
   try {
-    authToken = token ? `Bearer ${token}` : '';
+    authToken = token ? `Bearer ${token}` : null;
     Cookies.set('token', authToken, { expires: 7 });
   } catch (error) {
     // tslint:disable-next-line:no-console
@@ -60,7 +58,7 @@ export const setToken = async (token: string) => {
  */
 export const setTokenInRequest = async (token: string) => {
   try {
-    authToken = token ? token : '';
+    authToken = token ? token : null;
     return authToken;
   } catch(error){
      // tslint:disable-next-line:no-console
@@ -84,7 +82,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createUploadLink({
-  uri:"http://localhost:4020/graphql", 
+  uri: "http://localhost:4020/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
 })

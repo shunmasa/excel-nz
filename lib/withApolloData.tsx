@@ -2,8 +2,7 @@ import App from 'next/app'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
 import createApolloClient from '../src/utils/apolloClient'
-import React from 'react'
-// import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheets } from '@material-ui/core/styles';
 
 let globalApolloClient = null
 
@@ -83,7 +82,7 @@ export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
   }
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'production') {
     const displayName =
       PageComponent.displayName || PageComponent.name || 'Component'
       WithApollo.displayName = `withApollo(${displayName})`
