@@ -46,7 +46,7 @@ const webSocketLink: any = process.browser
  */
 export const setToken = async (token: string) => {
   try {
-    authToken = token ? `Bearer ${token}` : null;
+    authToken = token ? `Bearer ${token}` : '';
     Cookies.set('token', authToken, { expires: 7 });
   } catch (error) {
     // tslint:disable-next-line:no-console
