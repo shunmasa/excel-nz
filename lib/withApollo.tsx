@@ -45,7 +45,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
   }
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== "development") {
     const displayName =
       PageComponent.displayName || PageComponent.name || "Component"
 
@@ -202,8 +202,8 @@ export const destroyToken = async () => {
 const isBrowser = typeof window !== "undefined"
 
 const httpLink = new HttpLink({
-  uri:"https://excelnz.herokuapp.com/graphql", 
-  credentials: "include", 
+  uri: "http://localhost:4020/graphql", 
+  credentials: "same-origin", 
   fetch: !isBrowser && fetch,
   fetchOptions: {
     mode: 'cors',

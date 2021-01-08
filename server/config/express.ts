@@ -5,9 +5,9 @@ import express from 'express';
 import * as http from 'http';
 import schema from '../graphql/schema/index';
 import auth from '../middleware/auth';
-// import config from './index';
+import config from './index';
 
-const allowedOrigins =  ['http://localhost:3000','https://excelnz.herokuapp.com/', 'https://studio.apollographql.com','http://localhost:4020']
+// const allowedOrigins =  ['http://localhost:3000','https://excelnz.herokuapp.com/','http://localhost:4020']
 
 
 
@@ -24,14 +24,13 @@ class Express {
      * Middlerware for using CORS
      cors(graphql/)??*/
     this.express.use(cors({
-      credentials: true,
       origin(origin, callback) {
         /**
          * Allow requests with no origin
          * Like mobile apps or curl requests
          */
         if (!origin) { return callback(null, true); }
-        if (allowedOrigins.indexOf(origin) === -1) {
+        if (config.allowedOrigins.indexOf(origin) === -1) {
           const msg = `The CORS policy for this site does not
           allow access from the specified Origin.`;
           return callback(new Error(msg), false);

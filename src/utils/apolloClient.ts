@@ -60,7 +60,7 @@ export const setToken = async (token: string) => {
  */
 export const setTokenInRequest = async (token: string) => {
   try {
-    authToken = token ? token : null;
+    authToken = token ? token : '';
     return authToken;
   } catch(error){
      // tslint:disable-next-line:no-console
@@ -84,8 +84,8 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createUploadLink({
-  uri:"https://excelnz.herokuapp.com/graphql", 
-  credentials: "include", 
+  uri:"http://localhost:4020/graphql", 
+  credentials: "same-origin", 
   fetch: !isBrowser && fetch,
 })
 
