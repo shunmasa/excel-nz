@@ -1,6 +1,4 @@
 import { ApolloClient } from 'apollo-client';
-
-
 import { split, ApolloLink, concat } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
@@ -26,7 +24,7 @@ const httpLink = new HttpLink({
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || ''
+      authorization: authToken || null
     }
   });
   // Add onto payload for WebSocket authentication
@@ -38,10 +36,8 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
       uri: WEB_SOCKET_LINK,
-      lazy: true,
       options: {
-        reconnect: true,
-        timeout: 30000
+        reconnect: true
       }
     })
   : null;
@@ -53,7 +49,7 @@ const webSocketLink: any = process.browser
 export const setToken = async (token: string) => {
   try {
     authToken = token ? `Bearer ${token}` : null;
-    Cookies.set('', authToken, { expires: 7 });
+    Cookies.set('token', authToken, { expires: 7 });
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.log(error);
