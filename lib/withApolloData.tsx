@@ -2,7 +2,7 @@ import App from 'next/app'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
 import createApolloClient from '../src/utils/apolloClient'
-import { ServerStyleSheets } from '@material-ui/core/styles';
+// import { ServerStyleSheets } from '@material-ui/core/styles';
 
 let globalApolloClient = null
 
@@ -24,7 +24,7 @@ export const initOnContext = (ctx) => {
     }
   }
 
-  const apolloClient =
+  const apolloClient = 
   ctx.apolloClient ||
   initApolloClient(ctx.apolloState || {}, inAppContext ? ctx.ctx : ctx)
 
