@@ -117,17 +117,13 @@ const schema = {
     typeDefs,
     resolvers: index_1.default,
     introspection: true,
-    engine: {
-        apiKey: process.env.ENGINE_API_KEY,
-        graphVariant: process.env.NODE_ENV,
-    },
     context: ({ req, connection, payload }) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
         if (connection) {
             return { isAuth: payload.authToken };
         }
         return { isAuth: req.isAuth };
     }),
-    playground: true,
+    playground: !(process.env.NODE_ENV === 'production'),
 };
 exports.default = schema;
 //# sourceMappingURL=index.js.map
