@@ -68,11 +68,10 @@ app.prepare()
             return handle(req, res);
         }
     });
-    const PORT = process.env.PORT || process.env.API_PORT;
-    ExpressServer.httpServer.listen({ port: PORT }, () => {
-        console.log(`🚀  Server ready at  http://localhost:${PORT}`);
-        console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
-        console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
+    ExpressServer.httpServer.listen(4020 || index_1.default.port, () => {
+        console.log(`🚀  Server ready at ${index_1.default.port}`);
+        console.log(`🚀 Server ready at http://localhost:${index_1.default.port}${ExpressServer.server.graphqlPath}`);
+        console.log(`🚀 Subscriptions ready at ws://localhost:${index_1.default.port}${ExpressServer.server.subscriptionsPath}`);
     });
 });
 //# sourceMappingURL=index.js.map
