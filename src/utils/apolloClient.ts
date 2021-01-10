@@ -8,8 +8,6 @@ import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
 // const { createUploadLink } = require('apollo-upload-client');
 import { createHttpLink } from "apollo-link-http";
-// import { SubscriptionClient } from "subscriptions-transport-ws";
-// import ws from 'ws';
 
 
 
@@ -32,18 +30,13 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-// const GRAPHQL_ENDPOINT = "wss://excelnz.herokuapp.com/graphql";
-// const client = new SubscriptionClient (GRAPHQL_ENDPOINT,{
-//   reconnect: true
-// },ws);
-
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-    uri:"ws://localhost:4020/graphql",
-    options: {
-      reconnect: true
-    }
-  })
+      uri:'wss://excelnz.herokuapp.com/graphql',
+      options: {
+        reconnect: true
+      }
+    })
   : null;
 
 /**
@@ -89,7 +82,7 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-const httpLink = createHttpLink({
+const httpLink =  createHttpLink({
   uri: 'http://localhost:4020/graphql', 
   credentials:  'same-origin', 
   fetch
