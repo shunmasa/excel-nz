@@ -84,6 +84,7 @@
     "streamifier": "^0.1.1",
     "styled-components": "^5.2.0",
     "subscriptions-transport-ws": "^0.9.18",
+    "ws": "^7.4.2",
     "yup": "^0.29.3"
   },
   "devDependencies": {
