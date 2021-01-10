@@ -8,7 +8,7 @@ import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
 // const { createUploadLink } = require('apollo-upload-client');
 import { createHttpLink } from "apollo-link-http";
-
+import { SubscriptionClient } from "subscriptions-transport-ws";
 
 
 interface Definintion {
@@ -30,13 +30,13 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+const GRAPHQL_ENDPOINT = "wss://excelnz.herokuapp.com/graphql";
+const client = new SubscriptionClient (GRAPHQL_ENDPOINT,{
+  reconnect: true
+});
+
 const webSocketLink: any = process.browser
-  ? new WebSocketLink({
-      uri:'wss://excelnz.herokuapp.com/graphql',
-      options: {
-        reconnect: true
-      }
-    })
+  ? new WebSocketLink(client)
   : null;
 
 /**
