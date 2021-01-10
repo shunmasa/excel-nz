@@ -6,10 +6,10 @@ import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
-const { createUploadLink } = require('apollo-upload-client');
-// import { createHttpLink } from "apollo-link-http";
-import { SubscriptionClient } from "subscriptions-transport-ws";
-import ws from 'ws';
+// const { createUploadLink } = require('apollo-upload-client');
+import { createHttpLink } from "apollo-link-http";
+// import { SubscriptionClient } from "subscriptions-transport-ws";
+// import ws from 'ws';
 
 
 
@@ -89,7 +89,7 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-const httpLink = createUploadLink({
+const httpLink = createHttpLink({
   uri: 'https://excelnz.herokuapp.com/graphql', 
   credentials:  'same-origin', 
   fetch
