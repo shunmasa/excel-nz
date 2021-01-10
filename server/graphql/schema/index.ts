@@ -124,7 +124,14 @@ const schema: ApolloServerExpressConfig = {
     }
     return { isAuth: req.isAuth };
   },
+
   playground: true,
+  subscriptions:{
+    path:'/ws',
+    keepAlive:150000,
+    onConnect:()=>console.log("connected"),
+    onDisconnect:()=>console.log("disconnected")
+  }
 }
 
 export default schema;
