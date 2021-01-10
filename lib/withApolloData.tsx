@@ -24,7 +24,7 @@ export const initOnContext = (ctx) => {
       )
     }
   }
-
+  //const cookie = ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie && String(ctx.req.headers.cookie);
   const apolloClient = 
   ctx.apolloClient ||
   initApolloClient(ctx.apolloState || {}, inAppContext ? ctx.ctx : ctx)
@@ -92,7 +92,7 @@ export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
   if (ssr || PageComponent.getInitialProps) {
     WithApollo.getInitialProps = async (ctx) => {
       const inAppContext = Boolean(ctx.ctx)
-      //const cookie = ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie && String(ctx.req.headers.cookie);
+     
       const { apolloClient } = initOnContext(ctx)
 
       // Run wrapped getInitialProps methods
@@ -146,7 +146,6 @@ export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
         ...pageProps,
         apolloState: apolloClient.cache.extract(),
         // Provide the client for ssr. As soon as this payload
-        // gets JSON.stringified it will remove itself.
         apolloClient: ctx.apolloClient,
       }
     }
