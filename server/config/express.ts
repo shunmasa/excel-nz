@@ -79,7 +79,7 @@ app.prepare()
     this.express.use(auth);
     // this.express.use(bodyParser.json())
     // this.express.use(bodyParser.urlencoded({extended:true}))
-    this.server.applyMiddleware({ path:'/graphql',app: this.express });
+    this.server.applyMiddleware({ cors:false,path:'/graphql',app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers
