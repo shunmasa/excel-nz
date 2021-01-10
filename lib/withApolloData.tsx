@@ -63,7 +63,7 @@ const initApolloClient = (initialState, ctx) => {
  * @param  {Boolean} [withApolloOptions.ssr=false]
  * @returns {(PageComponent: ReactNode) => ReactNode}
  */
-export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
+export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
  
       let client
@@ -92,6 +92,7 @@ export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
   if (ssr || PageComponent.getInitialProps) {
     WithApollo.getInitialProps = async (ctx) => {
       const inAppContext = Boolean(ctx.ctx)
+      //const cookie = ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie && String(ctx.req.headers.cookie);
       const { apolloClient } = initOnContext(ctx)
 
       // Run wrapped getInitialProps methods
