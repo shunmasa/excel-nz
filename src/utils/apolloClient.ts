@@ -1,12 +1,12 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-
+import { createPersistedQueryLink } from "apollo-link-persisted-queries";
+import { HttpLink } from 'apollo-link-http';
 import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
-const { createUploadLink } = require('apollo-upload-client');
-
+// const { createUploadLink } = require('apollo-upload-client');
 
 
 
@@ -31,7 +31,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:"ws://localhost:4020/graphql",
+      uri:process.env.WS_URL + '/graphql',
       options: {
         reconnect: true
       }
@@ -81,7 +81,7 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-const httpLink = createUploadLink({
+const httpLink =  new HttpLink({
   uri: process.env.API_URL + '/graphql', 
   credentials:  'include', 
   fetch
