@@ -126,7 +126,7 @@ export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
             }
     
 
-            await getMarkupFromTree({
+            await getDataFromTree({
               tree: (
                 <AppTree {...props} />
               )

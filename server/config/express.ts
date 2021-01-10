@@ -1,7 +1,7 @@
 
 import { ApolloServer } from 'apollo-server-express';
 // import cors from 'cors';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import express from 'express';
 import * as http from 'http';
 import schema from '../graphql/schema/index';
@@ -77,7 +77,7 @@ app.prepare()
     
 })
     this.express.use(auth);
-    // this.express.use(bodyParser.json())
+    this.express.use(bodyParser.json())
     // this.express.use(bodyParser.urlencoded({extended:true}))
     this.server.applyMiddleware({ cors:false,path:'/graphql',app: this.express });
     this.httpServer = http.createServer(this.express);

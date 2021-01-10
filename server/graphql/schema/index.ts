@@ -126,12 +126,7 @@ const schema: ApolloServerExpressConfig = {
   },
 
   playground: true,
-  subscriptions:{
-    path:'/ws',
-    keepAlive:150000,
-    onConnect:()=>console.log("connected"),
-    onDisconnect:()=>console.log("disconnected")
-  }
+
 }
 
 export default schema;
