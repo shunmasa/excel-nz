@@ -73,7 +73,7 @@ export function withApollo(PageComponent, { ssr = true } = {}) {
 
         try {
           // Run all GraphQL queries
-          await require("@apollo/react-ssr").getDataFromTree(
+          await require("@apollo/react-ssr").getMarkupFromTree(
             <AppTree
               pageProps={{
                 ...pageProps,
