@@ -82,7 +82,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createUploadLink({
-  uri: "/graphql", 
+  uri: "graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
 })
