@@ -1,12 +1,13 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { createPersistedQueryLink } from "apollo-link-persisted-queries";
-import { HttpLink } from 'apollo-link-http';
+// import { createPersistedQueryLink } from "apollo-link-persisted-queries";
+// import { HttpLink } from 'apollo-link-http';
 import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
 // const { createUploadLink } = require('apollo-upload-client');
+import { createHttpLink } from "apollo-link-http";
 
 
 
@@ -31,7 +32,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:process.env.WS_URL + '/graphql',
+      uri:'wss://excelnz.herokuapp.com/graphql',
       options: {
         reconnect: true
       }
@@ -81,10 +82,11 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-const httpLink =  new HttpLink({
-  uri: process.env.API_URL + '/graphql', 
+const httpLink =  createHttpLink({
+  uri: 'https://excelnz.herokuapp.com/graphql', 
   credentials:  'include', 
-  fetch
+  fetch,
+  useGETForQueries: true
   // fetch: !isBrowser && fetch,
 })
 
