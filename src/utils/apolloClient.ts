@@ -90,7 +90,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4020/graphql', 
+  uri: 'https://excelnz.herokuapp.com', 
   credentials:  'same-origin', 
   fetch
   // useGETForQueries: true
