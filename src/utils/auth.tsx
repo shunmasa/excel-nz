@@ -3,7 +3,7 @@ import * as React from 'react';
 import Router from 'next/router';
 import nextCookie from 'next-cookies';
 // import { setTokenInRequest } from './Client';
-import { setTokenInRequest } from '../../lib/withApollo';
+import { setToken} from './apolloClient';
 const getDisplayName = (Component: { displayName: any; name: any; }) =>
   Component.displayName || Component.name || 'Component';
 
@@ -31,7 +31,7 @@ export const withAuthSync = WrappedComponent =>
 
     static async getInitialProps(ctx: { req: any; res?: any; }) {
       const { token, userId } = auth(ctx);
-      await setTokenInRequest(token);
+      await setToken(token);
 
       const componentProps =
         WrappedComponent.getInitialProps &&
