@@ -1,14 +1,19 @@
 
 import { ApolloServer } from 'apollo-server-express';
-import cors from 'cors';
+// import cors from 'cors';
+// import bodyParser from 'body-parser';
 import express from 'express';
 import * as http from 'http';
 import schema from '../graphql/schema/index';
 import auth from '../middleware/auth';
-import config from './index';
-
+const next = require('next')
+// import config from './index';
+const cors = require('cors')
 // const allowedOrigins =  ['http://localhost:3000','https://excelnz.herokuapp.com/','http://localhost:4020']
 
+const dev = process.env.NODE_ENV !== "production";
+const app = next({dev});
+const handle = app.getRequestHandler();
 
 
 class Express {
@@ -16,34 +21,65 @@ class Express {
   public server: ApolloServer = new ApolloServer(schema);
   public httpServer: http.Server;
   public init = (): void => {
-    /**
-     * Creating an express application
-     */
+   
+
     this.express = express();
-    /**
-     * Middlerware for using CORS
-     cors(graphql/)??*/
-    this.express.use(cors({
-      origin(origin, callback) {
-        /**
-         * Allow requests with no origin
-         * Like mobile apps or curl requests
-         */
-        if (!origin) { return callback(null, true); }
-        if (config.allowedOrigins.indexOf(origin) === -1) {
-          const msg = `The CORS policy for this site does not
-          allow access from the specified Origin.`;
-          return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-      }
-    }));
+ 
+  
+    this.express.use('*',cors());
     /**
      *  Middlerware for extracting authToken
      */
- 
+    // {
+    //   origin(origin, callback) {
+    //     /**
+    //      * Allow requests with no origin
+    //      * Like mobile apps or curl requests
+    //      */
+    //     if (!origin) { return callback(null, true); }
+    //     if (config.allowedOrigins.indexOf(origin) === -1) {
+    //       const msg = `The CORS policy for this site does not
+    //       allow access from the specified Origin.`;
+    //       return callback(new Error(msg), false);
+    //     }
+    //     return callback(null, true);
+    //   }
+    // }
+
+app.prepare()
+.then(() => { 
+   this.express.all("*", handle);
+  // this.express.get('/card/:studentDialog', (req, res) => {
+  //   return app.render(req, res, '/card', { studentDialog: req.params.id })
+  // })
+  // this.express.get('/dashboard/:dashboard', (req, res) => {
+  //   return app.render(req, res, '/dashboard', { dashboard: req.params.id })
+  // })
+
+  // this.express.get('*', (req, res) => {
+  //   if (req.url === '/') {
+  //     res.writeHead(200, {
+  //       Connection: 'keep-alive',
+  //       'Cache-Control': 'no-cache',
+  //       'Content-Type': 'text/plain'
+  //       // 'Content-Type': 'text/event-stream',
+  //     });
+  //     res.write('data: Processing...\n\n');
+  //     setTimeout(() => {
+  //       res.write('data: Processing2...\n\n');
+  //     }, 10000);
+  //   } else {
+  //     return handle(req, res)
+  //   }
+    
+    
+  // });
+    
+})
     this.express.use(auth);
-    this.server.applyMiddleware({ app: this.express });
+    // this.express.use(bodyParser.json())
+    // this.express.use(bodyParser.urlencoded({extended:true}))
+    this.server.applyMiddleware({ path:'/graphql',app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers

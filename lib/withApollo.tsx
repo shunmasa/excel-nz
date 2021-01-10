@@ -132,12 +132,12 @@ interface Definintion {
   operation?: string;
 }
 
-let authToken = null;
+let authToken = '';
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || null
+      authorization: authToken || ''
     }
   });
   // Add onto payload for WebSocket authentication
@@ -161,7 +161,7 @@ const webSocketLink: any = process.browser
  */
 export const setToken = async (token: string) => {
   try {
-    authToken = token ? `Bearer ${token}` : null;
+    authToken = token ? `Bearer ${token}` : '';
     Cookies.set('token', authToken, { expires: 7 });
   } catch (error) {
     // tslint:disable-next-line:no-console
@@ -175,7 +175,7 @@ export const setToken = async (token: string) => {
  */
 export const setTokenInRequest = async (token: string) => {
   try {
-    authToken = token ? token : null;
+    authToken = token ? token : '';
     return authToken;
   } catch(error){
      // tslint:disable-next-line:no-console
@@ -199,7 +199,7 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = new HttpLink({
-  uri: "http://localhost:4020/graphql", 
+  uri: "/graphql", 
   credentials: "same-origin", 
   fetch: !isBrowser && fetch,
 })

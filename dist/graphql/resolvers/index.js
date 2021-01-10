@@ -8,5 +8,6 @@ const rootResolver = {
     Mutation: Object.assign(Object.assign(Object.assign({}, user_1.UserMutation), post_1.PostMutation), notice_1.NoticeMutation),
     Subscription: Object.assign(Object.assign({}, user_1.UserSubscription), post_1.PostSubscription)
 };
+//
 exports.default = rootResolver;
 //# sourceMappingURL=index.js.map
