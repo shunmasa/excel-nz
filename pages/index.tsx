@@ -1,6 +1,6 @@
 import ScrollNavigation from 'react-single-page-navigation';
-// import ReactGA from "react-ga";
-// import Head from "next/head";
+import ReactGA from "react-ga";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { motion, AnimateSharedLayout,useViewportScroll, useTransform  } from "framer-motion";
 import React,{useState,useEffect,useCallback, useRef} from 'react';
@@ -608,27 +608,27 @@ return (
   <>
   <ElevationScroll>
 
-    {/* 
+{/*     
     <Head>
             <title key="title">ホーム</title>
             <meta
               name="description"
               key="description"
-              content="Let us guide you through the custom software design and development process. Send us a message with any of your ideas or questions to get started!"
+              content="クライストテャーチ留学のことならExcelNZ"
             />
             <meta
               property="og:title"
               content="Bringing West Coast Technology to the Midwest | Contact Us"
               key="og:title"
             />
-            <meta property="og:url" key="og:url" content="excel/home" />
+            <meta property="og:url" key="og:url" content="/" />
             <link
               rel="canonical"
               key="canonical"
-              href="https://excel/home.js"
+              href="https://excelnz.herokuapp.com/"
             />
-          </Head> */}
-    
+          </Head>
+     */}
       <ScrollNavigation elements={{ section1: {}, section2: {} ,section3:{},section4:{},section5:{},section6:{},section7:{}}}>
     
     {({ refs,goTo,activeElement }) => (
