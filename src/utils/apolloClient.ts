@@ -88,7 +88,7 @@ const httpLink =  createHttpLink({
   fetch
   // fetch: !isBrowser && fetch,
 })
-//
+
 const link = process.browser
   ? split(
       ({ query }) => {
