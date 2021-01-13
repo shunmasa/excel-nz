@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
-// const { createLink } = require('apollo-upload-client');
+// const { createUploadLink } = require('apollo-upload-client');
 import { createHttpLink } from "apollo-link-http";
 
 
@@ -84,8 +84,8 @@ export const destroyToken = async () => {
 const isBrowser = typeof window !== "undefined"
 const httpLink =  createHttpLink({
   uri: process.env.GRAPHQL_URI, 
-  credentials: 'same-origin',
-  fetch,
+  credentials:  'include', 
+  fetch
   // fetch: !isBrowser && fetch,
 })
 
