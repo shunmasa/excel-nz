@@ -1,11 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-// import { gql } from 'apollo-server';
-// import { ApolloServerExpressConfig } from '';
+const apollo_server_express_1 = require("apollo-server-express");
 const index_1 = tslib_1.__importDefault(require("../resolvers/index"));
-const { gql, makeExecutableSchema } = require('apollo-server');
-const typeDefs = gql `
+const typeDefs = apollo_server_express_1.gql `
 
   type Query {
     users: [User!]! 
@@ -115,7 +113,7 @@ type PageInfo{
   }
 
 `;
-const schema = makeExecutableSchema({
+const schema = {
     typeDefs,
     resolvers: index_1.default,
     introspection: true,
@@ -126,6 +124,6 @@ const schema = makeExecutableSchema({
         return { isAuth: req.isAuth };
     }),
     playground: true,
-});
+};
 exports.default = schema;
 //# sourceMappingURL=index.js.map
