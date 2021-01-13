@@ -49,56 +49,16 @@ const ExpressServer = new Express();
 ExpressServer.init();
 
 
-
-// const dev = process.env.NODE_ENV !== "production";
-// const app = next({dev});
-// const handle = app.getRequestHandler();
-
-
-
-// app.prepare()
-// .then(() => {
-  
-//   const server = express()
-
-//   server.get('/card/:studentDialog', (req, res) => {
-//     return app.render(req, res, '/card', { studentDialog: req.params.id })
-//   })
-//   server.get('/dashboard/:dashboard', (req, res) => {
-//     return app.render(req, res, '/dashboard', { dashboard: req.params.id })
-//   })
-
-//   // server.all("*", handle);
-
-
-//   server.get('*', (req, res) => {
-//     if (req.url === '/') {
-//       res.writeHead(200, {
-//         Connection: 'keep-alive',
-//         'Cache-Control': 'no-cache',
-//         'Content-Type': 'text/plain'
-//         // 'Content-Type': 'text/event-stream',
-//       });
-//       res.write('data: Processing...\n\n');
-//       setTimeout(() => {
-//         res.write('data: Processing2...\n\n');
-//       }, 10000);
-//     } else {
-//       return handle(req, res)
-//     }
-    
-    
-//   });
-//})
+const { PORT } = process.env;
 
   
-  ExpressServer.httpServer.listen( 4020 || config.port, () => {
-    console.log(`🚀  Server ready at ${config.port}`);
+  ExpressServer.httpServer.listen( 4020 || PORT , () => {
+    console.log(`🚀  Server ready at ${ PORT }`);
     console.log(
-      `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
+      `🚀 Server ready at http://localhost:${ PORT }${ExpressServer.server.graphqlPath}`
     );
     console.log(
-      `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
+      `🚀 Subscriptions ready at ws://localhost:${ PORT }${ExpressServer.server.subscriptionsPath}`
     );
   });
  

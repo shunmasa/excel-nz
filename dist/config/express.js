@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const apollo_server_express_1 = require("apollo-server-express");
 // import cors from 'cors';
-// import bodyParser from 'body-parser';
+const body_parser_1 = tslib_1.__importDefault(require("body-parser"));
 const express_1 = tslib_1.__importDefault(require("express"));
 const http = tslib_1.__importStar(require("http"));
 const index_1 = tslib_1.__importDefault(require("../graphql/schema/index"));
@@ -66,7 +66,7 @@ class Express {
                 // });
             });
             this.express.use(auth_1.default);
-            // this.express.use(bodyParser.json())
+            this.express.use(body_parser_1.default.json());
             // this.express.use(bodyParser.urlencoded({extended:true}))
             this.server.applyMiddleware({ cors: false, path: '/graphql', app: this.express });
             this.httpServer = http.createServer(this.express);
