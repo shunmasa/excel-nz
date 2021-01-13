@@ -117,7 +117,7 @@ export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
           try {
             // Import `@apollo/react-ssr` dynamically.
             // We don't want to have this in our client bundle.
-            const { getDataFromTree,getMarkupFromTree ,} = await import('@apollo/react-ssr')
+            const { getDataFromTree,getMarkupFromTree} = await import('@apollo/react-ssr')
 
             
             let props
@@ -128,7 +128,7 @@ export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
             }
     
 
-            await getDataFromTree({
+            await getMarkupFromTree({
               tree: (
                 <AppTree {...props} />
               )
