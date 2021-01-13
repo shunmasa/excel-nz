@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "NODE_ENV=production node dist/index.js & next start -p $PORT"
+    "start": "NODE_ENV=production node dist/index.js & next start"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "apollo-link-persisted-queries": "^0.2.2",
     "apollo-link-ws": "^1.0.20",
     "apollo-server": "^2.19.1",
+    "apollo-server-express": "^2.19.1",
     "apollo-upload-client": "^14.1.2",
     "bluebird": "^3.7.2",
     "cloudinary": "^1.21.0",
