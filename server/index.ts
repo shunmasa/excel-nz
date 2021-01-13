@@ -53,7 +53,7 @@ const { PORT } = process.env;
 
   
   ExpressServer.httpServer.listen( 4020 || PORT , () => {
-    console.log(`🚀  Server ready at ${ PORT }`);
+    console.log(`🚀  Server ready at ${process.env.GRAPHQL_URI }`);
     console.log(
       `🚀 Server ready at http://localhost:${ PORT }${ExpressServer.server.graphqlPath}`
     );
@@ -62,5 +62,4 @@ const { PORT } = process.env;
     );
   });
  
-
-
+  

@@ -40,7 +40,7 @@ const ExpressServer = new express_1.default();
 ExpressServer.init();
 const { PORT } = process.env;
 ExpressServer.httpServer.listen(4020 || PORT, () => {
-    console.log(`🚀  Server ready at ${PORT}`);
+    console.log(`🚀  Server ready at ${process.env.GRAPHQL_URI}`);
     console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
     console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
 });
