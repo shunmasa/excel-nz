@@ -1,11 +1,17 @@
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import config from './config/index';
-import Express from './config/express';
+// import Express from './config/express';
 // const express = require('express')
 // const next = require('next')
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/config.env" });
+const cors = require('cors')
+import { ApolloServer } from 'apollo-server';
+// const dotenv = require("dotenv");
+// const next = require('next')
+import schema from './graphql/schema/index';
+import auth from './middleware/auth';
+import express from 'express';
+// dotenv.config({ path: "./config/config.env" });
 
 
 
@@ -35,6 +41,7 @@ mongoose.connect(config.db, {
 });
 
 
+const app = express();
 
 
 /**
@@ -44,22 +51,14 @@ mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
 });
 
+const server = new ApolloServer(schema);
 
-const ExpressServer = new Express();
-ExpressServer.init();
-
-
-const { PORT } = process.env;
-
-  
-  ExpressServer.httpServer.listen( 4020 || PORT , () => {
-    console.log(`🚀  Server ready at ${process.env.GRAPHQL_URI }`);
-    console.log(
-      `🚀 Server ready at http://localhost:${ PORT }${ExpressServer.server.graphqlPath}`
-    );
-    console.log(
-      `🚀 Subscriptions ready at ws://localhost:${ PORT }${ExpressServer.server.subscriptionsPath}`
-    );
-  });
+app.use(auth);
  
+app.use('*',cors());
+// const { PORT } = process.env;
+
   
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

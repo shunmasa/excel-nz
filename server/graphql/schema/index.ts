@@ -1,8 +1,11 @@
 
-import { gql } from 'apollo-server-express';
-import { ApolloServerExpressConfig } from 'apollo-server-express';
+// import { gql } from 'apollo-server';
+// import { ApolloServerExpressConfig } from '';
 import resolvers from '../resolvers/index';
-
+const {
+  gql ,
+  makeExecutableSchema
+} = require('apollo-server');
 
 const typeDefs = gql`
 
@@ -114,7 +117,7 @@ type PageInfo{
   }
 
 `;
-const schema: ApolloServerExpressConfig = {
+const schema = makeExecutableSchema ({
   typeDefs,
   resolvers,
   introspection: true,
@@ -127,6 +130,6 @@ const schema: ApolloServerExpressConfig = {
 
   playground: true,
 
-}
+})
 
 export default schema;

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "NODE_ENV=production node dist/index.js & next start -p $PORT"
+    "start": "tsc --watch"
   },
   "keywords": [],
   "author": "",
@@ -35,8 +35,7 @@
     "apollo-link-http": "^1.5.17",
     "apollo-link-persisted-queries": "^0.2.2",
     "apollo-link-ws": "^1.0.20",
-    "apollo-server": "^2.13.1",
-    "apollo-server-express": "^2.19.1",
+    "apollo-server": "^2.19.1",
     "apollo-upload-client": "^14.1.2",
     "bluebird": "^3.7.2",
     "cloudinary": "^1.21.0",
@@ -46,7 +45,7 @@
     "formik": "^2.2.0",
     "formik-material-ui": "^3.0.0",
     "framer-motion": "^2.9.1",
-    "graphql": "^15.3.0",
+    "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "graphql-upload": "^10.0.0",
     "isomorphic-unfetch": "^3.1.0",
