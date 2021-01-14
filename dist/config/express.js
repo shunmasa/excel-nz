@@ -15,7 +15,7 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const origin = process.env.GRAPHQL_URI || 'http://localhost:4020' || 'https://excelnz.herokuapp.com/';
+const origin = process.env.GRAPHQL_URI || 'http://localhost:4020' || 'https://excelnz.herokuapp.com/' || 'https://studio.apollographql.com';
 const methods = 'POST';
 const cors = { origin, methods, credentials: true };
 class Express {

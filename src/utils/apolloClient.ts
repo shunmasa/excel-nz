@@ -20,10 +20,6 @@ let authToken = null;
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
-    http:{
-    includeExtensions: true,
-    includeQuery: false,
-    },
     headers: {
       authorization: authToken || null
     }

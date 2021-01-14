@@ -20,15 +20,9 @@ bluebird_1.default.promisifyAll(mongoose_1.default);
  * @param options
  */
 mongoose_1.default.connect(index_1.default.db, {
-    bufferMaxEntries: 0,
-    keepAlive: true,
-    reconnectInterval: 500,
-    reconnectTries: 30,
-    socketTimeoutMS: 0,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
     useCreateIndex: true,
+    useUnifiedTopology: true
 });
 /**
  * Throw error when not able to connect to database
