@@ -63,7 +63,7 @@ const initApolloClient = (initialState, ctx) => {
  * @param  {Boolean} [withApolloOptions.ssr=false]
  * @returns {(PageComponent: ReactNode) => ReactNode}
  */
-export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
+export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
  
       let client
@@ -119,7 +119,6 @@ export const withApollo = ({ ssr = true} = {}) => (PageComponent) => {
             // We don't want to have this in our client bundle.
             const { getDataFromTree,getMarkupFromTree} = await import('@apollo/react-ssr')
 
-            
             let props
             if (inAppContext) {
               props = { ...pageProps, apolloClient }

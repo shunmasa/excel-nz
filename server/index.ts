@@ -23,15 +23,9 @@ Promise.promisifyAll(mongoose);
 
 
 mongoose.connect(config.db, {
-  bufferMaxEntries: 0,
-  keepAlive: true,
-  reconnectInterval: 500,
-   reconnectTries: 30,
-  socketTimeoutMS: 0,
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify:false,
   useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
 

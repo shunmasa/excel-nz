@@ -1,7 +1,7 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 // import { createPersistedQueryLink } from "apollo-link-persisted-queries";
-import { HttpLink } from 'apollo-link-http';
+// import { HttpLink } from 'apollo-link-http';
 import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
@@ -20,6 +20,10 @@ let authToken = null;
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
+    http:{
+    includeExtensions: true,
+    includeQuery: false,
+    },
     headers: {
       authorization: authToken || null
     }
@@ -82,7 +86,7 @@ export const destroyToken = async () => {
 };
 
 const isBrowser = typeof window !== "undefined"
-const httpLink = new HttpLink({
+const httpLink = createHttpLink({
   uri: process.env.GRAPHQL_URI, 
   credentials:  'include', 
   fetch
