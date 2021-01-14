@@ -8,7 +8,7 @@ import schema from '../graphql/schema/index';
 import auth from '../middleware/auth';
 const next = require('next')
 // import config from './index';
-const cors = require('cors')
+// const cors = require('cors')
 // const allowedOrigins =  ['http://localhost:3000','https://excelnz.herokuapp.com/','http://localhost:4020']
 
 const dev = process.env.NODE_ENV !== "production";
@@ -26,37 +26,12 @@ class Express {
     this.express = express();
  
   
-    this.express.use('*',cors());
-    
+    // this.express.use(cors());
 
 app.prepare()
 .then(() => { 
    this.express.all("*", handle);
-  // this.express.get('/card/:studentDialog', (req, res) => {
-  //   return app.render(req, res, '/card', { studentDialog: req.params.id })
-  // })
-  // this.express.get('/dashboard/:dashboard', (req, res) => {
-  //   return app.render(req, res, '/dashboard', { dashboard: req.params.id })
-  // })
 
-  // this.express.get('*', (req, res) => {
-  //   if (req.url === '/') {
-  //     res.writeHead(200, {
-  //       Connection: 'keep-alive',
-  //       'Cache-Control': 'no-cache',
-  //       'Content-Type': 'text/plain'
-  //       // 'Content-Type': 'text/event-stream',
-  //     });
-  //     res.write('data: Processing...\n\n');
-  //     setTimeout(() => {
-  //       res.write('data: Processing2...\n\n');
-  //     }, 10000);
-  //   } else {
-  //     return handle(req, res)
-  //   }
-    
-    
-  // });
     
 })
     this.express.use(auth);
