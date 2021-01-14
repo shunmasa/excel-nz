@@ -16,6 +16,10 @@ const app = next({dev});
 const handle = app.getRequestHandler();
 
 
+const origin = process.env.GRAPHQL_URI || 'http://localhost:4020';
+  const methods = 'POST';
+  const cors = { origin, methods, credentials: true };
+
 class Express {
   public express: express.Application;
   public server: ApolloServer = new ApolloServer(schema);
@@ -34,10 +38,12 @@ app.prepare()
 
     
 })
+
+
     this.express.use(auth);
     this.express.use(bodyParser.json())
     // this.express.use(bodyParser.urlencoded({extended:true}))
-    this.server.applyMiddleware({ cors:false,path:'/graphql',app: this.express });
+    this.server.applyMiddleware({ cors,path:'/graphql',app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers
