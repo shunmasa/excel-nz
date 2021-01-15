@@ -111,7 +111,7 @@ export default function createApolloClient(initialState, ctx) {
     return new ApolloClient({
       connectToDevTools: isBrowser,
       ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
-      link: concat(authMiddleware, link),//createUploadLink
+      link: link,//createUploadLink
       cache: new InMemoryCache().restore(initialState),
     })
   }
