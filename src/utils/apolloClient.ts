@@ -1,13 +1,13 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 // import { createPersistedQueryLink } from "apollo-link-persisted-queries";
-// import { HttpLink } from 'apollo-link-http';
+import { createHttpLink} from 'apollo-link-http';
 import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
-const { createUploadLink } = require('apollo-upload-client');
-import { createHttpLink } from "apollo-link-http";
+// const { createUploadLink } = require('apollo-upload-client');
+// import { createHttpLink } from "apollo-link-http";
 
 
 
@@ -21,7 +21,7 @@ let authToken = null;
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: authToken || null
+      authorization: authToken || ''
     }
   });
   // Add onto payload for WebSocket authentication
@@ -32,7 +32,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:'wss://excelnz.herokuapp.com',
+      uri:'wss://localhost:4020/subscriptions',
       options: {
         reconnect: true
       }
@@ -80,15 +80,16 @@ export const destroyToken = async () => {
     console.log(error);
   }
 };
-//
+
 const isBrowser = typeof window !== "undefined"
-const httpLink = createUploadLink ({
+const httpLink = createHttpLink({
   uri: 'http://localhost:4020/graphql', 
-  credentials:  'include', 
+  credentials:  'same-origin', 
   fetch
+  // useGETForQueries: true
   // fetch: !isBrowser && fetch,
 })
-
+//
 const link = process.browser
   ? split(
       ({ query }) => {
@@ -104,7 +105,7 @@ const link = process.browser
  * Creates and configures the ApolloClient
  * @param  {Object} [initialState={}]
  */
-
+//
 export default function createApolloClient(initialState, ctx) {
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
@@ -112,6 +113,6 @@ export default function createApolloClient(initialState, ctx) {
       connectToDevTools: isBrowser,
       ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
       link: concat(authMiddleware, link),//createUploadLink
-      cache: new InMemoryCache().restore(initialState),
+      cache: new InMemoryCache().restore(initialState||{}),
     })
   }
