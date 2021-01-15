@@ -80,7 +80,7 @@ export const destroyToken = async () => {
     console.log(error);
   }
 };
-
+//
 const isBrowser = typeof window !== "undefined"
 const httpLink = createHttpLink({
   uri: 'https://excelnz.herokuapp.com/graphql', 
