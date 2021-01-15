@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { split, ApolloLink, concat } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { WebSocketLink } from 'apollo-link-ws';
-// const { createUploadLink } = require('apollo-upload-client');
+const { createUploadLink } = require('apollo-upload-client');
 import { createHttpLink } from "apollo-link-http";
 
 
@@ -82,8 +82,8 @@ export const destroyToken = async () => {
 };
 //
 const isBrowser = typeof window !== "undefined"
-const httpLink = createHttpLink({
-  uri: 'https://excelnz.herokuapp.com/graphql', 
+const httpLink = createUploadLink ({
+  uri: 'https://localhost:4020/graphql', 
   credentials:  'include', 
   fetch
   // fetch: !isBrowser && fetch,
@@ -111,7 +111,7 @@ export default function createApolloClient(initialState, ctx) {
     return new ApolloClient({
       connectToDevTools: isBrowser,
       ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
-      link: link,//createUploadLink
+      link: concat(authMiddleware, link),//createUploadLink
       cache: new InMemoryCache().restore(initialState),
     })
   }
