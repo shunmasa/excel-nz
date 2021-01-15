@@ -9,7 +9,7 @@ import { WebSocketLink } from 'apollo-link-ws';
 // const { createUploadLink } = require('apollo-upload-client');
 // import { createHttpLink } from "apollo-link-http";
 
-
+import fetch from "isomorphic-unfetch";
 
 interface Definintion {
   kind: string;
@@ -32,7 +32,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const webSocketLink: any = process.browser
   ? new WebSocketLink({
-      uri:'wss://localhost:4020/subscriptions',
+      uri:'wss://localhost:4020/graphql',
       options: {
         reconnect: true
       }
@@ -83,8 +83,8 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4020/graphql', 
-  credentials:  'same-origin', 
+  uri: '/graphql', 
+  credentials:  'include', 
   fetch
   // useGETForQueries: true
   // fetch: !isBrowser && fetch,

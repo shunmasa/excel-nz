@@ -125,7 +125,7 @@ const schema: ApolloServerExpressConfig = {
     return { isAuth: req.isAuth };
   },
 
-  playground: true,
+  playground: { endpoint: "/graphql" },
 
 }
 

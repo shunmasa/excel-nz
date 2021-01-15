@@ -1,10 +1,11 @@
 import App from 'next/app'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
-
+// import createApolloClient from '../src/utils/apolloClient'
 import createApolloClient from '../src/utils/apolloClient'
+
 // import { ServerStyleSheets } from '@material-ui/core/styles';
-//
+
 let globalApolloClient = null
 
 /**
@@ -63,7 +64,7 @@ const initApolloClient = (initialState, ctx) => {
  * @param  {Boolean} [withApolloOptions.ssr=false]
  * @returns {(PageComponent: ReactNode) => ReactNode}
  */
-export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
+export const withApollo = ({ ssr = false} = {})  => (PageComponent) => {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
  
       let client
@@ -117,8 +118,9 @@ export const withApollo = ({ ssr = false} = {}) => (PageComponent) => {
           try {
             // Import `@apollo/react-ssr` dynamically.
             // We don't want to have this in our client bundle.
-            const { getDataFromTree,getMarkupFromTree} = await import('@apollo/react-ssr')
+            const { getDataFromTree,getMarkupFromTree } = await import('@apollo/react-ssr')
 
+            
             let props
             if (inAppContext) {
               props = { ...pageProps, apolloClient }
