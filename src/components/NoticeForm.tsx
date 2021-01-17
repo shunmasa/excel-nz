@@ -4,7 +4,7 @@ import { TextField } from 'formik-material-ui';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import { withApollo } from '../../lib/withApolloData'
+import { withApollo } from '../../lib/withApollo'
 import Typography from '@material-ui/core/Typography';
 import CREATE_NOTICE from '../graphql/mutation/createNotice'
 
@@ -112,4 +112,4 @@ const NoticeForm = () => {
   );
 }
 // export default NoticeForm
-export default withApollo({ssr:true})(NoticeForm)
+export default withApollo({ssr:true})(NoticeForm as any)

@@ -1,6 +1,8 @@
 import React,{useState,useEffect}from 'react'
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
+import GET_POSTS from '../graphql/query/posts';
+import { useQuery } from '@apollo/react-hooks';
 import {
   Paper,
   Grid,
@@ -15,7 +17,7 @@ import {
   TablePagination,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-
+import {withApollo} from '../../lib/withApollo'
 import ScrollAnimation from 'react-animate-on-scroll';
 // import StudentDialog from '../../pages/card/[studentDialog]'
 // import { withApollo } from '../../lib/withApolloData'
@@ -134,7 +136,7 @@ interface Data {
 
 
 
-function Cards({data,error,loading}) {
+export const Cards = () => {
   const { file } = useStyles()
   const classes = useStyles();
   const router = useRouter();
@@ -144,12 +146,16 @@ function Cards({data,error,loading}) {
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
   const [postList,setPostList] = useState<Data[]>([])
   const [isOldestFirst,setisOldestFirst] = useState(true)
-  
+
   const [open, setOpen] = React.useState(false);
 
 
-
-
+  const {data,error,loading} = useQuery(GET_POSTS)
+  let message = 'Posts';
+  if (data) message = 'Loading...';
+  if (data) message = `Error! ${error}`;
+  if (data && data.posts.length <= 0) message = 'No Posts';
+  console.log("studentData:",data)
   const { postId } = router.query;
   // const [loading,setLoading] = useState(false)
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -277,10 +283,12 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
       </Grid>
       </ScrollAnimation>
     </Grid>
-))}
+)
+)}
 
 </Grid>
- )}
+ )
+}
   
      
 <TableFooter>
@@ -304,4 +312,4 @@ const ReadLimit = ({ children, maxCharacter = 120 }) => {
 }
 
 
-export default Cards
+ withApollo({ssr:true})(Cards)

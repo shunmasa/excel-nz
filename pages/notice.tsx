@@ -22,7 +22,7 @@ import {destroyToken } from '../src/utils/apolloClient';
 // import Router from 'next/router';
 import { useRouter } from 'next/router'
 import NoticeForm from '../src/components/NoticeForm'
-import { withApollo } from '../lib/withApolloData'
+// import { withApollo } from '../lib/withApollo'
 // import { useMutation } from '@apollo/react-hooks';
 import GET_NOTICES from '../src/graphql/query/notices'
 // import GET_POSTS from '../src/graphql/query/posts'

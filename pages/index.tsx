@@ -8,7 +8,7 @@ import HeadLine from "../src/components/HeadLine"
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Carousel from '../src/components/Carousel'
-import Cards from '../src/components/Cards'
+import {Cards} from '../src/components/Cards'
 import { useTheme } from "@material-ui/core/styles";
 import { Grid, Typography, useScrollTrigger, Button, Paper } from '@material-ui/core';
 import StepperFnc from '../src/components/StepperFnc'
@@ -18,7 +18,7 @@ import CallAnimation from '../src/components/CallAnimation'
 import {Check} from '../src/components/Check'
 import Background from '../src/components/Background'
 import Footer from '../src/components/Footer'
-import GET_POSTS from '../src/graphql/query/posts';
+// import GET_POSTS from '../src/graphql/query/posts';
 import Link from 'next/link'
 import moment from 'moment'
 import useSticky from "../src/components/UseStickey"
@@ -26,7 +26,7 @@ import useSticky from "../src/components/UseStickey"
 import PhotoGallery from '../src/components/PhotoGallery'
 import Loading from '../src/components/Loading'
 
-import { withApollo } from '../lib/withApolloData'
+import {withApollo} from '../lib/withApollo'
 import { useQuery } from '@apollo/react-hooks';
 import About from '../src/components/about'
 import Hidden from "@material-ui/core/Hidden";
@@ -472,9 +472,9 @@ interface Title {
   index:string;
 }
 
-const Home = (props) => {
+const Home = () => {
   
-const {data,error,loading} = useQuery(GET_POSTS)
+
 // console.log('pdata',data)
 const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
   let message = 'Posts';
@@ -485,14 +485,14 @@ const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
 
 
   const router = useRouter();
-useEffect(()=> {
-  if(loadingN){
-    router.reload()
-  }
-  },[]) // eslint-disable-line
+// useEffect(()=> {
+//   if(loadingN){
+//     router.reload()
+//   }
+//   },[]) // eslint-disable-line
 
   
- console.log('pdata',data)
+// 
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
@@ -1194,9 +1194,9 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
     
     
     <Grid item ref={refs.section5} className={classes.svg}>
-    <Cards data={data} error={error} loading={loading}/>
+    <Cards />
     </Grid> 
-      
+    
     
 
     <Grid item ref={refs.section6}>

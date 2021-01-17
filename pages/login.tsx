@@ -17,8 +17,8 @@ import Button from '@material-ui/core/Button';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import { withApollo } from '../lib/withApolloData'
-import { useRouter } from "next/router";
+import {withApollo} from '../lib/withApollo'
+// import { useRouter } from "next/router";
 
 function Copyright() {
   return (
@@ -189,4 +189,4 @@ const handleSubmit = async (event: any) => {
   );
 }
 
-export default withApollo({ ssr: true })(login)
+export default withApollo({ssr:true})(login)

@@ -12,7 +12,7 @@ import { Button, IconButton, Typography } from '@material-ui/core';
 // import DialogEdit from './DialogEdit'
 import DialogForm from '../../pages/dashboard/[dashboard]'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { withApollo } from '../../lib/withApolloData'
+import { withApollo } from '../../lib/withApollo'
 import moment from "moment";
 import {useRouter} from 'next/router';
 import Router from 'next/router';
@@ -23,7 +23,7 @@ import DELETE_POST from '../graphql/mutation/deletePost';
 import GET_SOMEPOSTS from '../graphql/query/somePosts';
 import { useMutation,useQuery} from '@apollo/react-hooks';
 import Edit from "@material-ui/icons/Edit";
-import { divide } from 'lodash';
+// import { divide } from 'lodash';
 
 
 function preventDefault(event) {
@@ -190,4 +190,4 @@ console.log('router',router.query.postUrl)
 }
 
 
-export default withApollo({ ssr: true })(TableMain)
+export default withApollo({ ssr: true })(TableMain as any)

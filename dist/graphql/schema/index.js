@@ -123,7 +123,7 @@ const schema = {
         }
         return { isAuth: req.isAuth };
     }),
-    playground: true,
+    playground: { endpoint: "/graphql" },
 };
 exports.default = schema;
 //# sourceMappingURL=index.js.map

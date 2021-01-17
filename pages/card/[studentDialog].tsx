@@ -9,7 +9,7 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Typography, Tabs, Paper, Box } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import { withApollo } from '../../lib/withApolloData'
+import {withApollo} from '../../lib/withApollo'
 import { useQuery} from '@apollo/react-hooks';
 import GET_POST from "../../src/graphql/query/post";
 import { useRouter } from "next/router";
@@ -109,11 +109,11 @@ const StudentDialog = () =>{
     if (data && data.post.length <= 0) message = 'No Post';
   const classes = useStyles();
   
-  useEffect(()=> {
-  if(loading){
-    router.reload()
-  }
-  },[]) // eslint-disable-line
+  // useEffect(()=> {
+  // if(loading){
+  //   router.reload()
+  // }
+  // },[]) // eslint-disable-line
   
 
 

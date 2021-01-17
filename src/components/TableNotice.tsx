@@ -12,7 +12,7 @@ import moment from 'moment'
 // import Edit from "@material-ui/icons/Edit";
 // import DialogEdit from './DialogEdit'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { withApollo } from '../../lib/withApolloData'
+import { withApollo } from '../../lib/withApollo'
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import DELETE_NOTICE from '../graphql/mutation/deleteNotice'
@@ -130,4 +130,4 @@ const TableNotice = () => {
 }
 
 // export default TableNotice
-export default withApollo({ ssr: true })(TableNotice)
+export default withApollo({ ssr: true })(TableNotice as any)

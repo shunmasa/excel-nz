@@ -83,9 +83,8 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createHttpLink({
-  uri:   process.env.NODE_ENV === "production"?
-  '/graphql':"http://localhost:4020/graphql", 
-  credentials:  'include', 
+  uri: "http://localhost:4020/graphql", 
+  credentials:  'same-origin', 
   fetch
   // useGETForQueries: true
   // fetch: !isBrowser && fetch,
