@@ -190,4 +190,4 @@ console.log('router',router.query.postUrl)
 }
 
 
-export default withApollo({ ssr: true })(TableMain as any)
+export default withApollo({ ssr: true })(TableMain)
