@@ -17,7 +17,7 @@ const handle = app.getRequestHandler();
 
 
 // const origin = process.env.GRAPHQL_URI || 'http://localhost:4020' || 'https://excelnz.herokuapp.com/'|| 'https://studio.apollographql.com'
-const origin = 'https://excelnz.herokuapp.com/';  
+const origin = 'https://excelnz.herokuapp.com';  
 const methods = 'POST';
   const cors = { origin, methods, credentials: true };
 
