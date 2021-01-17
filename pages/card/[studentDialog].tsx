@@ -8,7 +8,7 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Typography, Tabs, Paper, Box } from '@material-ui/core'
 import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import {withApollo} from '../../lib/withApollo'
+import {withApollo} from '../../lib/withApolloData'
 import { useQuery} from '@apollo/react-hooks';
 import GET_POST from "../../src/graphql/query/post";
 import { useRouter } from "next/router";
