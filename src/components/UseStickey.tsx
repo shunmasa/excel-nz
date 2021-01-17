@@ -3,7 +3,7 @@ import { useViewportScroll, useTransform  } from "framer-motion";
 function useSticky() {
   const [isSticky, setSticky] = useState(false)
   const element = useRef(null)
-//
+////
   const handleScroll = () => {
     if(!element.current) return 
    if( window.scrollY > element.current.getBoundingClientRect().bottom ){
