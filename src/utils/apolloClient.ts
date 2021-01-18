@@ -19,9 +19,10 @@ interface Definintion {
 let authToken = null;
 
 const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = sessionStorage.getItem('token');
   operation.setContext({
     headers: {
-      authorization: authToken || ''
+      authorization:   token ? `Bearer ${token}` : '' 
     }
   });
   // Add onto payload for WebSocket authentication
@@ -83,8 +84,8 @@ export const destroyToken = async () => {
 
 const isBrowser = typeof window !== "undefined"
 const httpLink = createHttpLink({
-  uri: process.env.GRAPHQL_URI, 
-  credentials:  'same-origin', 
+  uri: "/graphql", 
+  credentials:  'include', 
   fetch
   // useGETForQueries: true
   // fetch: !isBrowser && fetch,
