@@ -268,4 +268,4 @@ const PostForm = () => {
     </Formik>
   );
 }
-export default withApollo({ssr:true})(PostForm)
+export default withApollo(PostForm)

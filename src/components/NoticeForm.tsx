@@ -112,4 +112,4 @@ const NoticeForm = () => {
   );
 }
 // export default NoticeForm
-export default withApollo({ssr:true})(NoticeForm)
+export default withApollo(NoticeForm)

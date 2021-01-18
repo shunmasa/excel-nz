@@ -189,4 +189,4 @@ const handleSubmit = async (event: any) => {
   );
 }
 
-export default withApollo({ssr:true})(login)
+export default withApollo(login)

@@ -130,4 +130,4 @@ const TableNotice = () => {
 }
 
 // export default TableNotice
-export default withApollo({ ssr: true })(TableNotice)
+export default withApollo(TableNotice)

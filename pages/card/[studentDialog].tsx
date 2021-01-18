@@ -181,4 +181,4 @@ const StudentDialog = () =>{
   );
 }
 
-export default withApollo({ ssr: true })(StudentDialog)
+export default withApollo(StudentDialog)

@@ -289,4 +289,4 @@ console.log('datap',data)
   );
 }
 
-export default withApollo({ssr:true})(DialogForm);
+export default withApollo(DialogForm);
