@@ -119,7 +119,7 @@ export const withApollo = ({ ssr = false } = {}) => (PageComponent: NextPage): R
   };
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'development') {
     const displayName = PageComponent.displayName || PageComponent.name || 'Component';
     WithApollo.displayName = `withApollo(${displayName})`;
   }
@@ -151,7 +151,7 @@ export const withApollo = ({ ssr = false } = {}) => (PageComponent: NextPage): R
           try {
             // Import `@apollo/react-ssr` dynamically.
             // We don't want to have this in our client bundle.
-            const { getDataFromTree,getMarkupFromTree} = await import('@apollo/react-ssr');
+            const { getDataFromTree} = await import('@apollo/react-ssr');
 
             // Since AppComponents and PageComponents have different context types
             // we need to modify their props a little.
@@ -168,11 +168,7 @@ export const withApollo = ({ ssr = false } = {}) => (PageComponent: NextPage): R
             // if you want to reduce the number of rerenders.
             // https://www.apollographql.com/docs/react/data/fragments/
             // eslint-disable-next-line react/jsx-props-no-spreading
-            await getMarkupFromTree({
-              tree: (
-                <AppTree {...props} />
-              )
-            });
+            await getDataFromTree(<AppTree {...props} />);
           } catch (error) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
             // Handle them in components via the data.error prop:
