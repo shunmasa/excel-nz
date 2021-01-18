@@ -9,7 +9,7 @@ import { WebSocketLink } from 'apollo-link-ws';
 // const { createUploadLink } = require('apollo-upload-client');
 // import { createHttpLink } from "apollo-link-http";
 
-import fetch from "isomorphic-unfetch";
+// import fetch from "isomorphic-unfetch";
 
 interface Definintion {
   kind: string;
