@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import { IconButton } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { withApollo } from '../../lib/withApolloData';
+import withApollo from '../../lib/withApollo';
 import moment from "moment";
 import { useRouter } from 'next/router';
 import Router from 'next/router';

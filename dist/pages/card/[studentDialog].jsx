@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Slide from '@material-ui/core/Slide';
 import { Typography, Paper, Box } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { withApollo } from '../../lib/withApolloData';
+import withApollo from '../../lib/withApollo';
 import { useQuery } from '@apollo/react-hooks';
 import GET_POST from "../../src/graphql/query/post";
 import { useRouter } from "next/router";

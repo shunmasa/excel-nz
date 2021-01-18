@@ -4,7 +4,7 @@ import GET_POSTS from '../graphql/query/posts';
 import { useQuery } from '@apollo/react-hooks';
 import { Paper, Grid, Typography, Button, Box, FormControlLabel, FormGroup, Switch, TableFooter, TableRow, TablePagination, } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { withApollo } from '../../lib/withApolloData';
+import withApollo from '../../lib/withApollo';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Link from 'next/link';
 import Loading from './Loading';
