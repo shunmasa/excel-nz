@@ -1,0 +1,208 @@
+import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
+import GET_POSTS from '../graphql/query/posts';
+import { useQuery } from '@apollo/react-hooks';
+import { Paper, Grid, Typography, Button, Box, FormControlLabel, FormGroup, Switch, TableFooter, TableRow, TablePagination, } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { withApollo } from '../../lib/withApolloData';
+import ScrollAnimation from 'react-animate-on-scroll';
+import Link from 'next/link';
+import Loading from './Loading';
+const useStyles = makeStyles((theme) => createStyles({
+    papper: {
+        height: "100%",
+        maxWidth: '80%',
+        margin: "10em 12.5em 16em 13.5em",
+        [theme.breakpoints.down("sm")]: {
+            maxWidth: "80%",
+            marginTop: "3rem",
+            marginRight: "10%",
+            marginLeft: "10%",
+            marginBottom: "3rem"
+        }
+    },
+    card: {
+        margin: "3em 2em 3em 2em",
+        height: "100%",
+        maxHeight: "600px",
+        transition: "0.3s",
+        boxShadow: "0 8px 40px -12px rgba(0,  0, 0, 0.3)",
+        border: "2px solid #f5f2eb",
+        '&:hover': {
+            boxShadow: "0 16px 70px -12.125px rgba(0, 0, 0, 0.3)"
+        }
+    },
+    file: {
+        marginRight: "2.5%",
+        marginLeft: "2.5%",
+        width: "95%",
+        height: 160,
+    },
+    switch: {
+        marginTop: "5em"
+    },
+    pagination: {
+        width: "100%",
+        marginBottom: "3em",
+    },
+    description: {
+        marginTop: "2rem",
+        height: "100%",
+        maxHeight: "400px",
+    },
+    box: {
+        marginTop: "2rem"
+    },
+    text: {
+        fontSize: "0.5em"
+    }
+}));
+function SwitchLabels(props) {
+    const [state, setState] = useState({
+        checkedA: true,
+        checkedB: true,
+    });
+    const handleChange = (event) => {
+        setState(Object.assign(Object.assign({}, state), { [event.target.name]: event.target.checked }));
+    };
+    return (<FormGroup row>
+      <FormControlLabel control={<Switch onClick={props.toggleSortDate} checked={state.checkedA} onChange={handleChange} name="checkedA"/>} label="Secondary"/>
+      <FormControlLabel control={<Switch onClick={props.toggleListReverse} checked={state.checkedB} onChange={handleChange} name="checkedB" color="primary"/>} label="Primary"/>
+
+    </FormGroup>);
+}
+export const Cards = () => {
+    const { file } = useStyles();
+    const classes = useStyles();
+    const router = useRouter();
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(2);
+    const [postList, setPostList] = useState([]);
+    const [isOldestFirst, setisOldestFirst] = useState(true);
+    const [open, setOpen] = React.useState(false);
+    const { data, error, loading } = useQuery(GET_POSTS);
+    let message = 'Posts';
+    if (data)
+        message = 'Loading...';
+    if (data)
+        message = `Error! ${error}`;
+    if (data && data.posts.length <= 0)
+        message = 'No Posts';
+    console.log("studentData:", data);
+    const { postId } = router.query;
+    // const [loading,setLoading] = useState(false)
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+    // const handleClickOpen = () => {
+    //   setOpen(true);
+    // };
+    // const handleClose = () => {
+    //   setOpen(false);
+    // };
+    const sortByDate = () => {
+        let newPostList = postList;
+        if (isOldestFirst) {
+            newPostList = postList.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+        }
+        else {
+            newPostList = postList.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+        }
+        setPostList(newPostList);
+        setisOldestFirst(!isOldestFirst);
+    };
+    const toggleSortDate = () => {
+        sortByDate();
+    };
+    const toggleListReverse = () => {
+        let newPostList = postList.reverse();
+        setPostList(newPostList);
+    };
+    useEffect(() => {
+        if (!loading) {
+            const postList = data.posts;
+            setisOldestFirst(true);
+            setPostList(postList);
+        }
+        // setLoading(!loading)
+    }, [postList]);
+    const ReadLimit = ({ children, maxCharacter = 120 }) => {
+        const text = children;
+        const resultString = text.slice(0, maxCharacter);
+        return (<Typography style={{ fontSize: "1rem" }}>
+          {resultString}
+   </Typography>);
+    };
+    return (<Paper component={Box} style={{ padding: "15px" }} className={classes.papper} elevation={3}>
+ 
+     
+   <Grid item className={classes.switch}>
+    <Grid item container direction="row" justify="center" lg>
+    <ScrollAnimation animateIn='fadeIn'>
+
+    <Typography variant="h1">
+            みんなの留学体験談
+      </Typography> 
+      
+    </ScrollAnimation>
+    
+      </Grid>
+      <Grid item container direction="row" justify="flex-end" md>
+      <SwitchLabels toggleListReverse={toggleListReverse} toggleSortDate={toggleSortDate}/>
+      </Grid>
+      </Grid> 
+
+      {loading ?
+        <Loading /> : (<Grid container spacing={3} alignItems="center" justify="space-around">
+    
+  {(rowsPerPage > 0
+        ? postList && postList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        : postList)
+        .map((d) => (<Grid key={d._id} item className={classes.card} container direction="column" md={4}>
+       <ScrollAnimation animateIn='fadeIn' delay={300}>
+    <Grid item>
+      <img src={d.file} className={file} alt=""/>
+          </Grid>
+      <Grid item className={classes.description}>
+     
+        <Typography variant="h5" gutterBottom>
+         {d.postTitle} 
+        </Typography>
+    
+      </Grid>
+      <Grid item>
+      <ReadLimit>
+          {d.description}
+          </ReadLimit>
+      </Grid>
+      <Grid className={classes.box} item container direction="row" justify="space-between">
+        <Box display="inline-block">
+          <Link href={`/card/[studentDialog]?studentDialog=${d._id}`} as={`/card/${d._id}`}>
+        <Button fullWidth color="primary" variant="contained">
+           もっと読む
+          </Button>
+          </Link>
+        </Box>
+        
+      </Grid>
+      </ScrollAnimation>
+    </Grid>))}
+
+    </Grid>)}
+  
+     
+    <TableFooter>
+    <TableRow>
+  <TablePagination rowsPerPageOptions={[2, 4, 6]} colSpan={2} count={postList.length} rowsPerPage={rowsPerPage} page={page} onChangePage={handleChangePage} onChangeRowsPerPage={handleChangeRowsPerPage}>
+  </TablePagination>
+    </TableRow>
+    </TableFooter>
+    
+    
+    </Paper>);
+};
+withApollo({ ssr: true })(Cards);

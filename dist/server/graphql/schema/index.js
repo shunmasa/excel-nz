@@ -1,10 +1,15 @@
-
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { gql } from 'apollo-server-express';
-import { ApolloServerExpressConfig } from 'apollo-server-express';
 import resolvers from '../resolvers/index';
-
-
-const typeDefs = gql`
+const typeDefs = gql `
 
   type Query {
     users: [User!]! 
@@ -114,23 +119,20 @@ type PageInfo{
   }
 
 `;
-const schema: ApolloServerExpressConfig = {
-  typeDefs,
-  resolvers,
-  introspection: true,
-  context: async ({ req, connection, payload }: any) => {
-    if (connection) {
-      return { isAuth: payload.authToken };
+const schema = {
+    typeDefs,
+    resolvers,
+    introspection: true,
+    context: ({ req, connection, payload }) => __awaiter(void 0, void 0, void 0, function* () {
+        if (connection) {
+            return { isAuth: payload.authToken };
+        }
+        return { isAuth: req.isAuth };
+    }),
+    playground: {
+        settings: {
+            'request.credentials': 'include',
+        },
     }
-    return { isAuth: req.isAuth };
-  },
-
-playground: {
-    settings: {
-      'request.credentials': 'include',
-    },
-  }
-
-}
-
+};
 export default schema;

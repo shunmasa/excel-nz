@@ -1,6 +1,6 @@
 
 import { ApolloServer } from 'apollo-server-express';
-// import cors from 'cors';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import express from 'express';
 import * as http from 'http';
@@ -19,7 +19,7 @@ const handle = app.getRequestHandler();
 // const origin = process.env.GRAPHQL_URI || 'http://localhost:4020' || 'https://excelnz.herokuapp.com/'|| 'https://studio.apollographql.com'
 const origin = 'https://excelnz.herokuapp.com';  
 const methods = 'POST';
-  const cors = { origin, methods, credentials: true };
+  const corsOption = { origin, methods, credentials: true };
 
 class Express {
   public express: express.Application;
@@ -31,11 +31,11 @@ class Express {
     this.express = express();
  
   
-    // this.express.use(cors());
+    this.express.use(cors(corsOption));
 
 app.prepare()
 .then(() => { 
-   this.express.get("*", handle);
+   this.express.get('*', (req, res) => handle(req, res));
 
     
 })
@@ -44,7 +44,7 @@ app.prepare()
     this.express.use(auth);
     this.express.use(bodyParser.json())
     // this.express.use(bodyParser.urlencoded({extended:true}))
-    this.server.applyMiddleware({ cors,path:'/graphql',app: this.express });
+    this.server.applyMiddleware({ cors: corsOption,app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers

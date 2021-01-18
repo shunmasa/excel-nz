@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
-const apollo_server_express_1 = require("apollo-server-express");
-const cors_1 = tslib_1.__importDefault(require("cors"));
-const body_parser_1 = tslib_1.__importDefault(require("body-parser"));
-const express_1 = tslib_1.__importDefault(require("express"));
-const http = tslib_1.__importStar(require("http"));
-const index_1 = tslib_1.__importDefault(require("../graphql/schema/index"));
-const auth_1 = tslib_1.__importDefault(require("../middleware/auth"));
+import { ApolloServer } from 'apollo-server-express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import express from 'express';
+import * as http from 'http';
+import schema from '../graphql/schema/index';
+import auth from '../middleware/auth';
 const next = require('next');
 // import config from './index';
 // const cors = require('cors')
@@ -21,16 +18,16 @@ const methods = 'POST';
 const corsOption = { origin, methods, credentials: true };
 class Express {
     constructor() {
-        this.server = new apollo_server_express_1.ApolloServer(index_1.default);
+        this.server = new ApolloServer(schema);
         this.init = () => {
-            this.express = express_1.default();
-            this.express.use(cors_1.default(corsOption));
+            this.express = express();
+            this.express.use(cors(corsOption));
             app.prepare()
                 .then(() => {
                 this.express.get('*', (req, res) => handle(req, res));
             });
-            this.express.use(auth_1.default);
-            this.express.use(body_parser_1.default.json());
+            this.express.use(auth);
+            this.express.use(bodyParser.json());
             // this.express.use(bodyParser.urlencoded({extended:true}))
             this.server.applyMiddleware({ cors: corsOption, app: this.express });
             this.httpServer = http.createServer(this.express);
@@ -41,5 +38,4 @@ class Express {
         };
     }
 }
-exports.default = Express;
-//# sourceMappingURL=express.js.map
+export default Express;

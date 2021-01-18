@@ -25,7 +25,8 @@ Promise.promisifyAll(mongoose);
 mongoose.connect(config.db, {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true
+  useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 

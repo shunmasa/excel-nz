@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
-const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
-const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
-const index_1 = tslib_1.__importDefault(require("./config/index"));
-const express_1 = tslib_1.__importDefault(require("./config/express"));
+import Promise from 'bluebird';
+import mongoose from 'mongoose';
+import config from './config/index';
+import Express from './config/express';
 // const express = require('express')
 // const next = require('next')
 const dotenv = require("dotenv");
@@ -13,13 +10,13 @@ dotenv.config({ path: "./config/config.env" });
  * Promisify All The Mongoose
  * @param mongoose
  */
-bluebird_1.default.promisifyAll(mongoose_1.default);
+Promise.promisifyAll(mongoose);
 /**
  * Connecting Mongoose
  * @param uris
  * @param options
  */
-mongoose_1.default.connect(index_1.default.db, {
+mongoose.connect(config.db, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -28,10 +25,10 @@ mongoose_1.default.connect(index_1.default.db, {
 /**
  * Throw error when not able to connect to database
  */
-mongoose_1.default.connection.on('error', () => {
-    throw new Error(`unable to connect to database: ${index_1.default.db}`);
+mongoose.connection.on('error', () => {
+    throw new Error(`unable to connect to database: ${config.db}`);
 });
-const ExpressServer = new express_1.default();
+const ExpressServer = new Express();
 ExpressServer.init();
 const { PORT } = process.env;
 ExpressServer.httpServer.listen(4020 || PORT, () => {
@@ -39,4 +36,3 @@ ExpressServer.httpServer.listen(4020 || PORT, () => {
     console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
     console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
 });
-//# sourceMappingURL=index.js.map
