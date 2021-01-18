@@ -35,7 +35,7 @@ class Express {
 
 app.prepare()
 .then(() => { 
-   this.express.all("*", handle);
+   this.express.get("*", handle);
 
     
 })
