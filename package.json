@@ -61,6 +61,7 @@
     "next": "^9.5.5",
     "next-cookies": "^2.0.3",
     "next-with-apollo": "^5.1.0",
+    "nextjs-with-apollo": "^1.0.1",
     "node-fetch": "^2.6.1",
     "node-sass": "^4.14.1",
     "nodemailer": "^6.4.10",
