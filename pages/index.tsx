@@ -26,7 +26,7 @@ import useSticky from "../src/components/UseStickey"
 import PhotoGallery from '../src/components/PhotoGallery'
 import Loading from '../src/components/Loading'
 
-import withApollo from '../lib/withApolloData'
+import withApollo from '../lib/withApollo'
 import { gql, useQuery } from '@apollo/react-hooks';
 import About from '../src/components/about'
 import Hidden from "@material-ui/core/Hidden";

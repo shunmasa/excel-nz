@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import withApollo,{setToken}from '../lib/withApolloData'
+import withApollo,{setToken}from '../lib/withApollo'
 // import { useRouter } from "next/router";
 
 function Copyright() {

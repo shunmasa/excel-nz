@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Router from 'next/router';
 import nextCookie from 'next-cookies';
- import { setTokenInRequest} from '../../lib/withApolloData';
+ import { setTokenInRequest} from '../../lib/withApollo';
 const getDisplayName = (Component: { displayName: any; name: any; }) =>
   Component.displayName || Component.name || 'Component';
 
