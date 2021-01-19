@@ -68,30 +68,30 @@ export default withApollo(
       uri: 'https://excelnz.herokuapp.com/',
       fetch
     });
-    const webSocketLink: any = process.browser
-    ? new WebSocketLink({
-        uri:"ws://excelnz.herokuapp.com/graphql",
-        options: {
-          reconnect: true
-        }
-      })
-    : null;
+    // const webSocketLink: any = process.browser
+    // ? new WebSocketLink({
+    //     uri:"ws://excelnz.herokuapp.com/graphql",
+    //     options: {
+    //       reconnect: true
+    //     }
+    //   })
+    // : null;
 
-    const link = process.browser
-  ? split(
-      ({ query }) => {
-        const { kind, operation }: Definintion = getMainDefinition(query);
-        return kind === 'OperationDefinition' && operation === 'subscription';
-      },
-      webSocketLink,
-      httpLink
-    )
-  : httpLink;
+  //   const link = process.browser
+  // ? split(
+  //     ({ query }) => {
+  //       const { kind, operation }: Definintion = getMainDefinition(query);
+  //       return kind === 'OperationDefinition' && operation === 'subscription';
+  //     },
+  //     webSocketLink,
+  //     httpLink
+  //   )
+  // : httpLink;
 
 
     return new ApolloClient({
       ssrMode: isBrowser,
-      link: ApolloLink.from([authLink(), link]),
+      link: ApolloLink.from([authLink(), httpLink]),
       cache: new InMemoryCache().restore(initialState || {})
     });
   },
