@@ -19,7 +19,7 @@ import MainListItems from '../src/components/listItems';
 import TableMain from '../src/components/TableMain';
 import { withAuthSync } from '../src/utils/auth';
 import Cookies from 'js-cookie';
-import {destroyToken } from '../src/utils/apolloClient';
+// import {destroyToken } from '../src/utils/apolloClient';
 // import Router from 'next/router';
 import { useRouter } from 'next/router'
 
@@ -143,7 +143,8 @@ const Dashboard = () => {
     handleLogout?: () => void;
   }
   const handleLogout = () => {
-  destroyToken()
+  //destroyToken()
+  
   // Cookies.remove('name');
   Cookies.remove('token');
   Router.push('/');
