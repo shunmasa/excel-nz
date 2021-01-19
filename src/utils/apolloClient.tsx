@@ -65,12 +65,12 @@ export default withApollo(
   
     const httpLink = new HttpLink({
       credentials: 'include',
-      uri: 'http://localhost:4020/graphql',
+      uri: 'https://excelnz.herokuapp.com/graphql',
       fetch
     });
     const webSocketLink: any = process.browser
     ? new WebSocketLink({
-        uri:"ws://localhost:4020/graphql",
+        uri:"ws://excelnz.herokuapp.com/graphql",
         options: {
           reconnect: true
         }
