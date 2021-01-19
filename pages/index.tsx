@@ -474,27 +474,7 @@ interface Title {
 
 const Home = () => {
   
-  const GET_POSTS = gql`
-    query posts {
-      posts{
-      _id
-      username
-      description
-      file
-      postTitle
-    }
-    }
-`;
 
-const GET_NOTICES = gql`
-  query notices{
-  notices{
-    _id
-    body
-    createdAt
-  }
-  }
-`;
 // console.log('pdata',data)
 const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
   let message = 'Posts';
