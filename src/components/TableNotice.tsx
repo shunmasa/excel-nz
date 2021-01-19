@@ -21,7 +21,7 @@ import GET_NOTICES from '../graphql/query/notices'
 import { useMutation,useQuery} from '@apollo/react-hooks';
 import notice from '../../pages/notice';
 
-
+//
 function preventDefault(event) {
   event.preventDefault();
 }
