@@ -18,7 +18,7 @@ import MainListItems from '../src/components/listItems';
 import TableNotice from '../src/components/TableNotice';
 import { withAuthSync } from '../src/utils/auth';
 import Cookies from 'js-cookie';
-import {destroyToken } from '../src/utils/apolloClient';
+// import {destroyToken } from '../src/utils/apolloClient';
 // import Router from 'next/router';
 import { useRouter } from 'next/router'
 import NoticeForm from '../src/components/NoticeForm'
@@ -139,7 +139,7 @@ const Notice = (props:any) => {
     handleLogout?: () => void;
   }
   const handleLogout = () => {
-  destroyToken()
+  // destroyToken()
   Cookies.remove('name');
   Router.push('/');
   }
