@@ -4,7 +4,7 @@ import { Button, LinearProgress} from '@material-ui/core';
 import { TextField } from 'formik-material-ui';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import DropZone from '../../src/components/DropZone'
-import withApollo from 'lib/ApolloData'
+import withApollo from '../../src/utils/apolloClient'
 import { useMutation,useQuery} from '@apollo/react-hooks';
 import UPDATE_POST from '../../src/graphql/mutation/updatePost'
 import { toast } from 'react-toastify';

@@ -12,7 +12,7 @@ import moment from 'moment'
 // import Edit from "@material-ui/icons/Edit";
 // import DialogEdit from './DialogEdit'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import withApollo from '../../lib/ApolloData'
+import withApollo from  '../../src/utils/apolloClient'
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import DELETE_NOTICE from '../graphql/mutation/deleteNotice'
