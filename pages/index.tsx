@@ -27,7 +27,7 @@ import PhotoGallery from '../src/components/PhotoGallery'
 import Loading from '../src/components/Loading'
 
 import withApollo from '../lib/withApollo'
-import { useQuery } from '@apollo/react-hooks';
+import { gql, useQuery } from '@apollo/react-hooks';
 import About from '../src/components/about'
 import Hidden from "@material-ui/core/Hidden";
 
@@ -474,7 +474,27 @@ interface Title {
 
 const Home = () => {
   
+  const GET_POSTS = gql`
+    query posts {
+      posts{
+      _id
+      username
+      description
+      file
+      postTitle
+    }
+    }
+`;
 
+const GET_NOTICES = gql`
+  query notices{
+  notices{
+    _id
+    body
+    createdAt
+  }
+  }
+`;
 // console.log('pdata',data)
 const {data:dataN,loading:loadingN,error:errorN} = useQuery(GET_NOTICES)
   let message = 'Posts';
@@ -1239,8 +1259,6 @@ Excel NZのモットーは、「もし、自分の子供が留学をして、こ
 )
 };
 
-
-//
 
 export default withApollo(Home)
 

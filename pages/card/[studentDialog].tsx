@@ -108,11 +108,11 @@ const StudentDialog = () =>{
     if (data && data.post.length <= 0) message = 'No Post';
   const classes = useStyles();
   
-  // useEffect(()=> {
-  // if(loading){
-  //   router.reload()
-  // }
-  // },[]) // eslint-disable-line
+  useEffect(()=> {
+  if(loading){
+    router.reload()
+  }
+  },[]) // eslint-disable-line
   
 
 

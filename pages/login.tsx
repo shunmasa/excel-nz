@@ -11,13 +11,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import LOGIN_USER from '../src/graphql/mutation/login';
 import { validateEmail } from '../src/utils/validation';
-import { setToken } from '../src/utils/apolloClient';
 import Cookies from 'js-cookie';
 import Button from '@material-ui/core/Button';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import withApollo from '../lib/withApollo'
+import withApollo,{setToken}from '../lib/withApollo'
 // import { useRouter } from "next/router";
 
 function Copyright() {
