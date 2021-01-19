@@ -13,10 +13,10 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from '@apollo/react-hooks';
 
-interface Definintion {
-  kind: string;
-  operation?: string;
-}
+// interface Definintion {
+//   kind: string;
+//   operation?: string;
+// }
 
 
 const isBrowser = typeof window !== "undefined"
@@ -53,7 +53,7 @@ export const setTokenInRequest = async (token: string) => {
     authToken = token ? token : null;
     return authToken;
   } catch(error){
-     // tslint:disable-next-line:no-console
+  
      console.log(error);
   }
 };
@@ -65,7 +65,7 @@ export default withApollo(
   
     const httpLink = new HttpLink({
       credentials: 'include',
-      uri: 'https://excelnz.herokuapp.com/graphql',
+      uri: 'http://ryugaku-excel.co.nz/graphql',
       fetch
     });
     // const webSocketLink: any = process.browser
