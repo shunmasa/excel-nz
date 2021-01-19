@@ -8,7 +8,9 @@
     "dev": "next dev",
     "start": "NODE_ENV=production node dist/index.js & next start -p $PORT"
   },
-  "cacheDirectories": [".next/cache"],
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
