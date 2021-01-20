@@ -2,11 +2,9 @@ import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import config from './config/index';
 import Express from './config/express';
-// const express = require('express')
-// const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
-
+const next = require('next')
 
 
 /**
@@ -31,10 +29,6 @@ mongoose.connect(config.db, {
 
 
 
-
-/**
- * Throw error when not able to connect to database
- */
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
 });
@@ -43,6 +37,17 @@ mongoose.connection.on('error', () => {
 const ExpressServer = new Express();
 ExpressServer.init();
 
+const dev = process.env.NODE_ENV !== "production";
+const app = next({dev});
+const handle = app.getRequestHandler();
+
+app.prepare()
+.then(() => { 
+   ExpressServer.express.get('*', (req, res) => handle(req, res));
+ 
+})
+
+ExpressServer.server.applyMiddleware({ app: ExpressServer.express });
 
 const { PORT } = process.env;
 
