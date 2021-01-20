@@ -1,7 +1,7 @@
 
 import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 import express from 'express';
 import * as http from 'http';
 import schema from '../graphql/schema/index';
@@ -15,20 +15,20 @@ const methods = 'POST';
 
 class Express {
   public express: express.Application;
-  public server: ApolloServer = new ApolloServer(schema);
+  // public server: ApolloServer = new ApolloServer(schema);
+  public server: ApolloServer =  new ApolloServer(schema)
   public httpServer: http.Server;
   public init = (): void => {
   
     this.express = express();
     this.express.use(cors(corsOption));
     this.express.use(auth);  
-    this.express.use(bodyParser.json())
     // this.server.applyMiddleware({ app: this.express });
     this.httpServer = http.createServer(this.express);
     /**
      * Installing subscription handlers
      */
-    this.server.installSubscriptionHandlers(this.httpServer);
+    // this.server.installSubscriptionHandlers(this.httpServer);
   }
 }
 

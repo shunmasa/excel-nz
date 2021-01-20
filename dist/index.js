@@ -5,10 +5,9 @@ const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const index_1 = tslib_1.__importDefault(require("./config/index"));
 const express_1 = tslib_1.__importDefault(require("./config/express"));
-// const express = require('express')
-// const next = require('next')
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+const next = require('next');
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -25,14 +24,19 @@ mongoose_1.default.connect(index_1.default.db, {
     useFindAndModify: false,
     useUnifiedTopology: true,
 });
-/**
- * Throw error when not able to connect to database
- */
 mongoose_1.default.connection.on('error', () => {
     throw new Error(`unable to connect to database: ${index_1.default.db}`);
 });
 const ExpressServer = new express_1.default();
 ExpressServer.init();
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
+app.prepare()
+    .then(() => {
+    ExpressServer.express.get('*', (req, res) => handle(req, res));
+});
+ExpressServer.server.applyMiddleware({ app: ExpressServer.express });
 const { PORT } = process.env;
 ExpressServer.httpServer.listen(4020 || PORT, () => {
     console.log(`🚀  Server ready at ${PORT}`);
