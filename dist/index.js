@@ -36,7 +36,7 @@ app.prepare()
     .then(() => {
     ExpressServer.express.get('*', (req, res) => handle(req, res));
 });
-ExpressServer.server.applyMiddleware({ app: ExpressServer.express });
+ExpressServer.server.applyMiddleware({ app: ExpressServer.express, path: '/graphql', cors: false });
 const { PORT } = process.env;
 ExpressServer.httpServer.listen(4020 || PORT, () => {
     console.log(`🚀  Server ready at ${PORT}`);

@@ -47,7 +47,7 @@ app.prepare()
  
 })
 
-ExpressServer.server.applyMiddleware({ app: ExpressServer.express });
+ExpressServer.server.applyMiddleware({ app: ExpressServer.express,path: '/graphql', cors: false });
 
 const { PORT } = process.env;
 
