@@ -65,7 +65,7 @@ export default withApollo(
   
     const httpLink = new HttpLink({
       credentials: 'include',
-      uri: 'https://excel-nz.herokuapp.com/',
+      uri: 'https://excel-nz.herokuapp.com/graph',
       fetch
     });
     // const webSocketLink: any = process.browser
