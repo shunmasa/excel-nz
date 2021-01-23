@@ -1,12 +1,7 @@
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
-import config from './config/index';
+import config from './config';
 import Express from './config/express';
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/config.env" });
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const next = require('next')
-
 
 /**
  * Promisify All The Mongoose
@@ -19,59 +14,38 @@ Promise.promisifyAll(mongoose);
  * @param uris
  * @param options
  */
-
-
 mongoose.connect(config.db, {
+  bufferMaxEntries: 0,
+  keepAlive: true,
+  reconnectInterval: 500,
+  reconnectTries: 30,
+  socketTimeoutMS: 0,
   useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 
-
-
+/**
+ * Throw error when not able to connect to database
+ */
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
 });
 
-
+/**
+ * Initialize Express
+ */
 const ExpressServer = new Express();
 ExpressServer.init();
 
-const dev = process.env.NODE_ENV !== "production";
-const app = next({dev});
-const handle = app.getRequestHandler();
-
-app.prepare()
-.then(() => { 
-  ExpressServer.express.use(
-    "/graphql",
-    createProxyMiddleware({
-      target: "https://excel-nz.herokuapp.com/",
-      changeOrigin: true,
-    })
+/**
+ * Listen to port
+ */
+ExpressServer.httpServer.listen(process.env.PORT || config.port, () => {
+  console.log(`🚀  Server ready at ${config.port}`);
+  console.log(
+    `🚀 Server ready at http://localhost:${config.port}${ExpressServer.server.graphqlPath}`
   );
-   ExpressServer.express.all('*', (req, res) => handle(req, res));
-   ExpressServer.server.applyMiddleware({ app: ExpressServer.express,path: '/graphql' });
-
-const { PORT } = process.env;
-
-  
-  ExpressServer.httpServer.listen( 4020 || PORT , () => {
-    console.log(`🚀  Server ready at ${ PORT }`);
-    console.log(
-      `🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`
-    );
-    console.log(
-      `🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`
-    );
-  });
-
-})
-
-
- 
-
-
-
-
+  console.log(
+    `🚀 Subscriptions ready at ws://localhost:${config.port}${ExpressServer.server.subscriptionsPath}`
+  );
+});

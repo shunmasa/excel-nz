@@ -3,12 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
-const index_1 = tslib_1.__importDefault(require("./config/index"));
+const config_1 = tslib_1.__importDefault(require("./config"));
 const express_1 = tslib_1.__importDefault(require("./config/express"));
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/config.env" });
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const next = require('next');
 /**
  * Promisify All The Mongoose
  * @param mongoose
@@ -19,33 +15,32 @@ bluebird_1.default.promisifyAll(mongoose_1.default);
  * @param uris
  * @param options
  */
-mongoose_1.default.connect(index_1.default.db, {
+mongoose_1.default.connect(config_1.default.db, {
+    bufferMaxEntries: 0,
+    keepAlive: true,
+    reconnectInterval: 500,
+    reconnectTries: 30,
+    socketTimeoutMS: 0,
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 });
+/**
+ * Throw error when not able to connect to database
+ */
 mongoose_1.default.connection.on('error', () => {
-    throw new Error(`unable to connect to database: ${index_1.default.db}`);
+    throw new Error(`unable to connect to database: ${config_1.default.db}`);
 });
+/**
+ * Initialize Express
+ */
 const ExpressServer = new express_1.default();
 ExpressServer.init();
-const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
-app.prepare()
-    .then(() => {
-    ExpressServer.express.use("/graphql", createProxyMiddleware({
-        target: "https://excel-nz.herokuapp.com/",
-        changeOrigin: true,
-    }));
-    ExpressServer.express.all('*', (req, res) => handle(req, res));
-    ExpressServer.server.applyMiddleware({ app: ExpressServer.express, path: '/graphql' });
-    const { PORT } = process.env;
-    ExpressServer.httpServer.listen(4020 || PORT, () => {
-        console.log(`🚀  Server ready at ${PORT}`);
-        console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
-        console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
-    });
+/**
+ * Listen to port
+ */
+ExpressServer.httpServer.listen(process.env.PORT || config_1.default.port, () => {
+    console.log(`🚀  Server ready at ${config_1.default.port}`);
+    console.log(`🚀 Server ready at http://localhost:${config_1.default.port}${ExpressServer.server.graphqlPath}`);
+    console.log(`🚀 Subscriptions ready at ws://localhost:${config_1.default.port}${ExpressServer.server.subscriptionsPath}`);
 });
 //# sourceMappingURL=index.js.map
