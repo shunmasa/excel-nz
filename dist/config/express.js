@@ -4,7 +4,7 @@ const tslib_1 = require("tslib");
 const apollo_server_express_1 = require("apollo-server-express");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const express_1 = tslib_1.__importDefault(require("express"));
-const http = tslib_1.__importStar(require("http"));
+const https = tslib_1.__importStar(require("https"));
 const index_1 = tslib_1.__importDefault(require("../graphql/schema/index"));
 const auth_1 = tslib_1.__importDefault(require("../middleware/auth"));
 const index_2 = tslib_1.__importDefault(require("./index"));
@@ -41,7 +41,7 @@ class Express {
              */
             this.express.use(auth_1.default);
             this.server.applyMiddleware({ app: this.express });
-            this.httpServer = http.createServer(this.express);
+            this.httpServer = https.createServer(this.express);
             /**
              * Installing subscription handlers
              */

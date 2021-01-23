@@ -3,6 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import * as http from 'http';
+import * as https from 'https';
 import schema from '../graphql/schema/index';
 import auth from '../middleware/auth';
 import config from './index';
@@ -39,7 +40,7 @@ class Express {
      */
     this.express.use(auth);
     this.server.applyMiddleware({ app: this.express });
-    this.httpServer = http.createServer(this.express);
+    this.httpServer = https.createServer(this.express);
     /**
      * Installing subscription handlers
      */

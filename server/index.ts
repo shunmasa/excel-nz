@@ -1,6 +1,6 @@
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
-import config from './config';
+import config from './config/index';
 import Express from './config/express';
 
 /**

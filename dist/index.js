@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
-const config_1 = tslib_1.__importDefault(require("./config"));
+const index_1 = tslib_1.__importDefault(require("./config/index"));
 const express_1 = tslib_1.__importDefault(require("./config/express"));
 /**
  * Promisify All The Mongoose
@@ -15,7 +15,7 @@ bluebird_1.default.promisifyAll(mongoose_1.default);
  * @param uris
  * @param options
  */
-mongoose_1.default.connect(config_1.default.db, {
+mongoose_1.default.connect(index_1.default.db, {
     bufferMaxEntries: 0,
     keepAlive: true,
     reconnectInterval: 500,
@@ -28,7 +28,7 @@ mongoose_1.default.connect(config_1.default.db, {
  * Throw error when not able to connect to database
  */
 mongoose_1.default.connection.on('error', () => {
-    throw new Error(`unable to connect to database: ${config_1.default.db}`);
+    throw new Error(`unable to connect to database: ${index_1.default.db}`);
 });
 /**
  * Initialize Express
@@ -38,9 +38,9 @@ ExpressServer.init();
 /**
  * Listen to port
  */
-ExpressServer.httpServer.listen(process.env.PORT || config_1.default.port, () => {
-    console.log(`🚀  Server ready at ${config_1.default.port}`);
-    console.log(`🚀 Server ready at http://localhost:${config_1.default.port}${ExpressServer.server.graphqlPath}`);
-    console.log(`🚀 Subscriptions ready at ws://localhost:${config_1.default.port}${ExpressServer.server.subscriptionsPath}`);
+ExpressServer.httpServer.listen(process.env.PORT || index_1.default.port, () => {
+    console.log(`🚀  Server ready at ${index_1.default.port}`);
+    console.log(`🚀 Server ready at http://localhost:${index_1.default.port}${ExpressServer.server.graphqlPath}`);
+    console.log(`🚀 Subscriptions ready at ws://localhost:${index_1.default.port}${ExpressServer.server.subscriptionsPath}`);
 });
 //# sourceMappingURL=index.js.map
