@@ -1,6 +1,6 @@
 
 import { ApolloServer } from 'apollo-server-express';
-import cors from 'cors';
+// import cors from 'cors';
 // import bodyParser from 'body-parser';
 import express from 'express';
 import * as http from 'http';
@@ -10,9 +10,9 @@ import auth from '../middleware/auth';
 
 
 // const origin = process.env.GRAPHQL_URI || 'http://localhost:4020' || 'https://excelnz.herokuapp.com/'|| 'https://studio.apollographql.com'
-const origin = 'https://excel-nz.herokuapp.com';  
-const methods = 'POST';
-  const corsOption = { origin, methods, credentials: true };
+// const origin = 'https://excel-nz.herokuapp.com';  
+// const methods = 'POST';
+//   const corsOption = { origin, methods, credentials: true };
 
 class Express {
   public express: express.Application;
@@ -22,7 +22,7 @@ class Express {
   public init = (): void => {
   
     this.express = express();
-    this.express.use(cors(corsOption));
+    // this.express.use(cors(corsOption));
     this.express.use(auth);  
     // this.server.applyMiddleware({ app: this.express });
     this.httpServer = https.createServer(this.express);

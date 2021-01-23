@@ -4,6 +4,7 @@ import config from './config/index';
 import Express from './config/express';
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const next = require('next')
 
 
@@ -43,11 +44,15 @@ const handle = app.getRequestHandler();
 
 app.prepare()
 .then(() => { 
-   ExpressServer.express.get('*', (req, res) => handle(req, res));
- 
-})
-
-ExpressServer.server.applyMiddleware({ app: ExpressServer.express,path: '/graphql', cors: false });
+  ExpressServer.express.use(
+    "/graphql",
+    createProxyMiddleware({
+      target: "https://excel-nz.herokuapp.com/",
+      changeOrigin: true,
+    })
+  );
+   ExpressServer.express.all('*', (req, res) => handle(req, res));
+   ExpressServer.server.applyMiddleware({ app: ExpressServer.express,path: '/graphql' });
 
 const { PORT } = process.env;
 
@@ -61,6 +66,12 @@ const { PORT } = process.env;
       `🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`
     );
   });
+
+})
+
+
  
+
+
 
 

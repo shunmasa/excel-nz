@@ -7,6 +7,7 @@ const index_1 = tslib_1.__importDefault(require("./config/index"));
 const express_1 = tslib_1.__importDefault(require("./config/express"));
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const next = require('next');
 /**
  * Promisify All The Mongoose
@@ -34,13 +35,17 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare()
     .then(() => {
-    ExpressServer.express.get('*', (req, res) => handle(req, res));
-});
-ExpressServer.server.applyMiddleware({ app: ExpressServer.express, path: '/graphql', cors: false });
-const { PORT } = process.env;
-ExpressServer.httpServer.listen(4020 || PORT, () => {
-    console.log(`🚀  Server ready at ${PORT}`);
-    console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
-    console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
+    ExpressServer.express.use("/graphql", createProxyMiddleware({
+        target: "https://excel-nz.herokuapp.com/",
+        changeOrigin: true,
+    }));
+    ExpressServer.express.all('*', (req, res) => handle(req, res));
+    ExpressServer.server.applyMiddleware({ app: ExpressServer.express, path: '/graphql' });
+    const { PORT } = process.env;
+    ExpressServer.httpServer.listen(4020 || PORT, () => {
+        console.log(`🚀  Server ready at ${PORT}`);
+        console.log(`🚀 Server ready at http://localhost:${PORT}${ExpressServer.server.graphqlPath}`);
+        console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${ExpressServer.server.subscriptionsPath}`);
+    });
 });
 //# sourceMappingURL=index.js.map
